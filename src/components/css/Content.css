@@ -22,3 +22,22 @@
     display: flex;
     flex-direction: column;
   }
+
+  .dialogs{
+    border-right: 2px solid rgb(83, 94, 215);
+  }
+
+  .dialog-item{
+    display: flex;
+    flex-direction:row;
+    background-color: coral;
+    width: 200px;
+    height: 60px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    padding: 5px;
+  }
+
+  .dialog-info{
+    margin-left: 5px;
+  }
