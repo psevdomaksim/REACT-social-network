@@ -1,7 +1,7 @@
 import "../App.css";
 
 import { Image, Form, Button } from "react-bootstrap";
-import PostList from "./PostList";
+import PostList from "./Posts/PostList";
 
 const mainImage = require("../images/main-image.png");
 const profileAvatar = require("../images/ava.jpg");

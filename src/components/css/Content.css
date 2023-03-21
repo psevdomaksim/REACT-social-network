@@ -23,7 +23,19 @@
     flex-direction: column;
   }
 
+
+
   .dialogs{
+    display: flex;
+    flex-direction: row;
+  }
+
+  .dialog-page{
+    width: 100%;
+    border: 1px solid black;
+  }
+
+  .dialog-preview{
     border-right: 2px solid rgb(83, 94, 215);
   }
 
@@ -36,6 +48,10 @@
     margin-bottom: 5px;
     margin-right: 5px;
     padding: 5px;
+  }
+
+  .dialog-item:hover{
+    background-color: rgb(247, 96, 41);
   }
 
   .dialog-info{

@@ -1,6 +1,6 @@
 import "../App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import DialogsContent from "../components/DialogsList";
+import DialogPreviewList from "../components/Dialogs/DialogPreviewList";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 
@@ -10,7 +10,8 @@ function Dialogs() {
       <Header />
       <div className="content-wrapper">
         <Sidebar />
-        <DialogsContent />
+        <DialogPreviewList />
+        
       </div>
     </div>
   );

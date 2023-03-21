@@ -9,11 +9,11 @@ const Sidebar = ()=>{
       <sidebar className="sidebar">
 
         <div className="sidebar-item">
-          <Link to="/">Profile</Link>
+          <Link className='sidebar-link' to="/">Profile</Link>
         </div>
 
         <div className="sidebar-item">
-          <Link to="/dialogs">Messages</Link>
+          <Link className='sidebar-link' to="/dialogs">Messages</Link>
         </div>
 
         <div className="sidebar-item">News</div>
