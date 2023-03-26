@@ -1,11 +1,13 @@
 import '../../App.css';
 import {Image} from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const DialogPreview = (props) => {
+  
+
   return (
     <>
-    <Link to = {`/dialogs/id:${props.id}`} >
+    <Link to = {`/dialogs/${props.id}`} >
       <div className="dialog-item">
           <Image
           width={50}

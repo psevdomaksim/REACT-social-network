@@ -6,7 +6,11 @@ const Post = (props)=>{
     
     return(
       <>
-      <div className="">{props.text}</div>
+      <div className="post">
+        <h4>{props.author}</h4>
+        <p>{props.text}</p>
+        
+        </div>
       
       </>       
     );

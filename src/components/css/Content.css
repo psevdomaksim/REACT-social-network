@@ -18,7 +18,7 @@
     margin-right: 50px;
   }
   
-  .profile-data{
+  .profile-data, .messages{
     display: flex;
     flex-direction: column;
   }
@@ -32,7 +32,8 @@
 
   .dialog-page{
     width: 100%;
-    border: 1px solid black;
+    padding: 10px;
+    margin-left: 10px;
   }
 
   .dialog-preview{
@@ -56,4 +57,27 @@
 
   .dialog-info{
     margin-left: 5px;
+  }
+
+  .message{
+    width: 250px;
+    border: 1px solid black;
+    padding: 5px;
+    margin-bottom: 5px;
+  }
+
+  .messageMe{
+    width: 250px;
+    border: 1px solid black;
+    padding: 5px;
+    margin-bottom: 5px;
+    margin-left: auto;
+    margin-right: 0em
+  }
+
+  .post{
+    width: 400px;
+    padding: 5px;
+    margin: 10px 0;
+    border: 1px solid black;
   }
