@@ -1,5 +1,5 @@
 import '../../App.css';
-import '../css/Content.css'
+import '../css/Dialogs.css'
 import {Image} from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 

@@ -1,5 +1,5 @@
 .main{
-    width: 100%;
+    width: 85%;
   }
   
   .main-image{
@@ -18,62 +18,12 @@
     margin-right: 50px;
   }
   
-  .profile-data, .messages{
+  .profile-data{
     display: flex;
     flex-direction: column;
   }
 
 
-
-  .dialogs{
-    display: flex;
-    flex-direction: row;
-  }
-
-  .dialog-page{
-    width: 100%;
-    padding: 10px;
-    margin-left: 10px;
-  }
-
-  .dialog-preview{
-    border-right: 2px solid rgb(83, 94, 215);
-  }
-
-  .dialog-item{
-    display: flex;
-    flex-direction:row;
-    background-color: coral;
-    width: 200px;
-    height: 60px;
-    margin-bottom: 5px;
-    margin-right: 5px;
-    padding: 5px;
-  }
-
-  .dialog-item:hover{
-    background-color: rgb(247, 96, 41);
-  }
-
-  .dialog-info{
-    margin-left: 5px;
-  }
-
-  .message{
-    width: 250px;
-    border: 1px solid black;
-    padding: 5px;
-    margin-bottom: 5px;
-  }
-
-  .messageMe{
-    width: 250px;
-    border: 1px solid black;
-    padding: 5px;
-    margin-bottom: 5px;
-    margin-left: auto;
-    margin-right: 0em
-  }
 
   .post{
     width: 400px;

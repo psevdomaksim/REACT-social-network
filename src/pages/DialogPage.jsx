@@ -1,14 +1,11 @@
-import { useEffect } from "react";
-import { useState } from "react";
-import { useParams } from "react-router";
 import "../App.css";
 import DialogsPreviewList from "../components/Dialogs/DialogPreviewList";
 import MessageList from "../components/Dialogs/MessageList";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 
-const DialogPage = (props) => {
-  const { id } = useParams();
+const DialogPage = () => {
+  
 
   return (
     <>
@@ -18,7 +15,7 @@ const DialogPage = (props) => {
           <Sidebar />
           <DialogsPreviewList />
           <div className="dialog-page">
-            <MessageList id={id} />
+            <MessageList />
           </div>
         </div>
       </div>

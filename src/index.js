@@ -7,7 +7,6 @@ import state from "./Store/State";
 
 
 export const StoreContext = createContext();
-export const StateContext = createContext();
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -20,7 +19,6 @@ let rerender = (state) => {
 
     document.getElementById("root")
     );
-    console.log("render")
 }
 
 rerender(store.getState())

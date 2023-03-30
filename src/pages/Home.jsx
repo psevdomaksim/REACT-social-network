@@ -1,8 +1,8 @@
 import "../App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import HomeContent from "../components/HomeContent";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
+import Profile from "../components/Profile";
 
 function Home() {
   return (
@@ -10,11 +10,10 @@ function Home() {
       <Header />
       <div className="content-wrapper">
         <Sidebar />
-        <HomeContent/>
+        <Profile />
       </div>
     </div>
   );
 }
 
 export default Home;
-

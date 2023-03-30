@@ -1,4 +1,3 @@
-
 let state = {
   profilePage: {
     posts: [
@@ -23,56 +22,68 @@ let state = {
   },
 
   dialogsPage: {
-    messages: [
+    dialogs: [
       {
         id: 1,
-        toUserId: 69,
-        fromUserId: 1,
-        text: "ku",
+        firstUserId: 1,
+        secondUserId: 69,
+        messages: [
+          {
+            id: 1,
+            fromUserId: 1,
+            text: "ku",
+          },
+          {
+            id: 2,
+            fromUserId: 1,
+            text: "cho kak",
+          },
+          {
+            id: 6,
+            fromUserId: 69,
+            text: "da norm ",
+          },
+          {
+            id: 7,
+            fromUserId: 69,
+            text: "a ti? ",
+          },
+        ],
       },
       {
         id: 2,
-        toUserId: 69,
-        fromUserId: 1,
-        text: "cho kak",
+        firstUserId: 2,
+        secondUserId: 69,
+        messages: [
+          {
+            id: 3,
+            fromUserId: 2,
+            text: "kak dela",
+          },
+          {
+            id: 4,
+            fromUserId: 2,
+            text: "haha",
+          },
+          {
+            id: 8,
+            fromUserId: 69,
+            text: "privet inspace ",
+          },
+        ],
       },
-
       {
         id: 3,
-        toUserId: 69,
-        fromUserId: 2,
-        text: "kak dela",
-      },
-      {
-        id: 4,
-        toUserId: 69,
-        fromUserId: 2,
-        text: "haha",
-      },
-
-      {
-        id: 5,
-        toUserId: 69,
-        fromUserId: 3,
-        text: "cho novogo",
-      },
-      {
-        id: 6,
-        toUserId: 1,
-        fromUserId: 69,
-        text: "da norm ",
-      },
-      {
-        id: 7,
-        toUserId: 1,
-        fromUserId: 69,
-        text: "a ti? ",
-      },
-      {
-        id: 8,
-        toUserId: 2,
-        fromUserId: 69,
-        text: "privet inspace ",
+        firstUserId: 3,
+        firstUserId: 69,
+        messages: [
+          {
+            id: 5,
+            toUserId: 69,
+            fromUserId: 3,
+            text: "cho novogo",
+          },
+        ],
       },
     ],
   },
@@ -102,7 +113,6 @@ let state = {
       avatarImage: require("../images/dialog_ava.jpg"),
     },
   ],
-  
 };
 
 export default state;

@@ -6,10 +6,11 @@ import PostList from "./Posts/PostList";
 const mainImage = require("../images/main-image.png");
 const profileAvatar = require("../images/ava.jpg");
 
-const HomeContent = () => {
+const Profile = () => {
   return (
     <>
-      <main className="main">
+       <main className="main">
+  
         <Image
           width={"100%"}
           height={200}
@@ -35,10 +36,9 @@ const HomeContent = () => {
           </div>
         </div>
       <PostList/>
-      
       </main>
     </>
   );
 };
 
-export default HomeContent;
+export default Profile;

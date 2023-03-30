@@ -11,7 +11,8 @@ function Dialogs() {
       <div className="content-wrapper">
         <Sidebar />
         <DialogPreviewList />
-        
+        <div className="dialog-page"></div>
+
       </div>
     </div>
   );

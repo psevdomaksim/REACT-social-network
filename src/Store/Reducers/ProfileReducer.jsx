@@ -29,7 +29,7 @@ const getRandomId = () => {
   };
 
 
-const postsReducer = (state = initialState,action) => {
+const postsReducer = (state = initialState, action) => {
 
     switch(action.type) {
 
@@ -41,8 +41,8 @@ const postsReducer = (state = initialState,action) => {
             text: action.newPostText
           }
           
+          
           state.posts.push(newPost);
-          console.log(state.posts)
           return state;
         }
       

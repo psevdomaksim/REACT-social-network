@@ -1,24 +1,31 @@
-import '../../App.css';
-import DialogPage from "../../pages/DialogPage";
+import "../css/Dialogs.css";
 import DialogPreview from "./DialogPreview";
-import state from "../../Store/State"
+import { useContext } from "react";
+import { StoreContext } from "../..";
 
 const DialogsPreviewList = () => {
+  const store = useContext(StoreContext);
+
+  let state = store.getState();
+
   return (
     <>
       <main className="dialogs">
-        <div className="dialog-preview">
-          <h3>Dialogs</h3>
-        {
-          state.users.map (user =>  (
-           user.id != 69 ?
-            <DialogPreview id = {user.id} avatar={user.avatarImage} name = {user.name} text_preview="priva"/>
-            :
-            <></>
-            
-          ))
-        }
-        </div>       
+        <h3>Dialogs</h3>
+        {state.usersPage.users.map((user) =>
+          state.dialogsPage.dialogs.map((dialog) =>
+           (user.id != 69 && dialog.firstUserId==user.id ) ? (
+              <DialogPreview
+                id={dialog.id}
+                avatar={user.avatarImage}
+                name={user.name}
+                text_preview={dialog.messages[dialog.messages.length -1].text}
+              />
+            ) : (
+              <></>
+            )
+          )
+        )}
       </main>
     </>
   );

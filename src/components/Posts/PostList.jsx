@@ -6,12 +6,13 @@ import { useState } from "react";
 import { addPostActionCreator } from "../../Store/ActionCreators/PostsActionCreators";
 import { StoreContext  } from "../../index";
 import { useContext } from "react";
-import state from "../../Store/State";
+
 
 const PostList = () => {
 
   const store = useContext(StoreContext);
 
+  let state = store.getState();
 
   const [post, setPost] = useState({
     text: "",
@@ -64,9 +65,8 @@ const PostList = () => {
       </div>
 
       {state.profilePage.posts.map((post) =>
-        state.users.map((user) =>
+        state.usersPage.users.map((user) =>
           user.id == post.authorId ? (
-            console.log(state.profilePage.posts),
             <Post authorName={user.name} text={post.text} />
           ) : (
             <></>
