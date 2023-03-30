@@ -4,17 +4,17 @@ import HomeContent from "../components/HomeContent";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 
-function Feed() {
+function Home() {
   return (
     <div className="wrapper">
       <Header />
       <div className="content-wrapper">
         <Sidebar />
-        <HomeContent />
+        <HomeContent/>
       </div>
     </div>
   );
 }
 
-export default Feed;
+export default Home;
 

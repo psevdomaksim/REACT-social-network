@@ -6,34 +6,22 @@ import DialogsPreviewList from "../components/Dialogs/DialogPreviewList";
 import MessageList from "../components/Dialogs/MessageList";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
-import { Users } from "../components/STATE";
 
 const DialogPage = (props) => {
-  const {id} = useParams();
-  
+  const { id } = useParams();
 
-
-  
   return (
     <>
-    <div className="wrapper">
-      <Header />
-      <div className="content-wrapper">
-        <Sidebar />
-        <DialogsPreviewList />
-        <div className="dialog-page">
-          
-        
-             
-                
-                <MessageList  id ={id}/>
-                                     
-                                   
+      <div className="wrapper">
+        <Header />
+        <div className="content-wrapper">
+          <Sidebar />
+          <DialogsPreviewList />
+          <div className="dialog-page">
+            <MessageList id={id} />
+          </div>
         </div>
       </div>
-    </div>
-     
-              
     </>
   );
 };

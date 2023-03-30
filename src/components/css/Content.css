@@ -80,4 +80,5 @@
     padding: 5px;
     margin: 10px 0;
     border: 1px solid black;
+    word-break: break-all;
   }
