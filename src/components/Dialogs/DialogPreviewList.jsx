@@ -8,8 +8,6 @@ const DialogsPreviewList = () => {
 
   let state = store.getState();
 
-  console.log("ХУЙ")
-
   return (
     <>
       <main className="dialogs">
