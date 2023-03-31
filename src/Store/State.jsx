@@ -91,26 +91,69 @@ let state = {
   users: [
     {
       id: 1,
-      name: "aikko",
-      avatarImage: require("../images/dialog_ava.jpg"),
+      login: "aikosina",
+      password: "12345",
+      data: [
+        {
+          name: "aikko",
+          avatarImage: require("../images/dialog_ava.jpg"),
+          ownerPageCover: require("../images/dialog_ava.jpg"),
+          DateOfBirth: "21/03/2000",
+          City: "",
+          Education: ""
+        }
+      ],
+      
     },
 
     {
       id: 2,
-      name: "INSPACE",
-      avatarImage: require("../images/dialog_ava.jpg"),
+      login: "inspacina",
+      password: "12345",
+      data: [
+        {
+          name: "INSPACE",
+          avatarImage: require("../images/dialog_ava.jpg"),
+          ownerPageCover: require("../images/dialog_ava.jpg"),
+          DateOfBirth: "21/03/2000",
+          City: "",
+          Education: ""
+        }
+      ],
+      
     },
 
     {
       id: 3,
-      name: "katanacss",
-      avatarImage: require("../images/dialog_ava.jpg"),
+      login: "katanacss",
+      password: "12345",
+      data: [
+        {
+          name: "katanacss",
+          avatarImage: require("../images/dialog_ava.jpg"),
+          ownerPageCover: require("../images/dialog_ava.jpg"),
+          DateOfBirth: "21/03/2000",
+          City: "",
+          Education: ""
+        }
+      ],
+      
     },
-
     {
       id: 69,
-      name: "maksos",
-      avatarImage: require("../images/dialog_ava.jpg"),
+      login: "maksosina",
+      password: "12345",
+      data: [
+        {
+          name: "maksos",
+          avatarImage: require("../images/dialog_ava.jpg"),
+          ownerPageCover: require("../images/dialog_ava.jpg"),
+          DateOfBirth: "21/03/2000",
+          City: "Minsk",
+          Education: "ИНСТИТУТ ПИВА"
+        }
+      ],
+      
     },
   ],
 };

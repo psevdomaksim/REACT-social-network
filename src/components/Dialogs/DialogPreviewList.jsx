@@ -8,17 +8,19 @@ const DialogsPreviewList = () => {
 
   let state = store.getState();
 
+  console.log("ХУЙ")
+
   return (
     <>
       <main className="dialogs">
-        <h3>Dialogs</h3>
+        <h3 className="dialog-preview__header">Dialogs</h3>
         {state.usersPage.users.map((user) =>
           state.dialogsPage.dialogs.map((dialog) =>
            (user.id != 69 && dialog.firstUserId==user.id ) ? (
               <DialogPreview
                 id={dialog.id}
-                avatar={user.avatarImage}
-                name={user.name}
+                avatar={user.data.avatarImage}
+                name={user.data.name}
                 text_preview={dialog.messages[dialog.messages.length -1].text}
               />
             ) : (

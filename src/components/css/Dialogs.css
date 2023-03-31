@@ -8,10 +8,12 @@
   }
 
   .dialog-page{
+    position: relative;
     width: 65%;
     height: 41em;
-    padding: 10px;
+    padding: 5px;
     margin-left: 10px;
+
   }
 
 
@@ -35,41 +37,59 @@
 
   .dialog-info{
     margin-left: 5px;
+    overflow: hidden;
+  }
+
+  .dialog-info__text{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
   }
 
   .dialog-info__button{
     text-decoration: none
     
   }
+  .messageList__username{
+    border-bottom: 2px solid rgb(83, 94, 215);
+  }
+
+
+  .dialog-preview__header{
+    border-bottom: 2px solid rgb(83, 94, 215);
+  }
+
+  .chooseChatBlock{
+    position: absolute;
+    top: 45%;
+    left: 50%;
+  }
 
   .preview-image{
     width: 50px;
     height: 50px;
     object-fit: cover;
+    border-radius: 50%;
   }
   
   .messages{
     display: flex;
     flex-direction: column;
-    height: 33em;
+    height: 32em;
     overflow: auto;
+    margin-bottom: 5px;
+    background-color: aliceblue;
   }
-  .messageForm{
 
-  }
-
-  .message{
+  .message, .messageMe{
     width: 250px;
     border: 1px solid black;
     padding: 5px;
+    margin:5px;
     margin-bottom: 5px;
+    word-break: break-all;
   }
 
   .messageMe{
-    width: 250px;
-    border: 1px solid black;
-    padding: 5px;
-    margin-bottom: 5px;
-    margin-left: auto;
-    margin-right: 0em
+    margin-left: auto
   }

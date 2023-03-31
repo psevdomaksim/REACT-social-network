@@ -4,21 +4,33 @@ import Message from "./Message";
 import { Image, Form, Button } from "react-bootstrap";
 import { useParams } from "react-router";
 import { useContext } from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { StoreContext } from "../..";
 import { addMessageActionCreator } from "../../Store/ActionCreators/MessagesActionCreators";
-//import state from "../../Store/State";
+import { Link } from "react-router-dom";
 
 const MessageList = () => {
   const { id } = useParams();
 
-   const store = useContext(StoreContext);
+  const store = useContext(StoreContext);
 
-   let state = store.getState()
+  let state = store.getState();
+
+  const fetchOneUserByDialog = () => {
+    let user;
+    let dialog = state.dialogsPage.dialogs.find((dialog) => dialog.id == id);
+    state.usersPage.users.map((u) =>
+      u.id == dialog.firstUserId ? (user = u) : <></>
+    );
+    return user;
+  };
+
+
 
   const [message, setMessage] = useState({
     text: "",
   });
+
   const clear = () => {
     setMessage({
       text: "",
@@ -34,6 +46,12 @@ const MessageList = () => {
     }
   };
 
+  const handleKeyPress = (event) => {
+    if(event.key === 'Enter'){
+      addMessage();
+    }
+  }
+
   const addMessage = () => {
     if (message.text != "") {
       store.dispatch(addMessageActionCreator(message.text, id));
@@ -43,17 +61,25 @@ const MessageList = () => {
     }
   };
 
-
   return (
     <>
+      <Link
+        className="dialog-info__button"
+        to={`/${fetchOneUserByDialog().id}`}
+      >
+        <h3 className="messageList__username">
+          {fetchOneUserByDialog().data.name}
+        </h3>
+      </Link>
+
       <div className="messages">
         {state.dialogsPage.dialogs.map((dialog) =>
           state.usersPage.users.map((user) =>
-            (id == dialog.id) && (dialog.firstUserId==user.id)  ? (
+            id == dialog.id && dialog.firstUserId == user.id ? (
               dialog.messages.map((message) => (
                 <Message
                   id={message.id}
-                  name={user.name}
+                  name={user.data.name}
                   text={message.text}
                   fromUserId={message.fromUserId}
                 />
@@ -69,15 +95,17 @@ const MessageList = () => {
           <Form.Control
             as="textarea"
             id="text"
-            rows={2}
+            rows={1}
             value={message.text}
             onChange={onChange}
+            onKeyPress={handleKeyPress}
           />
         </Form>
         <Button
-          style={{ marginTop: "10px" }}
+          style={{ marginTop: "9px" }}
           variant="success"
           onClick={addMessage}
+        
         >
           Send Message
         </Button>

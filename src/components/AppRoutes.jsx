@@ -10,9 +10,12 @@ const AppRoutes = () =>{
         return(
      
        <Routes>
-            <Route exact path="/" element={<Home/>}/>
+            <Route exact path="/:id" element={<Home/>}/>
             <Route path="/dialogs" element={<Dialogs/>}/>
             <Route path="/dialogs/:id" element={<DialogPage/>}/>
+
+            <Route path="*" element={<Navigate to="/dialogs"/>} />
+
         </Routes>
       
         )

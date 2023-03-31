@@ -6,9 +6,12 @@ import { useState } from "react";
 import { addPostActionCreator } from "../../Store/ActionCreators/PostsActionCreators";
 import { StoreContext  } from "../../index";
 import { useContext } from "react";
+import { useParams } from "react-router";
 
 
 const PostList = () => {
+
+  const {id} = useParams();
 
   const store = useContext(StoreContext);
 
@@ -33,10 +36,11 @@ const PostList = () => {
     }
   };
 
+ 
 
   const addPost = () => {
     if (post.text != "") {
-      store.dispatch(addPostActionCreator(post.text));
+      store.dispatch(addPostActionCreator(post.text, id));
       clear();
     } 
     else {return}
@@ -66,8 +70,8 @@ const PostList = () => {
 
       {state.profilePage.posts.map((post) =>
         state.usersPage.users.map((user) =>
-          user.id == post.authorId ? (
-            <Post authorName={user.name} text={post.text} />
+          (user.id == post.authorId && id == post.profileId)? (
+            <Post id={user.id} authorName={user.data.name} text={post.text} />
           ) : (
             <></>
           )

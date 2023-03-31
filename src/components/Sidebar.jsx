@@ -7,7 +7,7 @@ const Sidebar = () => {
     <>
       <aside className="sidebar">
         <div className="sidebar-item">
-          <Link className="sidebar-link" to="/">
+          <Link className="sidebar-link" to={`/${69}`}>
             Profile
           </Link>
         </div>
