@@ -8,9 +8,12 @@ import { useState, useEffect } from "react";
 import { StoreContext } from "../..";
 import { addMessageActionCreator } from "../../Store/ActionCreators/MessagesActionCreators";
 import { Link } from "react-router-dom";
+import { useRef } from "react";
 
 const MessageList = () => {
   const { id } = useParams();
+
+  const messageScroll = useRef(null);
 
   const store = useContext(StoreContext);
 
@@ -25,8 +28,6 @@ const MessageList = () => {
     return user;
   };
 
-
-
   const [message, setMessage] = useState({
     text: "",
   });
@@ -38,7 +39,7 @@ const MessageList = () => {
   };
 
   const onChange = (event) => {
-    if (event.target.id == "text") {
+    if (event.target.id === "text") {
       setMessage({
         ...message,
         text: event.target.value,
@@ -47,17 +48,18 @@ const MessageList = () => {
   };
 
   const handleKeyPress = (event) => {
-    if(event.key === 'Enter'){
-      addMessage();
+    if (event.key === "Enter") {  
+        addMessage();    
     }
-  }
+    
+  };
 
   const addMessage = () => {
-    if (message.text != "") {
+    if (message.text !== "") {
       store.dispatch(addMessageActionCreator(message.text, id));
       clear();
     } else {
-      return;
+       return;
     }
   };
 
@@ -72,7 +74,8 @@ const MessageList = () => {
         </h3>
       </Link>
 
-      <div className="messages">
+      <div className="messages" ref={messageScroll}>
+      
         {state.dialogsPage.dialogs.map((dialog) =>
           state.usersPage.users.map((user) =>
             id == dialog.id && dialog.firstUserId == user.id ? (
@@ -82,6 +85,7 @@ const MessageList = () => {
                   name={user.data.name}
                   text={message.text}
                   fromUserId={message.fromUserId}
+                  messageScroll={messageScroll}
                 />
               ))
             ) : (
@@ -89,6 +93,8 @@ const MessageList = () => {
             )
           )
         )}
+          {
+        }
       </div>
       <div className="messageForm">
         <Form>
@@ -98,14 +104,15 @@ const MessageList = () => {
             rows={1}
             value={message.text}
             onChange={onChange}
-            onKeyPress={handleKeyPress}
+            onKeyDown={handleKeyPress}
           />
         </Form>
         <Button
+          type="submit"
           style={{ marginTop: "9px" }}
           variant="success"
           onClick={addMessage}
-        
+      
         >
           Send Message
         </Button>

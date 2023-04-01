@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import "../App.css";
 import DialogsPreviewList from "../components/Dialogs/DialogPreviewList";
 import MessageList from "../components/Dialogs/MessageList";
@@ -5,8 +6,6 @@ import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 
 const DialogPage = () => {
-  
-
   return (
     <>
       <div className="wrapper">
