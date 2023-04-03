@@ -50,6 +50,7 @@ const fetchOneUser = () => {
 
           <div className="profile-data">
             <h3>{currentUser.data.name}</h3>
+            <p>{currentUser.data.status}</p>
             <p>Data of birth: {currentUser.data.dateOfBirth}</p>
             <p>City: {currentUser.data.city}</p>
             <p>Education: {currentUser.data.education}</p>

@@ -8,6 +8,7 @@ let initialState = {
       password: "12345",
       data: {
         name: "aikko",
+        status: "Опухоль чебурека",
         avatarImage: require("../../images/aikko.jpg"),
         ownerPageCover: require("../../images/dialog_ava.jpg"),
         dateOfBirth: "25/09/1987",
@@ -22,6 +23,7 @@ let initialState = {
       password: "12345",
       data: {
         name: "INSPACE",
+        status: "Нечего терять",
         avatarImage: require("../../images/inspace.jpg"),
         ownerPageCover: require("../../images/dialog_ava.jpg"),
         dateOfBirth: "04/12/1992",
@@ -36,6 +38,7 @@ let initialState = {
       password: "12345",
       data: {
         name: "katanacss",
+        status: "пуф",
         avatarImage: require("../../images/katanacss.jpg"),
         ownerPageCover: require("../../images/dialog_ava.jpg"),
         dateOfBirth: "21/03/1993",
@@ -49,6 +52,7 @@ let initialState = {
       password: "12345",
       data: {
         name: "maksos",
+        status: "РЕАКТ РЕДАКС ТЫ ЗНАТЬ БУДЕШЬ КРУТО",
         avatarImage: require("../../images/ava.jpg"),
         ownerPageCover: require("../../images/main-image.png"),
         dateOfBirth: "24/06/2004",

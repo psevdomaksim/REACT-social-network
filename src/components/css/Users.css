@@ -1,0 +1,49 @@
+.userlist-header{
+    border-bottom: 2px solid rgb(83, 94, 215);
+    width: 100%;
+}
+
+.userlist-form{
+    display: flex;
+    align-items: center;
+    margin: 5px 0 20px 0;
+
+}
+
+.users-wrapper{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.user-item{
+    display: flex;
+    align-items: center;
+    width: 50%;
+    height: 70px;
+    margin-left: 5em;
+    margin-bottom: 10px;
+   
+}
+
+.user-item__data{
+    border: 2px solid rgb(83, 94, 215);
+    border-radius: 5px;
+    width: 100%;
+    margin:5px;
+    height: 70px;
+    padding: 5px;
+}
+
+.user-avatarImage{
+    object-fit: cover;
+    border-radius: 50%;
+  }
+
+.user-item__name{
+    text-decoration: none;
+}
+
+.user-item__status{
+    color: gray;
+}

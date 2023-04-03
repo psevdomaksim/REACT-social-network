@@ -99,9 +99,8 @@ const MessageList = () => {
       <div className="messageForm">
         <Form>
           <Form.Control
-            as="textarea"
+            type="text"
             id="text"
-            rows={1}
             value={message.text}
             onChange={onChange}
             onKeyDown={handleKeyPress}

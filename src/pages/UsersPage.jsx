@@ -3,22 +3,21 @@ import DialogsPreviewList from "../components/Dialogs/DialogPreviewList";
 import MessageList from "../components/Dialogs/MessageList";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
+import UserList from "../components/Users/UserList";
 
-const DialogPage = () => {
-  return (
+const UserPage = () => {
+  return (   
     <>
-      <Header />
+     <Header />
       <div className="wrapper">
+       
         <div className="content-wrapper">
           <Sidebar />
-          <DialogsPreviewList />
-          <div className="dialog-page">
-            <MessageList />
-          </div>
+          <UserList/>
         </div>
       </div>
     </>
   );
 };
 
-export default DialogPage;
+export default UserPage;

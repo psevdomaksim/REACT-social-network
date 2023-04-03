@@ -20,6 +20,13 @@ const Sidebar = () => {
 
         <div className="sidebar-item">News</div>
         <div className="sidebar-item">Music</div>
+        
+        <div className="sidebar-item">
+          <Link className="sidebar-link" to="/users">
+            Users
+          </Link>
+        </div>
+
       </aside>
     </>
   );

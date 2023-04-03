@@ -7,18 +7,20 @@ import { BiMessageRounded } from "react-icons/bi";
 
 function Dialogs() {
   return (
-    <div className="wrapper">
+    <>
       <Header />
-      <div className="content-wrapper">
-        <Sidebar />
-        <DialogPreviewList />
-        <div className="dialog-page">
-          <div className="chooseChatBlock">
-            <BiMessageRounded size={40} /> Выберите чат
+      <div className="wrapper">
+        <div className="content-wrapper">
+          <Sidebar />
+          <DialogPreviewList />
+          <div className="dialog-page">
+            <div className="chooseChatBlock">
+              <BiMessageRounded size={40} /> Выберите чат
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

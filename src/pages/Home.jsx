@@ -6,13 +6,15 @@ import Profile from "../components/Profile";
 
 function Home() {
   return (
-    <div className="wrapper">
+    <>
       <Header />
-      <div className="content-wrapper">
-        <Sidebar />
-        <Profile />
+      <div className="wrapper">
+        <div className="content-wrapper">
+          <Sidebar />
+          <Profile />
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
