@@ -36,7 +36,6 @@
   }
 
   .dialog-info{
-    margin-left: 5px;
     overflow: hidden;
   }
 
@@ -68,6 +67,7 @@
   .preview-image{    
     object-fit: cover;
     border-radius: 50%;
+    margin-right: 5px;
   }
   
   .messages{

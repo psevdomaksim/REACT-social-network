@@ -1,4 +1,5 @@
 import { ADD_POST } from "../../UTILS";
+import * as axios from "axios"
 
 let initialState = {
   posts: [

@@ -9,6 +9,7 @@ import { StoreContext } from "../..";
 import { addMessageActionCreator } from "../../Store/ActionCreators/MessagesActionCreators";
 import { Link } from "react-router-dom";
 import { useRef } from "react";
+import { fetchUsersActionCreator } from "../../Store/ActionCreators/UsersActionCreators";
 
 const MessageList = () => {
   const { id } = useParams();
@@ -19,18 +20,42 @@ const MessageList = () => {
 
   let state = store.getState();
 
-  const fetchOneUserByDialog = () => {
-    let user;
+  const [users, setUsers] = useState();
+  
+  const fetchUsers = async () =>{
+    fetchUsersActionCreator().then((data) => {
+       store.dispatch(data);
+       state = store.getState();
+       setUsers(state.usersPage.users);
+     });
+}
+
+ useEffect(() => {
+   fetchUsers();
+ }, []);
+
+
+ useEffect(() => {
+  fetchOneUserByDialog();
+}, [users]);
+
+const [currentUser, setCurrentUser] = useState();
+
+  const fetchOneUserByDialog = async () => {
+    if (users != undefined) {
+      
     let dialog = state.dialogsPage.dialogs.find((dialog) => dialog.id == id);
-    state.usersPage.users.map((u) =>
-      u.id == dialog.firstUserId ? (user = u) : <></>
+    users.map((u) =>
+      u.id == dialog.firstUserId ? (setCurrentUser(u)) : <></>
     );
-    return user;
+  }
   };
 
   const [message, setMessage] = useState({
     text: "",
   });
+
+
 
   const clear = () => {
     setMessage({
@@ -63,24 +88,25 @@ const MessageList = () => {
     }
   };
 
-  return (
+  return currentUser!==undefined ? (
     <>
       <Link
         className="dialog-info__button"
-        to={`/${fetchOneUserByDialog().id}`}
+        to={`/${currentUser.id}`}
       >
         <h3 className="messageList__username">
-          {fetchOneUserByDialog().data.name}
+          {currentUser.data.name}
         </h3>
       </Link>
 
       <div className="messages" ref={messageScroll}>
       
         {state.dialogsPage.dialogs.map((dialog) =>
-          state.usersPage.users.map((user) =>
+          users.map((user) =>
             id == dialog.id && dialog.firstUserId == user.id ? (
               dialog.messages.map((message) => (
                 <Message
+                  key={message.id}
                   id={message.id}
                   name={user.data.name}
                   text={message.text}
@@ -104,20 +130,22 @@ const MessageList = () => {
             value={message.text}
             onChange={onChange}
             onKeyDown={handleKeyPress}
+          
           />
         </Form>
         <Button
-          type="submit"
+         
           style={{ marginTop: "9px" }}
           variant="success"
           onClick={addMessage}
-      
+         
         >
           Send Message
         </Button>
       </div>
     </>
-  );
+  ):
+  <></>;
 };
 
 export default MessageList;

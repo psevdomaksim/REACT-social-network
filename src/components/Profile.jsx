@@ -1,40 +1,55 @@
 import "../App.css";
 
-import { Image, Form, Button } from "react-bootstrap";
+import { Image } from "react-bootstrap";
 import PostList from "./Posts/PostList";
 import { useContext } from "react";
 import { StoreContext } from "..";
 import { useParams } from "react-router";
+import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { useState } from "react";
+import { fetchUsersActionCreator } from "../Store/ActionCreators/UsersActionCreators";
 
 const Profile = () => {
+  const { id } = useParams();
 
-const {id} = useParams();
+  const store = useContext(StoreContext);
 
-const store = useContext(StoreContext);
+  let state = store.getState();
 
-let state = store.getState();
+  const [users, setUsers] = useState();
 
-const fetchOneUser = () => {
-  let user;
+  const fetchUsers = async () => {
+    fetchUsersActionCreator().then((data) => {
+      store.dispatch(data);
+      state = store.getState();
+      setUsers(state.usersPage.users);
+    });
+  };
 
-  state.usersPage.users.find((u) =>  
-   {
-     u.id == id ? (user = u) : <></>
-  }
-  );
-  return user;
-};
+  useEffect(() => {
+    fetchUsers();
+  }, []);
 
-  let currentUser = fetchOneUser()
+  const [currentUser, setCurrentUser] = useState();
 
-  return (
+  useEffect(() => {
+    fetchOneUser();
+  }, [id,users]);
+
+  const fetchOneUser = async () => {
+    users.find((u) => {
+      u.id == id ? setCurrentUser(u) : <></>;
+    });
+  };
+
+  return currentUser !== undefined ? (
     <>
-       <main className="main">
-  
+      <main className="main">
         <Image
           width={"100%"}
           height={200}
-          src={currentUser.data.ownerPageCover}
+          src={require("../assets/images/" + currentUser.data.ownerPageCover)}
           className="owner-page-cover"
           href="/"
         />
@@ -43,22 +58,26 @@ const fetchOneUser = () => {
           <Image
             width={100}
             height={100}
-            src={currentUser.data.avatarImage}
+            src={require("../assets/images/" + currentUser.data.avatarImage)}
             className="profile-avatar"
             href="/"
           />
 
           <div className="profile-data">
             <h3>{currentUser.data.name}</h3>
-            <p>{currentUser.data.status}</p>
+            <Link className="sidebar-link" to={`/friends/${id}`}>
+              <p>Friends</p>
+            </Link>
             <p>Data of birth: {currentUser.data.dateOfBirth}</p>
             <p>City: {currentUser.data.city}</p>
             <p>Education: {currentUser.data.education}</p>
           </div>
         </div>
-      <PostList/>
+        <PostList />
       </main>
     </>
+  ) : (
+    <></>
   );
 };
 

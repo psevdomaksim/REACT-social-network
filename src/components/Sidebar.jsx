@@ -22,10 +22,12 @@ const Sidebar = () => {
         <div className="sidebar-item">Music</div>
         
         <div className="sidebar-item">
-          <Link className="sidebar-link" to="/users">
-            Users
+          <Link className="sidebar-link" to={`/friends/${69}`}>
+            Friends
           </Link>
         </div>
+
+        
 
       </aside>
     </>

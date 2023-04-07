@@ -10,7 +10,7 @@ const Post = (props)=>{
       
 
       <div className="post">
-      <Link className="dialog-info__button" to = {`/${props.id}`} >
+      <Link className="dialog-info__button" to = {`/${props.userId}`} >
         <h4>{props.authorName}</h4>
         </Link>
         <p>{props.text}</p>

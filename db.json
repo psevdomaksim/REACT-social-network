@@ -1,0 +1,175 @@
+
+
+{
+  "users": [
+    {
+      "id": 1,
+      "login": "aikosina",
+      "password": "12345",
+      "data": {
+        "name": "aikko",
+        "status": "Опухоль чебурека",
+        "avatarImage": "aikko.jpg",
+        "ownerPageCover": "dialog_ava.jpg",
+        "dateOfBirth": "25/09/1987",
+        "City": "Minsk",
+        "Education": ""
+      },
+      "friends": [2, 3, 69]
+    },
+
+    {
+      "id": 2,
+      "login": "inspacina",
+      "password": "12345",
+      "data": {
+        "name": "INSPACE",
+        "status": "Нечего терять",
+        "avatarImage": "inspace.jpg",
+        "ownerPageCover": "dialog_ava.jpg",
+        " dateOfBirth": "04/12/1992",
+        "city": "Minsk",
+        "education": ""
+      },
+      "friends": [1, 69, 3]
+    },
+
+    {
+      "id": 3,
+      "login": "katanacss",
+      "password": "12345",
+      "data": {
+        "name": "katanacss",
+        "status": "пуф",
+        "avatarImage": "katanacss.jpg",
+        "ownerPageCover": "dialog_ava.jpg",
+        "dateOfBirth": "21/03/1993",
+        "city": "Minsk",
+        "education": ""
+      },
+      "friends": [1, 2, 69]
+    },
+    {
+      "id": 69,
+      "login": "maksosina",
+      "password": "12345",
+      "data": {
+        "name": "maksos",
+        "status": "РЕАКТ РЕДАКС ТЫ ЗНАТЬ БУДЕШЬ КРУТО",
+        "avatarImage": "ava.jpg",
+        "ownerPageCover": "main-image.png",
+        "dateOfBirth": "24/06/2004",
+        "city": "Minsk",
+        "education": "ИНСТИТУТ ПИВА"
+      },
+      "friends": [1, 2, 3]
+    }
+  ],
+
+  "dialogs": [
+    {
+      "id": 45,
+      "firstUserId": 1,
+      "secondUserId": 69,
+      "messages": [
+        {
+          "id": 1,
+          "fromUserId": 1,
+          "text": "ku"
+        },
+        {
+          "id": 2,
+          "fromUserId": 1,
+          "text": "cho kak"
+        },
+        {
+          "id": 6,
+          "fromUserId": 69,
+          "text": "da norm "
+        },
+        {
+          "id": 7,
+          "fromUserId": 69,
+          "text": "a ti? "
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "firstUserId": 2,
+      "secondUserId": 69,
+      "messages": [
+        {
+          "id": 3,
+          "fromUserId": 2,
+          "text": "kak dela"
+        },
+        {
+          "id": 4,
+          "fromUserId": 2,
+          "text": "haha"
+        },
+        {
+          "id": 8,
+          "fromUserId": 69,
+          "text": "privet inspace "
+        }
+      ]
+    },
+    {
+      "id": 87,
+      "firstUserId": 3,
+      "secondUserId": 69,
+      "messages": [
+        {
+          "id": 5,
+          "toUserId": 69,
+          "fromUserId": 3,
+          "text": "cho novogo"
+        }
+      ]
+    }
+  ],
+
+  "posts": [
+    {
+      "id": 1,
+      "authorId": 1,
+      "profileId": 69,
+      "text": "рефлексирую"
+    },
+
+    {
+      "id": 2,
+      "authorId": 2,
+      "profileId": 69,
+      "text": "салют"
+    },
+
+    {
+      "id": 3,
+      "authorId": 3,
+      "profileId": 69,
+      "text": "брлблрблрблрблр"
+    },
+    {
+      "id": 4,
+      "authorId": 2,
+      "profileId": 1,
+      "text": "тестируем посты"
+    },
+    {
+      "id": 5,
+      "authorId": 1,
+      "profileId": 3,
+      "text": "Го фит"
+    },
+    {
+      "id": 5,
+      "authorId": 69,
+      "profileId": 2,
+      "text": "КОГДА АЛЬБОМ???"
+    }
+  ]
+
+}

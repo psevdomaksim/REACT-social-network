@@ -1,21 +1,21 @@
+import { Link } from "react-router-dom";
 import "../App.css";
+import FriendList from "../components/Friends/FriendList";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
-import UserList from "../components/Users/UserList";
 
-const UserPage = () => {
-  return (   
+const FriendsPage = () => {
+  return (
     <>
-     <Header />
+      <Header />
       <div className="wrapper">
-       
         <div className="content-wrapper">
           <Sidebar />
-          <UserList/>
+          <FriendList />
         </div>
       </div>
     </>
   );
 };
 
-export default UserPage;
+export default FriendsPage;

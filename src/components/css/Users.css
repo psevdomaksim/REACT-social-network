@@ -26,7 +26,7 @@
    
 }
 
-.user-item__data{
+.user-item__card{
     border: 2px solid rgb(83, 94, 215);
     border-radius: 5px;
     width: 100%;
@@ -46,4 +46,22 @@
 
 .user-item__status{
     color: gray;
+    word-break: break-all;
+}
+
+.user-info{
+    display: flex;
+    align-items: center;
+}
+
+.friendlist-header{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 2px solid rgb(83, 94, 215);
+}
+
+.addFriendButton{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }

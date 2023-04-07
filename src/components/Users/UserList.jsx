@@ -7,36 +7,57 @@ import User from "./User";
 import { useState } from "react";
 import { useEffect } from "react";
 import { BiSearch } from "react-icons/bi";
+import { fetchUsersActionCreator } from "../../Store/ActionCreators/UsersActionCreators";
+
 
 const UserList = () => {
   const store = useContext(StoreContext);
 
+  const [users, setUsers] = useState();
+
   let state = store.getState();
 
-  const [filter, setFilter] = useState(state.usersPage.users);
+   const fetchUsers = async () =>{
+     fetchUsersActionCreator().then((data) => {
+        store.dispatch(data);
+        state = store.getState();
+        setUsers(state.usersPage.users);
+      });
+ }
+
 
   useEffect(() => {
-    setFilter(state.usersPage.users);
-  }, [state.usersPage.users]);
+    fetchUsers();
+  }, []);
+
+
+  const [filter, setFilter] = useState(users);
+
+  useEffect(() => {
+    setFilter(users);
+  }, [users]);
 
   const getSearch = () => {
     if (filter) {
       return filter;
     }
-    return state.usersPage.users;
+    return users;
   };
 
   const userSearch = getSearch();
 
   const onChange = (event) => {
     setFilter(
-      state.usersPage.users.filter((user) => {
+      users.filter((user) => {
         return user.data.name
           .toLowerCase()
           .includes(event.target.value.toLowerCase());
       })
     );
   };
+
+
+
 
   return (
     <>
@@ -50,9 +71,10 @@ const UserList = () => {
             onChange={onChange}
           />
         </Form>
-        { state.usersPage.users && userSearch.map((user) => (
-          <User id={user.id} user={user.data} />
-        ))}
+        {users &&
+          userSearch.map((user) => (
+            <User key={user.id} id={user.id} user={user.data} />
+          ))}
       </div>
     </>
   );

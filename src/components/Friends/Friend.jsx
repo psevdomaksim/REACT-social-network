@@ -1,9 +1,8 @@
 import "../css/Users.css";
-import { Image } from "react-bootstrap";
+import { Button, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-
-const User = (props) => {
+const Friend = (props) => {
 
 
   return (
@@ -18,18 +17,20 @@ const User = (props) => {
             href="/"
           />
         </Link>
-        <div className="user-item__data">
+        <div className="user-item__card">
           <h5>
             <Link className="user-item__name" to={`/${props.id}`}>
               {props.user.name}
             </Link>
           </h5>
-
+        <div className="addFriendButton">
           <p className="user-item__status">{props.user.status}</p>
+          <Button variant="secondary" size="sm">Remove user from friends</Button>
+          </div>
         </div>
       </div>
     </>
   );
 };
 
-export default User;
+export default Friend;

@@ -71,7 +71,7 @@ const PostList = () => {
       {state.profilePage.posts.map((post) =>
         state.usersPage.users.map((user) =>
           (user.id == post.authorId && id == post.profileId)? (
-            <Post id={user.id} authorName={user.data.name} text={post.text} />
+            <Post key={post.id} userId={user.id} authorName={user.data.name} text={post.text} />
           ) : (
             <></>
           )
