@@ -1,6 +1,6 @@
 import "../App.css";
 
-import { Image } from "react-bootstrap";
+import { Image, Spinner } from "react-bootstrap";
 import PostList from "./Posts/PostList";
 import { useContext } from "react";
 import { StoreContext } from "..";
@@ -77,7 +77,7 @@ const Profile = () => {
       </main>
     </>
   ) : (
-    <></>
+    <Spinner className="spinner" animation="border" variant="secondary" />
   );
 };
 

@@ -31,3 +31,9 @@
     border: 1px solid black;
     word-break: break-all;
   }
+
+  .post-header{
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+  }

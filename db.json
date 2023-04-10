@@ -1,5 +1,3 @@
-
-
 {
   "users": [
     {
@@ -15,9 +13,12 @@
         "City": "Minsk",
         "Education": ""
       },
-      "friends": [2, 3, 69]
+      "friends": [
+        2,
+        3,
+        69
+      ]
     },
-
     {
       "id": 2,
       "login": "inspacina",
@@ -31,9 +32,12 @@
         "city": "Minsk",
         "education": ""
       },
-      "friends": [1, 69, 3]
+      "friends": [
+        1,
+        69,
+        3
+      ]
     },
-
     {
       "id": 3,
       "login": "katanacss",
@@ -47,7 +51,11 @@
         "city": "Minsk",
         "education": ""
       },
-      "friends": [1, 2, 69]
+      "friends": [
+        1,
+        2,
+        69
+      ]
     },
     {
       "id": 69,
@@ -62,10 +70,13 @@
         "city": "Minsk",
         "education": "ИНСТИТУТ ПИВА"
       },
-      "friends": [1, 2, 3]
+      "friends": [
+        1,
+        2,
+        3
+      ]
     }
   ],
-
   "dialogs": [
     {
       "id": 45,
@@ -91,6 +102,21 @@
           "id": 7,
           "fromUserId": 69,
           "text": "a ti? "
+        },
+        {
+          "id": 6490,
+          "fromUserId": 69,
+          "text": "ывпывп"
+        },
+        {
+          "id": 1625,
+          "fromUserId": 69,
+          "text": "dggdfdfg"
+        },
+        {
+          "id": 6770,
+          "fromUserId": 69,
+          "text": "вапвап"
         }
       ]
     },
@@ -130,22 +156,13 @@
       ]
     }
   ],
-
   "posts": [
-    {
-      "id": 1,
-      "authorId": 1,
-      "profileId": 69,
-      "text": "рефлексирую"
-    },
-
     {
       "id": 2,
       "authorId": 2,
       "profileId": 69,
       "text": "салют"
     },
-
     {
       "id": 3,
       "authorId": 3,
@@ -159,17 +176,16 @@
       "text": "тестируем посты"
     },
     {
-      "id": 5,
-      "authorId": 1,
-      "profileId": 3,
-      "text": "Го фит"
-    },
-    {
-      "id": 5,
+      "id": 8670,
       "authorId": 69,
       "profileId": 2,
-      "text": "КОГДА АЛЬБОМ???"
+      "text": "Post 1"
+    },
+    {
+      "id": 7651,
+      "authorId": 69,
+      "profileId": 3,
+      "text": "Тестируем посты"
     }
   ]
-
 }

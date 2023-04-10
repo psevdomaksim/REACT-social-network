@@ -21,41 +21,49 @@ const MessageList = () => {
   let state = store.getState();
 
   const [users, setUsers] = useState();
-  
-  const fetchUsers = async () =>{
+
+  const fetchUsers = async () => {
     fetchUsersActionCreator().then((data) => {
-       store.dispatch(data);
-       state = store.getState();
-       setUsers(state.usersPage.users);
-     });
-}
+      store.dispatch(data);
+      state = store.getState();
+      setUsers(state.usersPage.users);
+    });
+  };
 
- useEffect(() => {
-   fetchUsers();
- }, []);
+  const addMessage = async () => {
+    if (message.text !== "") {
+      addMessageActionCreator(message.text, id).then((data) => {
+        store.dispatch(data);
+      });
 
+      clear();
+    } else {
+      return;
+    }
+  };
 
- useEffect(() => {
-  fetchOneUserByDialog();
-}, [users]);
+  useEffect(() => {
+    fetchUsers();
+  }, []);
 
-const [currentUser, setCurrentUser] = useState();
+  useEffect(() => {
+    fetchOneUserByDialog();
+  }, [users]);
+
+  const [currentUser, setCurrentUser] = useState();
 
   const fetchOneUserByDialog = async () => {
     if (users != undefined) {
-      
-    let dialog = state.dialogsPage.dialogs.find((dialog) => dialog.id == id);
-    users.map((u) =>
-      u.id == dialog.firstUserId ? (setCurrentUser(u)) : <></>
-    );
-  }
+      let dialog = state.dialogsPage.dialogs.find((dialog) => dialog.id == id);
+      users.map((u) =>
+        u.id == dialog.firstUserId ? setCurrentUser(u) : <></>
+      );
+    }
   };
 
   const [message, setMessage] = useState({
     text: "",
   });
-
-
 
   const clear = () => {
     setMessage({
@@ -73,34 +81,21 @@ const [currentUser, setCurrentUser] = useState();
   };
 
   const handleKeyPress = (event) => {
-    if (event.key === "Enter") {  
-        addMessage();    
-    }
-    
-  };
-
-  const addMessage = () => {
-    if (message.text !== "") {
-      store.dispatch(addMessageActionCreator(message.text, id));
-      clear();
-    } else {
-       return;
+    if (event.key === "Enter") {
+      addMessage();
     }
   };
 
-  return currentUser!==undefined ? (
+
+
+
+  return currentUser !== undefined ? (
     <>
-      <Link
-        className="dialog-info__button"
-        to={`/${currentUser.id}`}
-      >
-        <h3 className="messageList__username">
-          {currentUser.data.name}
-        </h3>
+      <Link className="dialog-info__button" to={`/${currentUser.id}`}>
+        <h3 className="messageList__username">{currentUser.data.name}</h3>
       </Link>
 
       <div className="messages" ref={messageScroll}>
-      
         {state.dialogsPage.dialogs.map((dialog) =>
           users.map((user) =>
             id == dialog.id && dialog.firstUserId == user.id ? (
@@ -119,8 +114,7 @@ const [currentUser, setCurrentUser] = useState();
             )
           )
         )}
-          {
-        }
+        {}
       </div>
       <div className="messageForm">
         <Form>
@@ -130,22 +124,20 @@ const [currentUser, setCurrentUser] = useState();
             value={message.text}
             onChange={onChange}
             onKeyDown={handleKeyPress}
-          
           />
         </Form>
         <Button
-         
           style={{ marginTop: "9px" }}
           variant="success"
           onClick={addMessage}
-         
         >
           Send Message
         </Button>
       </div>
     </>
-  ):
-  <></>;
+  ) : (
+    <></>
+  );
 };
 
 export default MessageList;

@@ -1,5 +1,5 @@
 import "../css/Users.css";
-import { Form, Image } from "react-bootstrap";
+import { Form, Image, Spinner } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 import { useContext } from "react";
 import { StoreContext } from "../..";
@@ -118,7 +118,7 @@ const FriendList = () => {
       </div>
     </>
   ) : (
-    <></>
+    <Spinner className="spinner" animation="border" variant="secondary" />
   );
 };
 

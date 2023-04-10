@@ -1,18 +1,23 @@
-.wrapper{
+.wrapper {
   width: 1080px;
   height: auto;
   margin: auto;
 }
 
-.content-wrapper{
+.content-wrapper {
   display: flex;
   justify-content: flex-start;
   width: 100%;
 }
 
-
 html {
   box-sizing: border-box;
+}
+
+.spinner {
+  position: absolute;
+  top: 45%;
+  left: 50%;
 }
 
 * {

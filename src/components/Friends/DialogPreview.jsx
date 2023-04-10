@@ -10,7 +10,7 @@ const DialogPreview = (props) => {
           <Image
             width={50}
             height={50}
-            //src={require("../../assets/images/" + props.avatar)}
+            src={require("../../assets/images/" + props.avatar)}
             className="preview-image"
             href="/"
           />

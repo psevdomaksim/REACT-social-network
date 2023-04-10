@@ -1,9 +1,3 @@
-
-
-
-
-
-
 let state = {
   profilePage: {
     posts: [

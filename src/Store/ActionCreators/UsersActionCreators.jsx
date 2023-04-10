@@ -3,7 +3,7 @@ import { FETCH_USERS } from "../../UTILS";
 
 import axios from "axios";
 
-export const fetchOneUserActionCreator = (id) => {
+export const fetchOneUserActionCreator = async (id) => {
   return {
     type: FETCH_ONE_USER,
     userId: id,

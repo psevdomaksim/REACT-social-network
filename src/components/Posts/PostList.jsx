@@ -1,21 +1,43 @@
 import "../../App.css";
 import "../css/Content.css";
-import { Image, Form, Button } from "react-bootstrap";
+import { Image, Form, Button, Spinner } from "react-bootstrap";
 import Post from "./Post";
 import { useState } from "react";
-import { addPostActionCreator } from "../../Store/ActionCreators/PostsActionCreators";
-import { StoreContext  } from "../../index";
+import {
+  addPostActionCreator,
+  deletePostActionCreator,
+  fetchPostsActionCreator,
+} from "../../Store/ActionCreators/PostsActionCreators";
+import { StoreContext } from "../../index";
 import { useContext } from "react";
 import { useParams } from "react-router";
-
+import { useEffect } from "react";
 
 const PostList = () => {
-
-  const {id} = useParams();
+  const { id } = useParams();
 
   const store = useContext(StoreContext);
 
   let state = store.getState();
+  console.log(state);
+
+  const [posts, setPosts] = useState();
+
+  const fetchPosts = async () => {
+
+    fetchPostsActionCreator().then((data) => {
+      store.dispatch(data);
+      state = store.getState();
+      setPosts(state.profilePage.posts);
+    });
+
+  };
+
+  store.subscribe(() => console.log(state.profilePage.posts))
+
+  useEffect(() => {
+    fetchPosts();
+  }, []);
 
   const [post, setPost] = useState({
     text: "",
@@ -36,17 +58,27 @@ const PostList = () => {
     }
   };
 
- 
-
-  const addPost = () => {
-    if (post.text != "") {
-      store.dispatch(addPostActionCreator(post.text, id));
-      clear();
-    } 
-    else {return}
+  const deletePost = async (postId) => {
+    deletePostActionCreator(postId).then((data) => {
+      store.dispatch(data);
+      fetchPosts();
+    });
   };
 
-  return (
+  const addPost = async () => {
+    if (post.text !== "") {
+      addPostActionCreator(post.text, +id).then((data) => {
+        store.dispatch(data);
+        fetchPosts();
+      });
+
+      clear();
+    } else {
+      return;
+    }
+  };
+
+  return posts !== undefined ? (
     <>
       <div className="main-posts">
         <h3>My posts</h3>
@@ -68,16 +100,25 @@ const PostList = () => {
         </Button>
       </div>
 
-      {state.profilePage.posts.map((post) =>
+      {posts.map((post) =>
         state.usersPage.users.map((user) =>
-          (user.id == post.authorId && id == post.profileId)? (
-            <Post key={post.id} userId={user.id} authorName={user.data.name} text={post.text} />
+          user.id == post.authorId && id == post.profileId ? (
+            <Post
+              deletePost={deletePost}
+              key={post.id}
+              postId={post.id}
+              userId={user.id}
+              authorName={user.data.name}
+              text={post.text}
+            />
           ) : (
             <></>
           )
         )
       )}
     </>
+  ) : (
+    <Spinner className="spinner" animation="border" variant="secondary" />
   );
 };
 
