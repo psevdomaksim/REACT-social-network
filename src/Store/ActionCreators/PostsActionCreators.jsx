@@ -23,12 +23,18 @@ export const addPostActionCreator = async (text, id) => {
   };
 };
 
-export const deletePostActionCreator = async (postId) => {
-  const { data } = await axios.delete(`http://localhost:4200/posts/${postId}`);
-  return {
-    type: ADD_POST,
-    data: data,
-  };
+export const deletePostActionCreator = async (postId, authorId) => {
+  if (authorId === 69) {
+    const { data } = await axios.delete(
+      `http://localhost:4200/posts/${postId}`
+    );
+    return {
+      type: ADD_POST,
+      data: data,
+    };
+  }else{
+    alert("error")
+  }
 };
 
 export const fetchPostsActionCreator = async () => {

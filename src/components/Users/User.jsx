@@ -9,7 +9,7 @@ const User = (props) => {
   return (
     <>
       <div className="user-item">
-        <Link to={`/${props.id}`}>
+        <Link to={`/profile/${props.id}`}>
           <Image
             width={70}
             height={70}
@@ -20,7 +20,7 @@ const User = (props) => {
         </Link>
         <div className="user-item__data">
           <h5>
-            <Link className="user-item__name" to={`/${props.id}`}>
+            <Link className="user-item__name" to={`/profile/${props.id}`}>
               {props.user.name}
             </Link>
           </h5>

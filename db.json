@@ -28,7 +28,7 @@
         "status": "Нечего терять",
         "avatarImage": "inspace.jpg",
         "ownerPageCover": "dialog_ava.jpg",
-        " dateOfBirth": "04/12/1992",
+        "dateOfBirth": "04/12/1992",
         "city": "Minsk",
         "education": ""
       },
@@ -102,28 +102,13 @@
           "id": 7,
           "fromUserId": 69,
           "text": "a ti? "
-        },
-        {
-          "id": 6490,
-          "fromUserId": 69,
-          "text": "ывпывп"
-        },
-        {
-          "id": 1625,
-          "fromUserId": 69,
-          "text": "dggdfdfg"
-        },
-        {
-          "id": 6770,
-          "fromUserId": 69,
-          "text": "вапвап"
         }
       ]
     },
     {
       "id": 12,
-      "firstUserId": 2,
-      "secondUserId": 69,
+      "firstUserId": 69,
+      "secondUserId": 2,
       "messages": [
         {
           "id": 3,
@@ -152,6 +137,11 @@
           "toUserId": 69,
           "fromUserId": 3,
           "text": "cho novogo"
+        },
+        {
+          "id": 9417,
+          "fromUserId": 69,
+          "text": "nicho"
         }
       ]
     }
@@ -182,7 +172,13 @@
       "text": "Post 1"
     },
     {
-      "id": 7651,
+      "id": 9447,
+      "authorId": 69,
+      "profileId": 2,
+      "text": "dfgdgf"
+    },
+    {
+      "id": 6459,
       "authorId": 69,
       "profileId": 3,
       "text": "Тестируем посты"

@@ -1,37 +1,28 @@
 import "../css/Users.css";
 import { Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { StoreContext } from "../..";
 import User from "./User";
 import { useState } from "react";
 import { useEffect } from "react";
 import { BiSearch } from "react-icons/bi";
-import { fetchUsersActionCreator } from "../../Store/ActionCreators/UsersActionCreators";
-
+import { fetchUsersThunkCreator } from "../../Store/ActionCreators/UsersActionCreators";
 
 const UserList = () => {
   const store = useContext(StoreContext);
 
   const [users, setUsers] = useState();
+  const [filter, setFilter] = useState(users);
 
-  let state = store.getState();
-
-   const fetchUsers = async () =>{
-     fetchUsersActionCreator().then((data) => {
-        store.dispatch(data);
-        state = store.getState();
-        setUsers(state.usersPage.users);
-      });
- }
-
+  const fetchUsers = () => {
+    store.dispatch(fetchUsersThunkCreator());
+  };
 
   useEffect(() => {
     fetchUsers();
   }, []);
 
-
-  const [filter, setFilter] = useState(users);
+  store.subscribe(() => setUsers(store.getState().usersPage.users));
 
   useEffect(() => {
     setFilter(users);
@@ -55,9 +46,6 @@ const UserList = () => {
       })
     );
   };
-
-
-
 
   return (
     <>

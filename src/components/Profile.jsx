@@ -8,41 +8,42 @@ import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useState } from "react";
-import { fetchUsersActionCreator } from "../Store/ActionCreators/UsersActionCreators";
+import { fetchOneUserActionCreator, fetchOneUserThunkCreator, fetchUsersActionCreator, fetchUsersThunkCreator } from "../Store/ActionCreators/UsersActionCreators";
 
 const Profile = () => {
   const { id } = useParams();
 
   const store = useContext(StoreContext);
 
-  let state = store.getState();
-
   const [users, setUsers] = useState();
+  const [currentUser, setCurrentUser] = useState();
 
-  const fetchUsers = async () => {
-    fetchUsersActionCreator().then((data) => {
-      store.dispatch(data);
-      state = store.getState();
-      setUsers(state.usersPage.users);
-    });
+  const fetchUsers = () => {
+    store.dispatch(fetchUsersThunkCreator());
   };
 
-  useEffect(() => {
-    fetchUsers();
-  }, []);
+  
+  const fetchOneUser = () => {
+    store.dispatch(fetchOneUserThunkCreator(id));
+  };
 
-  const [currentUser, setCurrentUser] = useState();
 
   useEffect(() => {
     fetchOneUser();
   }, [id,users]);
 
-  const fetchOneUser = async () => {
-    users.find((u) => {
-      u.id == id ? setCurrentUser(u) : <></>;
-    });
-  };
 
+  useEffect(() => {
+    fetchUsers();
+  }, []);
+
+
+  store.subscribe(() => {
+    setUsers(store.getState().usersPage.users)
+    setCurrentUser(store.getState().usersPage.currentUser)
+  });
+
+ 
   return currentUser !== undefined ? (
     <>
       <main className="main">

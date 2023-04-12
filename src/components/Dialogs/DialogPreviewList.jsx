@@ -3,47 +3,46 @@ import DialogPreview from "../Friends/DialogPreview";
 import { useContext } from "react";
 import { StoreContext } from "../..";
 import { useEffect } from "react";
-import { fetchUsersActionCreator } from "../../Store/ActionCreators/UsersActionCreators";
+import { fetchUsersThunkCreator } from "../../Store/ActionCreators/UsersActionCreators";
 import { useState } from "react";
 import { Spinner } from "react-bootstrap";
-import { fetchDialogsActionCreator } from "../../Store/ActionCreators/MessagesActionCreators";
+import { fetchDialogsThunkCreator } from "../../Store/ActionCreators/MessagesActionCreators";
 
 const DialogsPreviewList = () => {
   const store = useContext(StoreContext);
 
-  let state = store.getState();
-
   const [users, setUsers] = useState();
   const [dialogs, setDialogs] = useState();
 
-  const fetchUsers = async () => {
-    fetchUsersActionCreator().then((data) => {
-      store.dispatch(data);
-      state = store.getState();
-      setUsers(state.usersPage.users);
-    });
+  const fetchUsers = () => {
+    store.dispatch(fetchUsersThunkCreator());
   };
 
-  const fetchDialogs = async () => {
-    fetchDialogsActionCreator().then((data) => {
-      store.dispatch(data);
-      state = store.getState();
-      setDialogs(state.dialogsPage.dialogs);
-    });
+
+  const fetchDialogs = () => {
+    store.dispatch(fetchDialogsThunkCreator());
+   
   };
+
+  store.subscribe(() => 
+  { 
+    setUsers(store.getState().usersPage.users)
+    setDialogs(store.getState().dialogsPage.dialogs)   
+  }
+)
 
   useEffect(() => {
     fetchUsers();
     fetchDialogs();
   }, []);
 
-  return users !== undefined && dialogs !== undefined ? (
+  return users !== undefined && dialogs !== undefined  ? (
     <>
       <main className="dialogs">
         <h3 className="dialog-preview__header">Dialogs</h3>
         {users.map((user) =>
           dialogs.map((dialog) =>
-            user.id != 69 && dialog.firstUserId == user.id ? (
+            user.id != 69 && (dialog.firstUserId == user.id || dialog.secondUserId == user.id)  ? (
               <DialogPreview
                 key={dialog.id}
                 id={dialog.id}
@@ -59,7 +58,7 @@ const DialogsPreviewList = () => {
       </main>
     </>
   ) : (
-    <Spinner className="spinner" animation="border" variant="secondary" />
+    <></>
   );
 };
 

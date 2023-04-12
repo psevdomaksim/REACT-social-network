@@ -1,20 +1,43 @@
 import { FETCH_ONE_USER } from "../../UTILS";
 import { FETCH_USERS } from "../../UTILS";
+import { fetchOneUser, fetchUsers } from "../../http/usersAPI";
 
-import axios from "axios";
+// fetch users
+export const fetchUsersActionCreator = (data) => {
+    return {
+      type: FETCH_USERS,
+      data: data
+    };
+    
+}
 
-export const fetchOneUserActionCreator = async (id) => {
+export const fetchUsersThunkCreator = () => {
+    return (dispatch) => {
+      fetchUsers().then((data)=>{
+        dispatch(fetchUsersActionCreator(data));
+      })
+    }
+}
+
+
+//fetch one user
+export const fetchOneUserActionCreator = (data) => {
+
   return {
     type: FETCH_ONE_USER,
-    userId: id,
-  };
-};
-
-export const fetchUsersActionCreator = async () => {
-  const { data } = await axios.get("http://localhost:4200/users");
-
-  return {
-    type: FETCH_USERS,
     data: data
   };
 };
+
+export const fetchOneUserThunkCreator = (id) => {
+  return (dispatch) => {
+    fetchOneUser(id).then((data)=>{
+      dispatch(fetchOneUserActionCreator(data));
+    })
+  }
+}
+
+
+
+
+

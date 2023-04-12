@@ -73,10 +73,16 @@
   .messages{
     display: flex;
     flex-direction: column;
-    height: 32em;
+    height: 34em;
     overflow-y: auto;
     margin-bottom: 5px;
     background-color: aliceblue;
+  }
+
+  .message-form{
+    position: absolute;
+    width: 100%;
+    top: 85%;
   }
 
   .message, .messageMe{

@@ -1,15 +1,17 @@
 import "../css/Dialogs.css";
-
 import Message from "./Message";
-import { Image, Form, Button } from "react-bootstrap";
+import { Form, Button, Spinner } from "react-bootstrap";
 import { useParams } from "react-router";
 import { useContext } from "react";
 import { useState, useEffect } from "react";
 import { StoreContext } from "../..";
-import { addMessageActionCreator } from "../../Store/ActionCreators/MessagesActionCreators";
+import {
+  addMessageThunkCreator,
+  fetchOneDialogThunkCreator,
+} from "../../Store/ActionCreators/MessagesActionCreators";
 import { Link } from "react-router-dom";
 import { useRef } from "react";
-import { fetchUsersActionCreator } from "../../Store/ActionCreators/UsersActionCreators";
+import { fetchUsersThunkCreator } from "../../Store/ActionCreators/UsersActionCreators";
 
 const MessageList = () => {
   const { id } = useParams();
@@ -18,28 +20,17 @@ const MessageList = () => {
 
   const store = useContext(StoreContext);
 
-  let state = store.getState();
-
   const [users, setUsers] = useState();
 
-  const fetchUsers = async () => {
-    fetchUsersActionCreator().then((data) => {
-      store.dispatch(data);
-      state = store.getState();
-      setUsers(state.usersPage.users);
-    });
+  const [currentUser, setCurrentUser] = useState();
+  const [currentDialog, setCurrentDialog] = useState();
+
+  const fetchUsers = () => {
+    store.dispatch(fetchUsersThunkCreator());
   };
 
-  const addMessage = async () => {
-    if (message.text !== "") {
-      addMessageActionCreator(message.text, id).then((data) => {
-        store.dispatch(data);
-      });
-
-      clear();
-    } else {
-      return;
-    }
+  const fetchOneDialog = () => {
+    store.dispatch(fetchOneDialogThunkCreator(id));
   };
 
   useEffect(() => {
@@ -47,17 +38,28 @@ const MessageList = () => {
   }, []);
 
   useEffect(() => {
-    fetchOneUserByDialog();
-  }, [users]);
+    fetchOneDialog();
+    
+  }, [id]);
 
-  const [currentUser, setCurrentUser] = useState();
+  store.subscribe(() => {
+    setUsers(store.getState().usersPage.users);
+    setCurrentDialog(store.getState().dialogsPage.currentDialog);
+    setCurrentUser(store.getState().usersPage.currentUser);
+  });
 
-  const fetchOneUserByDialog = async () => {
-    if (users != undefined) {
-      let dialog = state.dialogsPage.dialogs.find((dialog) => dialog.id == id);
-      users.map((u) =>
-        u.id == dialog.firstUserId ? setCurrentUser(u) : <></>
-      );
+const isEmpty = () => {
+  if (currentUser!== undefined) {
+    return Object.keys(currentUser).length === 0;
+  }
+}
+
+  const addMessage = () => {
+    if (message.text !== "") {
+      store.dispatch(addMessageThunkCreator(currentDialog, message.text));
+      clear();
+    } else {
+      return;
     }
   };
 
@@ -86,20 +88,36 @@ const MessageList = () => {
     }
   };
 
-
-
-
-  return currentUser !== undefined ? (
+  return (
     <>
-      <Link className="dialog-info__button" to={`/${currentUser.id}`}>
-        <h3 className="messageList__username">{currentUser.data.name}</h3>
-      </Link>
+      {!isEmpty() && currentUser !== undefined ? (
+        <Link className="dialog-info__button" to={`/profile/${currentUser.id}`}>
+          <h3 className="messageList__username">{currentUser.data.name}</h3>
+        </Link>
+      ) : (
+        <></>
+      )}
 
-      <div className="messages" ref={messageScroll}>
-        {state.dialogsPage.dialogs.map((dialog) =>
-          users.map((user) =>
-            id == dialog.id && dialog.firstUserId == user.id ? (
-              dialog.messages.map((message) => (
+      {currentDialog !== undefined ? (
+        <div className="messages" ref={messageScroll}>
+          {users.map((user) =>
+            currentDialog.firstUserId !== 69 ? (
+              currentDialog.firstUserId == user.id ? (
+                currentDialog.messages.map((message) => (
+                  <Message
+                    key={message.id}
+                    id={message.id}
+                    name={user.data.name}
+                    text={message.text}
+                    fromUserId={message.fromUserId}
+                    messageScroll={messageScroll}
+                  />
+                ))
+              ) : (
+                <></>
+              )
+            ) : currentDialog.secondUserId == user.id ? (
+              currentDialog.messages.map((message) => (
                 <Message
                   key={message.id}
                   id={message.id}
@@ -112,11 +130,13 @@ const MessageList = () => {
             ) : (
               <></>
             )
-          )
-        )}
-        {}
-      </div>
-      <div className="messageForm">
+          )}
+        </div>
+      ) : (
+        <Spinner className="spinner" animation="border" variant="secondary" />
+      )}
+
+      <div className="message-form">
         <Form>
           <Form.Control
             type="text"
@@ -135,8 +155,6 @@ const MessageList = () => {
         </Button>
       </div>
     </>
-  ) : (
-    <></>
   );
 };
 

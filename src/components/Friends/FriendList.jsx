@@ -7,64 +7,66 @@ import Friend from "./Friend";
 import { useState } from "react";
 import { useEffect } from "react";
 import { BiSearch } from "react-icons/bi";
-import { fetchUsersActionCreator } from "../../Store/ActionCreators/UsersActionCreators";
+import {
+  fetchOneUserActionCreator,
+  fetchOneUserThunkCreator,
+  fetchUsersThunkCreator,
+} from "../../Store/ActionCreators/UsersActionCreators";
 
 const FriendList = () => {
   const { id } = useParams();
 
-  const [loading, setLoading] = useState(false);
-
   const [users, setUsers] = useState();
-
+  const [currentUser, setCurrentUser] = useState();
+  const [filter, setFilter] = useState(users);
   const store = useContext(StoreContext);
 
-  let state = store.getState();
 
-  const fetchUsers = async () => {
-    fetchUsersActionCreator().then((data) => {
-      store.dispatch(data);
-      state = store.getState();
-      setUsers(state.usersPage.users);
-    });
+  const fetchUsers = () => {
+    store.dispatch(fetchUsersThunkCreator());
+  };
+
+  const fetchOneUser = () => {
+    store.dispatch(fetchOneUserThunkCreator(id));
   };
 
   useEffect(() => {
     fetchUsers();
   }, []);
 
-  const [currentUser, setCurrentUser] = useState();
-
   useEffect(() => {
     fetchOneUser();
-  }, [users]);
+  }, [id, users]);
 
-  const fetchOneUser = async () => {
-    if (users != undefined) {
-      users.find((u) => {
-        u.id == id ? setCurrentUser(u) : <></>;
-      });
-      setLoading(true);
-    }
-  };
+ 
 
-  const [filter, setFilter] = useState(state.usersPage.users);
+  store.subscribe(() => {
+    setUsers(store.getState().usersPage.users)
+    setCurrentUser(store.getState().usersPage.currentUser)
+  })
+  
+  
+
+
+
+
 
   useEffect(() => {
-    setFilter(state.usersPage.users);
-  }, [state.usersPage.users]);
+    setFilter(users);
+  }, [users]);
 
   const getSearch = () => {
     if (filter) {
       return filter;
     }
-    return state.usersPage.users;
+    return users;
   };
 
   const userSearch = getSearch();
 
   const onChange = (event) => {
     setFilter(
-      state.usersPage.users.filter((user) => {
+      users.filter((user) => {
         return user.data.name
           .toLowerCase()
           .includes(event.target.value.toLowerCase());
@@ -72,7 +74,7 @@ const FriendList = () => {
     );
   };
 
-  return loading ? (
+  return currentUser !== undefined ? (
     <>
       <div className="users-wrapper">
         <Link className="sidebar-link" to={`/${id}`}>
@@ -105,7 +107,7 @@ const FriendList = () => {
             onChange={onChange}
           />
         </Form>
-        {state.usersPage.users &&
+        {users &&
           userSearch.map((user) =>
             currentUser.friends.map((friend) =>
               friend == user.id ? (

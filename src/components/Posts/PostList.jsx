@@ -19,7 +19,7 @@ const PostList = () => {
   const store = useContext(StoreContext);
 
   let state = store.getState();
-  console.log(state);
+
 
   const [posts, setPosts] = useState();
 
@@ -33,7 +33,6 @@ const PostList = () => {
 
   };
 
-  store.subscribe(() => console.log(state.profilePage.posts))
 
   useEffect(() => {
     fetchPosts();
@@ -58,8 +57,8 @@ const PostList = () => {
     }
   };
 
-  const deletePost = async (postId) => {
-    deletePostActionCreator(postId).then((data) => {
+  const deletePost = async (postId, auhtorId) => {
+    deletePostActionCreator(postId, auhtorId).then((data) => {
       store.dispatch(data);
       fetchPosts();
     });
@@ -108,6 +107,7 @@ const PostList = () => {
               key={post.id}
               postId={post.id}
               userId={user.id}
+              profileId={+id}
               authorName={user.data.name}
               text={post.text}
             />
