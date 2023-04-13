@@ -8,6 +8,7 @@ export const FETCH_ONE_DIALOG = "FETCH-ONE-DIALOG";
 
 
 export const FETCH_ONE_USER = "FETCH-ONE-USER";
+export const FETCH_ONE_USER_POST = "FETCH-ONE-USER-POST";
 export const FETCH_USERS = "FETCH-USERS";
 
 

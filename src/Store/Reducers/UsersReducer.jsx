@@ -9,10 +9,10 @@ let initialState = {
 const usersReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_ONE_USER: {
-      state = { ...state, currentUser: action.data };
+      state = { ...state, currentUser: action.data};
       return state;
     }
-
+  
     case FETCH_USERS: {
       state = { ...state, users: action.data };
       return state;

@@ -149,31 +149,31 @@
     {
       "id": 2,
       "authorId": 2,
-      "profileId": 69,
+      "userId": 69,
       "text": "салют"
     },
     {
       "id": 4,
       "authorId": 2,
-      "profileId": 1,
+      "userId": 1,
       "text": "тестируем посты"
     },
     {
       "id": 8670,
       "authorId": 69,
-      "profileId": 2,
+      "userId": 2,
       "text": "Post 1"
     },
     {
       "id": 6459,
       "authorId": 69,
-      "profileId": 3,
+      "userId": 3,
       "text": "Тестируем посты"
     },
     {
       "id": 2536,
       "authorId": 3,
-      "profileId": 69,
+      "userId": 69,
       "text": "брлбрлбрлбрлбрл"
     }
   ]

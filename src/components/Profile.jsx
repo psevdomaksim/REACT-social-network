@@ -22,14 +22,14 @@ const Profile = () => {
     store.dispatch(fetchUsersThunkCreator());
   };
 
-  
-  const fetchOneUser = () => {
+
+  const fetchOneUser = (id) => {
     store.dispatch(fetchOneUserThunkCreator(id));
   };
 
 
   useEffect(() => {
-    fetchOneUser();
+    fetchOneUser(id);
   }, [id,users]);
 
 
@@ -42,6 +42,7 @@ const Profile = () => {
     setUsers(store.getState().usersPage.users)
     setCurrentUser(store.getState().usersPage.currentUser)
   });
+
 
  
   return currentUser !== undefined ? (
@@ -74,7 +75,7 @@ const Profile = () => {
             <p>Education: {currentUser.data.education}</p>
           </div>
         </div>
-        <PostList />
+        <PostList user={currentUser}/>
       </main>
     </>
   ) : (

@@ -1,4 +1,3 @@
-import axios from "axios";
 import { ADD_POST, FETCH_POSTS, DELETE_POST } from "../../UTILS";
 
 let initialState = {
@@ -10,6 +9,7 @@ let initialState = {
 const postsReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_POSTS: {
+
       state = { ...state, posts: action.data };
       return state;
     }

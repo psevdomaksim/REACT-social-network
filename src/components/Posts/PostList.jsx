@@ -21,22 +21,21 @@ const PostList = () => {
 
   const store = useContext(StoreContext);
 
-  let state = store.getState();
-
   const [posts, setPosts] = useState();
 
 
   const fetchPosts = () => {
-    store.dispatch(fetchPostsThunkCreator());
+    store.dispatch(fetchPostsThunkCreator(id));
   };
 
   store.subscribe(() => {
     setPosts(store.getState().profilePage.posts);
   });
 
+ 
   useEffect(() => {
     fetchPosts();
-  }, []);
+  }, [store]);
 
   const [post, setPost] = useState({
     text: "",
@@ -57,20 +56,19 @@ const PostList = () => {
     }
   };
 
-  const deletePost = (postId, auhtorId) => {
-    store.dispatch(deletePostThunkCreator(postId, auhtorId));
-    fetchPosts();
+  const deletePost = (postId, profileId) => {
+    store.dispatch(deletePostThunkCreator(postId, profileId))
   };
 
   const addPost = () => {
     if (post.text !== "") {
       store.dispatch(addPostThunkCreator(+id, post.text));
-      fetchPosts();
       clear();
     } else {
       return;
     }
   };
+
 
   return posts !== undefined ? (
     <>
@@ -94,22 +92,19 @@ const PostList = () => {
         </Button>
       </div>
 
-      {posts.map((post) =>
-        state.usersPage.users.map((user) =>
-          user.id == post.authorId && id == post.profileId ? (
+      {posts.map((post) =>    
+           (
             <Post
               deletePost={deletePost}
               key={post.id}
               postId={post.id}
-              userId={user.id}
+              userId={post.authorId}
               profileId={+id}
-              authorName={user.data.name}
+              //authorName={user.data.name}
               text={post.text}
             />
-          ) : (
-            <></>
-          )
-        )
+          ) 
+        
       )}
     </>
   ) : (

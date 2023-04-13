@@ -1,21 +1,30 @@
 import { $host } from "./http";
 
-export const fetchPosts = async () => {
-  const { data } = await $host.get("/posts");
+
+export const fetchPosts = async (profileId) => {
+  const { data } = await $host.get(`/posts`, {
+      params:{
+        userId: profileId,
+        //_limit:2,
+       // _page: 4,
+      }
+   }
+  
+  );
   return data;
 };
 
 export const addPost = async (newPost) => {
   const { data } = await $host({
     method: "POST",
-    url: `/posts`,
+    url: "/posts",
     data: newPost,
   });
   return data;
 };
 
-export const deletePost = async (id) => {
-  const { data } = await $host.delete("/posts/" + id);
+export const deletePost = async (postId) => {
+  const { data } = await $host.delete(`/posts/${postId}`);
   return data;
 };
 
