@@ -134,7 +134,6 @@
       "messages": [
         {
           "id": 5,
-          "toUserId": 69,
           "fromUserId": 3,
           "text": "cho novogo"
         },
@@ -154,12 +153,6 @@
       "text": "салют"
     },
     {
-      "id": 3,
-      "authorId": 3,
-      "profileId": 69,
-      "text": "брлблрблрблрблр"
-    },
-    {
       "id": 4,
       "authorId": 2,
       "profileId": 1,
@@ -172,16 +165,16 @@
       "text": "Post 1"
     },
     {
-      "id": 9447,
-      "authorId": 69,
-      "profileId": 2,
-      "text": "dfgdgf"
-    },
-    {
       "id": 6459,
       "authorId": 69,
       "profileId": 3,
       "text": "Тестируем посты"
+    },
+    {
+      "id": 2536,
+      "authorId": 3,
+      "profileId": 69,
+      "text": "брлбрлбрлбрлбрл"
     }
   ]
 }

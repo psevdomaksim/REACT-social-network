@@ -3,6 +3,8 @@ import { ADD_POST, FETCH_POSTS, DELETE_POST } from "../../UTILS";
 
 let initialState = {
   posts: [],
+  addedPost: {},
+  deletedPost: {}
 };
 
 const postsReducer = (state = initialState, action) => {
@@ -13,12 +15,12 @@ const postsReducer = (state = initialState, action) => {
     }
 
     case ADD_POST: {
-      state = { ...state, posts: action.data };
+      state = { ...state, addedPost: action.data };
       return state;
     }
 
     case DELETE_POST: {
-      state = { ...state, posts: action.data };
+      state = { ...state, deletedPost: action.data };
       return state;
     }
 

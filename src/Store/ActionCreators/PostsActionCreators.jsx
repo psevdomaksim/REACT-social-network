@@ -1,21 +1,25 @@
-import axios from "axios";
+import { addPost, deletePost, fetchPosts } from "../../http/postsAPI";
 import { ADD_POST, FETCH_POSTS } from "../../UTILS";
 
-const getRandomId = () => {
-  let min = 1000;
-  let max = 9999;
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+//fetchPosts
+export const fetchPostsActionCreator = (data) => {
+
+  return {
+    type: FETCH_POSTS,
+    data: data,
+  };
 };
 
-export const addPostActionCreator = async (text, id) => {
-  let newPost = {
-    id: getRandomId(),
-    authorId: 69,
-    profileId: id,
-    text: text,
-  };
+export const fetchPostsThunkCreator = () => {
+  return (dispatch) => {
+    fetchPosts().then((data)=>{
+      dispatch(fetchPostsActionCreator(data));
+    })
+  }
+}
 
-  const { data } = await axios.post("http://localhost:4200/posts", newPost);
+//add post
+export const addPostActionCreator = (data) => {
 
   return {
     type: ADD_POST,
@@ -23,25 +27,42 @@ export const addPostActionCreator = async (text, id) => {
   };
 };
 
-export const deletePostActionCreator = async (postId, authorId) => {
-  if (authorId === 69) {
-    const { data } = await axios.delete(
-      `http://localhost:4200/posts/${postId}`
-    );
+export const addPostThunkCreator = (id, text) => {
+  let newPost = {
+    id: Math.floor(Math.random() * 10000) + 1,
+    authorId: 69,
+    profileId: id,
+    text: text,
+  };
+
+  return (dispatch) => {
+    addPost(newPost).then((data) => {
+      dispatch(addPostActionCreator(data));
+    });
+    fetchPosts().then((data)=>{
+      dispatch(fetchPostsActionCreator(data));
+    })
+  };
+};
+
+//delete post
+export const deletePostActionCreator = (data) => {
     return {
       type: ADD_POST,
       data: data,
     };
-  }else{
-    alert("error")
+};
+
+export const deletePostThunkCreator = (postId, authorId) => {
+  {
+    return (dispatch) => {
+    deletePost(postId).then((data)=>{
+      dispatch(deletePostActionCreator(data));
+    })
+    fetchPosts().then((data)=>{
+      dispatch(fetchPostsActionCreator(data));
+    })
   }
-};
+}
+}
 
-export const fetchPostsActionCreator = async () => {
-  const { data } = await axios.get("http://localhost:4200/posts");
-
-  return {
-    type: FETCH_POSTS,
-    data: data,
-  };
-};

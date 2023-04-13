@@ -3,7 +3,7 @@ import "./css/Header.css";
 import { Navbar, Container, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const logo = require("../assets/images/ava.jpg")
+const logo = require("../assets/images/logo.png")
 
 const Header = () => {
   return (

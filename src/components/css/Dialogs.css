@@ -73,7 +73,7 @@
   .messages{
     display: flex;
     flex-direction: column;
-    height: 34em;
+    height: 32em;
     overflow-y: auto;
     margin-bottom: 5px;
     background-color: aliceblue;

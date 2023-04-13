@@ -5,8 +5,11 @@ import Post from "./Post";
 import { useState } from "react";
 import {
   addPostActionCreator,
+  addPostThunkCreator,
   deletePostActionCreator,
+  deletePostThunkCreator,
   fetchPostsActionCreator,
+  fetchPostsThunkCreator,
 } from "../../Store/ActionCreators/PostsActionCreators";
 import { StoreContext } from "../../index";
 import { useContext } from "react";
@@ -20,19 +23,16 @@ const PostList = () => {
 
   let state = store.getState();
 
-
   const [posts, setPosts] = useState();
 
-  const fetchPosts = async () => {
 
-    fetchPostsActionCreator().then((data) => {
-      store.dispatch(data);
-      state = store.getState();
-      setPosts(state.profilePage.posts);
-    });
-
+  const fetchPosts = () => {
+    store.dispatch(fetchPostsThunkCreator());
   };
 
+  store.subscribe(() => {
+    setPosts(store.getState().profilePage.posts);
+  });
 
   useEffect(() => {
     fetchPosts();
@@ -57,20 +57,15 @@ const PostList = () => {
     }
   };
 
-  const deletePost = async (postId, auhtorId) => {
-    deletePostActionCreator(postId, auhtorId).then((data) => {
-      store.dispatch(data);
-      fetchPosts();
-    });
+  const deletePost = (postId, auhtorId) => {
+    store.dispatch(deletePostThunkCreator(postId, auhtorId));
+    fetchPosts();
   };
 
-  const addPost = async () => {
+  const addPost = () => {
     if (post.text !== "") {
-      addPostActionCreator(post.text, +id).then((data) => {
-        store.dispatch(data);
-        fetchPosts();
-      });
-
+      store.dispatch(addPostThunkCreator(+id, post.text));
+      fetchPosts();
       clear();
     } else {
       return;

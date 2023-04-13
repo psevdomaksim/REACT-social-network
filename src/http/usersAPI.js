@@ -9,3 +9,4 @@ export const fetchOneUser = async (id) => {
   const { data } = await $host.get("/users/" + id);
   return data;
 };
+
