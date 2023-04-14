@@ -1,8 +1,10 @@
 import "../css/Dialogs.css";
 import { Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 const DialogPreview = (props) => {
+
   return (
     <>
       <Link className="dialog-info__button" to={`/dialogs/${props.id}`}>

@@ -1,10 +1,11 @@
-import { ADD_MESSAGE, FETCH_DIALOGS, FETCH_ONE_DIALOG } from "../../UTILS";
+import { ADD_MESSAGE, FETCH_DIALOGS, FETCH_ONE_DIALOG, CHANGE_DIALOG_LAST_MESSAGE } from "../../UTILS";
 
 let initialState = {
   dialogs: [],
   currentDialog: {},
   updatedDialog: {},
   dialogUser: {},
+  lastMessage:{},
 };
 
 const dialogsReducer = (state = initialState, action) => {
@@ -20,6 +21,10 @@ const dialogsReducer = (state = initialState, action) => {
     }
     case FETCH_ONE_DIALOG: {
       state = { ...state, currentDialog: action.data };
+      return state;
+    }
+    case CHANGE_DIALOG_LAST_MESSAGE:{
+      state = { ...state, lastMessage: action.data };
       return state;
     }
     default:

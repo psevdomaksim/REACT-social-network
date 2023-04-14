@@ -10,7 +10,7 @@ export const fetchOneDialog = async (id) => {
   return data;
 };
 
-export const addMessage = async (id, body) => {
+export const updateDialogLastMessage = async (id, body) => {
   const { data } = await $host({
     method: "PUT",
     url: `/dialogs/${id}`,

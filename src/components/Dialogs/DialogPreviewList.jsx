@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import { fetchUsersThunkCreator } from "../../Store/ActionCreators/UsersActionCreators";
 import { useState } from "react";
 import { Spinner } from "react-bootstrap";
-import { fetchDialogsThunkCreator } from "../../Store/ActionCreators/MessagesActionCreators";
+import { fetchDialogsThunkCreator } from "../../Store/ActionCreators/DialogsActionCreators";
 
 const DialogsPreviewList = () => {
   const store = useContext(StoreContext);
@@ -48,7 +48,7 @@ const DialogsPreviewList = () => {
                 id={dialog.id}
                 avatar={user.data.avatarImage}
                 name={user.data.name}
-                text_preview={dialog.messages[dialog.messages.length - 1].text}
+                text_preview={dialog.lastMessage}
               />
             ) : (
               <></>

@@ -82,67 +82,75 @@
       "id": 45,
       "firstUserId": 1,
       "secondUserId": 69,
-      "messages": [
-        {
-          "id": 1,
-          "fromUserId": 1,
-          "text": "ku"
-        },
-        {
-          "id": 2,
-          "fromUserId": 1,
-          "text": "cho kak"
-        },
-        {
-          "id": 6,
-          "fromUserId": 69,
-          "text": "da norm "
-        },
-        {
-          "id": 7,
-          "fromUserId": 69,
-          "text": "a ti? "
-        }
-      ]
+      "lastMessage": "а?"
     },
     {
       "id": 12,
       "firstUserId": 69,
       "secondUserId": 2,
-      "messages": [
-        {
-          "id": 3,
-          "fromUserId": 2,
-          "text": "kak dela"
-        },
-        {
-          "id": 4,
-          "fromUserId": 2,
-          "text": "haha"
-        },
-        {
-          "id": 8,
-          "fromUserId": 69,
-          "text": "privet inspace "
-        }
-      ]
+      "lastMessage": "nicho"
     },
     {
       "id": 87,
       "firstUserId": 3,
       "secondUserId": 69,
-      "messages": [
-        {
-          "id": 5,
-          "fromUserId": 3,
-          "text": "cho novogo"
-        },
-        {
-          "id": 9417,
-          "fromUserId": 69,
-          "text": "nicho"
-        }
-      ]
+      "lastMessage": "dfg"
+    }
+  ],
+  "messages": [
+    {
+      "id": 1,
+      "dialogId": 45,
+      "fromUserId": 1,
+      "text": "ku"
+    },
+    {
+      "id": 2,
+      "dialogId": 45,
+      "fromUserId": 1,
+      "text": "cho kak"
+    },
+    {
+      "id": 6,
+      "dialogId": 45,
+      "fromUserId": 69,
+      "text": "da norm "
+    },
+    {
+      "id": 7,
+      "dialogId": 45,
+      "fromUserId": 69,
+      "text": "a ti? "
+    },
+    {
+      "id": 3,
+      "dialogId": 87,
+      "fromUserId": 69,
+      "text": "kak dela"
+    },
+    {
+      "id": 4,
+      "dialogId": 87,
+      "fromUserId": 69,
+      "text": "haha"
+    },
+    {
+      "id": 8,
+      "dialogId": 12,
+      "fromUserId": 69,
+      "text": "privet inspace "
+    },
+    {
+      "id": 5,
+      "dialogId": 12,
+      "fromUserId": 69,
+      "text": "cho novogo"
+    },
+    {
+      "id": 9417,
+      "dialogId": 12,
+      "fromUserId": 3,
+      "text": "nicho"
     }
   ],
   "posts": [

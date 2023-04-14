@@ -7,11 +7,12 @@ import { useState, useEffect } from "react";
 import { StoreContext } from "../..";
 import {
   addMessageThunkCreator,
-  fetchOneDialogThunkCreator,
+  fetchMessagesThunkCreator,
 } from "../../Store/ActionCreators/MessagesActionCreators";
 import { Link } from "react-router-dom";
 import { useRef } from "react";
 import { fetchUsersThunkCreator } from "../../Store/ActionCreators/UsersActionCreators";
+import { fetchOneDialogThunkCreator } from "../../Store/ActionCreators/DialogsActionCreators";
 
 const MessageList = () => {
   const { id } = useParams();
@@ -24,6 +25,7 @@ const MessageList = () => {
 
   const [currentUser, setCurrentUser] = useState();
   const [currentDialog, setCurrentDialog] = useState();
+  const [dialogMessages, setDialogMessages] = useState();
 
   const fetchUsers = () => {
     store.dispatch(fetchUsersThunkCreator());
@@ -32,6 +34,8 @@ const MessageList = () => {
   const fetchOneDialog = () => {
     store.dispatch(fetchOneDialogThunkCreator(id));
   };
+
+
 
   useEffect(() => {
     fetchUsers();
@@ -46,7 +50,9 @@ const MessageList = () => {
     setUsers(store.getState().usersPage.users);
     setCurrentDialog(store.getState().dialogsPage.currentDialog);
     setCurrentUser(store.getState().usersPage.currentUser);
+    setDialogMessages(store.getState().messagesPage.messages);
   });
+
 
 const isEmpty = () => {
   if (currentUser!== undefined) {
@@ -98,12 +104,11 @@ const isEmpty = () => {
         <></>
       )}
 
-      {currentDialog !== undefined ? (
+      {currentDialog !== undefined && dialogMessages!==undefined ? (
         <div className="messages" ref={messageScroll}>
           {users.map((user) =>
-            currentDialog.firstUserId !== 69 ? (
               currentDialog.firstUserId == user.id ? (
-                currentDialog.messages.map((message) => (
+                dialogMessages.map((message) => (
                   <Message
                     key={message.id}
                     id={message.id}
@@ -116,20 +121,7 @@ const isEmpty = () => {
               ) : (
                 <></>
               )
-            ) : currentDialog.secondUserId == user.id ? (
-              currentDialog.messages.map((message) => (
-                <Message
-                  key={message.id}
-                  id={message.id}
-                  name={user.data.name}
-                  text={message.text}
-                  fromUserId={message.fromUserId}
-                  messageScroll={messageScroll}
-                />
-              ))
-            ) : (
-              <></>
-            )
+          
           )}
         </div>
       ) : (

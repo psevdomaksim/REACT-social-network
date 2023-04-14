@@ -1,49 +1,23 @@
+import { updateDialogLastMessage } from "../../http/dialogsAPI";
 import {
   addMessage,
-  fetchDialogs,
-  fetchOneDialog,
-} from "../../http/dialogsAPI";
-import { fetchOneUser } from "../../http/usersAPI";
-import { ADD_MESSAGE, FETCH_DIALOGS, FETCH_ONE_DIALOG } from "../../UTILS";
-import { fetchOneUserActionCreator } from "./UsersActionCreators";
+  fetchMessages
+} from "../../http/messagesAPI";
 
-//fetch dialogs
-export const fetchDialogsActionCreator = (data) => {
+import { ADD_MESSAGE, FETCH_MESSAGES } from "../../UTILS";
+import { changeDialogLastMessageActionCreator } from "./DialogsActionCreators";
+
+//fetch messages
+export const fetchMessagesActionCreator = (data) => {
   return {
-    type: FETCH_DIALOGS,
+    type: FETCH_MESSAGES,
     data: data,
   };
 };
-export const fetchDialogsThunkCreator = () => {
+export const fetchMessagesThunkCreator = (dialogId) => {
   return (dispatch) => {
-    fetchDialogs().then((data) => {
-      dispatch(fetchDialogsActionCreator(data));
-    });
-  };
-};
-
-//fetch one dialog
-export const fetchOneDialogActionCreator = (data) => {
-  return {
-    type: FETCH_ONE_DIALOG,
-    data: data,
-  };
-};
-
-export const fetchOneDialogThunkCreator = (id) => {
-  return (dispatch) => {
-    fetchOneDialog(id).then((dialog) => {
-      dispatch(fetchOneDialogActionCreator(dialog));
-
-      if (dialog.firstUserId !== 69) {
-        fetchOneUser(dialog.firstUserId).then((user) => {
-          dispatch(fetchOneUserActionCreator(user));
-        });
-      } else {
-        fetchOneUser(dialog.secondUserId).then((user) => {
-          dispatch(fetchOneUserActionCreator(user));
-        });
-      }
+    fetchMessages(dialogId).then((data) => {
+      dispatch(fetchMessagesActionCreator(data));
     });
   };
 };
@@ -59,21 +33,31 @@ export const addMessageActionCreator = (data) => {
 export const addMessageThunkCreator = (dialog, text) => {
   let newMessage = {
     id: Math.floor(Math.random() * 10000) + 1,
+    dialogId: dialog.id,
     fromUserId: 69,
     text: text,
   };
 
-  dialog.messages.push(newMessage);
-  let body = {
+  let newDialog = {
     id: dialog.id,
     firstUserId: dialog.firstUserId,
     secondUserId: dialog.secondUserId,
-    messages: dialog.messages,
-  };
+    lastMessage: text
+  }
 
   return (dispatch) => {
-    addMessage(dialog.id, body).then((data) => {
+    addMessage(dialog.id, newMessage).then((data) => {
       dispatch(addMessageActionCreator(data));
+
+
+
+      updateDialogLastMessage(dialog.id, newDialog).then((data) => {
+        dispatch(changeDialogLastMessageActionCreator(data));
+      });
+
+      fetchMessages(dialog.id).then((data) => {
+        dispatch(fetchMessagesActionCreator(data));
+      });
     });
   };
 };
