@@ -1,6 +1,8 @@
 export const FETCH_POSTS = "FETCH-POSTS";
 export const ADD_POST = "ADD-POST";
 export const DELETE_POST = "DELETE-POST";
+export const CHANGE_PAGE = "CHANGE-PAGE";
+export const CHANGE_PROFILE = "CHANGE-PROFILE";
 
 export const FETCH_DIALOGS = "FETCH-DIALOGS";
 export const FETCH_ONE_DIALOG = "FETCH-ONE-DIALOG";

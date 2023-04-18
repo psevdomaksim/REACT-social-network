@@ -11,7 +11,7 @@ const Post = (props) => {
         <div className="post-header">
         {   
        <Link className="dialog-info__button" to={`/profile/${props.userId}`}>
-             {/* <h4>{props.name}</h4>  */}
+              <h4>{props.authorName}</h4>  
           </Link>
           }
           {props.profileId === 69 || props.userId === 69 ? (

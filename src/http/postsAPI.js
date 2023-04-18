@@ -1,12 +1,12 @@
 import { $host } from "./http";
 
 
-export const fetchPosts = async (profileId) => {
+export const fetchPosts = async (profileId, limit, page) => {
   const { data } = await $host.get(`/posts`, {
       params:{
         userId: profileId,
-        //_limit:2,
-       // _page: 4,
+        _limit: limit,
+        _page: page,
       }
    }
   

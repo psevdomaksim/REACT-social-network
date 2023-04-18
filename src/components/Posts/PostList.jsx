@@ -2,40 +2,71 @@ import "../../App.css";
 import "../css/Content.css";
 import { Image, Form, Button, Spinner } from "react-bootstrap";
 import Post from "./Post";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import {
-  addPostActionCreator,
   addPostThunkCreator,
-  deletePostActionCreator,
+  changePageActionCreator,
+  changeProfileActionCreator,
+  changeProfileThunkCreator,
   deletePostThunkCreator,
-  fetchPostsActionCreator,
   fetchPostsThunkCreator,
 } from "../../Store/ActionCreators/PostsActionCreators";
 import { StoreContext } from "../../index";
 import { useContext } from "react";
-import { useParams } from "react-router";
 import { useEffect } from "react";
+import { useParams } from "react-router";
 
-const PostList = () => {
+const PostList = (props) => {
   const { id } = useParams();
-
   const store = useContext(StoreContext);
 
-  const [posts, setPosts] = useState();
+  const [posts, setPosts] = useState([]);
 
+  const [limit, setLimit] = useState(store.getState().profilePage.limit);
+  const[page, setPage] = useState(1);
+
+  const observer = useRef(null);
+ 
+  const [loadData, setLoadData] = useState(true);   
 
   const fetchPosts = () => {
-    store.dispatch(fetchPostsThunkCreator(id));
+    setLoadData(true);
+    store.dispatch(changePageActionCreator(page))
+    store.dispatch(fetchPostsThunkCreator(id, limit, page));
+    setLoadData(false);
   };
+
+  const changeProfile = () => {
+    store.dispatch(changeProfileThunkCreator(id, limit, 1))
+  }
 
   store.subscribe(() => {
     setPosts(store.getState().profilePage.posts);
   });
 
- 
+
+   useEffect(() => {
+     setPage(1)
+     changeProfile();
+   }, [id]);
+
+
   useEffect(() => {
-    fetchPosts();
-  }, [store]);
+   if(page!==1) fetchPosts();
+  }, [page]);
+
+  useEffect(() => {
+    if (props.trigger === null && loadData && page === undefined ) return;
+    if (observer.current) observer.current.disconnect();
+    if (page > limit) return;
+    const callback = function (entries, observer) {
+      if (entries[0].isIntersecting) { 
+        setPage(page => page + 1)       
+      }
+    };
+    observer.current = new IntersectionObserver(callback);
+    observer.current.observe(props.trigger.current);
+  }, [id]);
 
   const [post, setPost] = useState({
     text: "",
@@ -57,12 +88,12 @@ const PostList = () => {
   };
 
   const deletePost = (postId, profileId) => {
-    store.dispatch(deletePostThunkCreator(postId, profileId))
+    store.dispatch(deletePostThunkCreator(postId, profileId));
   };
 
   const addPost = () => {
     if (post.text !== "") {
-      store.dispatch(addPostThunkCreator(+id, post.text));
+      store.dispatch(addPostThunkCreator(props.user, post.text));
       clear();
     } else {
       return;
@@ -92,20 +123,17 @@ const PostList = () => {
         </Button>
       </div>
 
-      {posts.map((post) =>    
-           (
-            <Post
-              deletePost={deletePost}
-              key={post.id}
-              postId={post.id}
-              userId={post.authorId}
-              profileId={+id}
-              //authorName={user.data.name}
-              text={post.text}
-            />
-          ) 
-        
-      )}
+      {posts.map((post) => (
+        <Post
+          deletePost={deletePost}
+
+          postId={post.id}
+          userId={post.authorId}
+          profileId={props.user.id}
+          authorName={post.authorName}
+          text={post.text}
+        />
+      ))}
     </>
   ) : (
     <Spinner className="spinner" animation="border" variant="secondary" />

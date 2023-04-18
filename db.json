@@ -82,7 +82,7 @@
       "id": 45,
       "firstUserId": 1,
       "secondUserId": 69,
-      "lastMessage": "а?"
+      "lastMessage": "привет"
     },
     {
       "id": 12,
@@ -151,38 +151,66 @@
       "dialogId": 12,
       "fromUserId": 3,
       "text": "nicho"
+    },
+    {
+      "id": 9729,
+      "dialogId": "45",
+      "fromUserId": 69,
+      "text": "привет"
     }
   ],
   "posts": [
     {
-      "id": 2,
-      "authorId": 2,
-      "userId": 69,
-      "text": "салют"
-    },
-    {
       "id": 4,
       "authorId": 2,
+      "authorName": "INSPACE",
       "userId": 1,
       "text": "тестируем посты"
     },
     {
       "id": 8670,
       "authorId": 69,
+      "authorName": "maksos",
       "userId": 2,
       "text": "Post 1"
     },
     {
       "id": 6459,
       "authorId": 69,
+      "authorName": "maksos",
       "userId": 3,
       "text": "Тестируем посты"
     },
     {
-      "id": 2536,
-      "authorId": 3,
+      "id": 2,
+      "authorId": 2,
+      "authorName": "INSPACE",
       "userId": 69,
-      "text": "брлбрлбрлбрлбрл"
+      "text": "салют"
+    },
+    {
+      "id": 519,
+      "authorId": 69,
+      "authorName": "maksos",
+      "userId": 69,
+      "text": "1",
+      "date": "2023-04-18T20:30:06.124Z"
+    },
+    {
+      "id": 9220,
+      "authorId": 69,
+      "authorName": "maksos",
+      "userId": 69,
+      "text": "2",
+      "date": "2023-04-18T20:53:59.927Z"
+    },
+    {
+      "id": 536,
+      "authorId": 69,
+      "authorName": "maksos",
+      "userId": 69,
+      "text": "3",
+      "date": "2023-04-18T20:54:02.987Z"
     }
   ]
 }

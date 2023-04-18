@@ -20,6 +20,17 @@ html {
   left: 50%;
 }
 
+
+.postList{
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+}
+.trigger{
+  width:100%;
+  height:20px;
+  }
+
 * {
   margin: 0;
   box-sizing: inherit;

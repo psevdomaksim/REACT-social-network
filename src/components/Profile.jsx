@@ -8,7 +8,8 @@ import { useParams } from "react-router";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useState } from "react";
-import { fetchOneUserActionCreator, fetchOneUserThunkCreator, fetchUsersActionCreator, fetchUsersThunkCreator } from "../Store/ActionCreators/UsersActionCreators";
+import { fetchOneUserThunkCreator, fetchUsersThunkCreator } from "../Store/ActionCreators/UsersActionCreators";
+import { useRef } from "react";
 
 const Profile = () => {
   const { id } = useParams();
@@ -17,6 +18,19 @@ const Profile = () => {
 
   const [users, setUsers] = useState();
   const [currentUser, setCurrentUser] = useState();
+
+
+  const trigger = useRef(null);    
+
+ 
+
+
+  const isEmpty = () => {
+    if (currentUser!== undefined) {
+      return Object.keys(currentUser).length === 0;
+    }
+  }
+
 
   const fetchUsers = () => {
     store.dispatch(fetchUsersThunkCreator());
@@ -43,9 +57,7 @@ const Profile = () => {
     setCurrentUser(store.getState().usersPage.currentUser)
   });
 
-
- 
-  return currentUser !== undefined ? (
+  return !isEmpty() && currentUser !== undefined ? (
     <>
       <main className="main">
         <Image
@@ -75,11 +87,17 @@ const Profile = () => {
             <p>Education: {currentUser.data.education}</p>
           </div>
         </div>
-        <PostList user={currentUser}/>
+       
+        <div className="postList">
+          <PostList trigger={trigger} user={currentUser}/>
+        </div>
+          <div ref={trigger} className="trigger"></div>
       </main>
+     
     </>
   ) : (
     <Spinner className="spinner" animation="border" variant="secondary" />
+    
   );
 };
 
