@@ -4,7 +4,6 @@ let initialState = {
   dialogs: [],
   currentDialog: {},
   updatedDialog: {},
-  dialogUser: {},
   lastMessage:{},
 };
 

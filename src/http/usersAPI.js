@@ -1,7 +1,13 @@
 import { $host } from "./http";
 
-export const fetchUsers = async () => {
-  const { data } = await $host.get("/users");
+export const fetchUsers = async (limit, page) => {
+  const { data } = await $host.get("/users", {
+    params:{
+      _limit: limit,
+      _page: page,
+    }
+ }
+);
   return data;
 };
 

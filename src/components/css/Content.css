@@ -20,8 +20,15 @@
   .profile-data{
     display: flex;
     flex-direction: column;
+    width: 100%;
   }
 
+  .profile-header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 50%;
+  }
 
 
   .post{
@@ -37,3 +44,4 @@
     justify-content: space-between;
     cursor: pointer;
   }
+  

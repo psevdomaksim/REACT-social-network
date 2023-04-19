@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 
 const User = (props) => {
 
-
   return (
     <>
       <div className="user-item">

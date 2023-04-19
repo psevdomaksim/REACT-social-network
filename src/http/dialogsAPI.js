@@ -18,3 +18,8 @@ export const updateDialogLastMessage = async (id, body) => {
   });
   return data;
 };
+
+export const createNewDialog = async () => {
+  const { data } = await $host.post("/dialogs/");
+  return data;
+};

@@ -22,7 +22,7 @@ const PostList = (props) => {
 
   const [posts, setPosts] = useState([]);
 
-  const [limit, setLimit] = useState(store.getState().profilePage.limit);
+  const [limit, setLimit] = useState(store.getState().usersPage.limit);
   const[page, setPage] = useState(1);
 
   const observer = useRef(null);
@@ -93,7 +93,7 @@ const PostList = (props) => {
 
   const addPost = () => {
     if (post.text !== "") {
-      store.dispatch(addPostThunkCreator(props.user, post.text));
+      store.dispatch(addPostThunkCreator(props.login, post.text));
       clear();
     } else {
       return;

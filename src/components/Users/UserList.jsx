@@ -1,28 +1,60 @@
 import "../css/Users.css";
 import { Form } from "react-bootstrap";
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import { StoreContext } from "../..";
 import User from "./User";
 import { useState } from "react";
 import { useEffect } from "react";
 import { BiSearch } from "react-icons/bi";
-import { fetchUsersThunkCreator } from "../../Store/ActionCreators/UsersActionCreators";
+import {
+  cleanAllUsersActionCreator,
+  fetchUsersThunkCreator,
+} from "../../Store/ActionCreators/UsersActionCreators";
+import { useLocation} from "react-router";
 
-const UserList = () => {
+const UserList = (props) => {
   const store = useContext(StoreContext);
 
-  const [users, setUsers] = useState();
+  const location = useLocation();
+
+  const [users, setUsers] = useState([]);
   const [filter, setFilter] = useState(users);
 
+  const [limit, setLimit] = useState(store.getState().usersPage.limit);
+  const [page, setPage] = useState(1);
+
+  const observer = useRef(null);
+
   const fetchUsers = () => {
-    store.dispatch(fetchUsersThunkCreator());
+    store.dispatch(fetchUsersThunkCreator(limit, page));
   };
 
   useEffect(() => {
     fetchUsers();
-  }, []);
+  }, [page]);
 
-  store.subscribe(() => setUsers(store.getState().usersPage.users));
+  
+  useEffect(() => {
+    store.dispatch(cleanAllUsersActionCreator());
+  }, [location.pathname]);
+
+
+  store.subscribe(() => {
+    setUsers(store.getState().usersPage.allUsers);
+  });
+
+  useEffect(() => {
+    if (props.trigger === null && page === undefined) return;
+    if (observer.current) observer.current.disconnect();
+    if (page > limit) return;
+    const callback = function (entries, observer) {
+      if (entries[0].isIntersecting) {
+        setPage((page) => page + 1);
+      }
+    };
+    observer.current = new IntersectionObserver(callback);
+    observer.current.observe(props.trigger.current);
+  }, []);
 
   useEffect(() => {
     setFilter(users);

@@ -30,6 +30,7 @@ const FriendList = () => {
     store.dispatch(fetchOneUserThunkCreator(id));
   };
 
+  
   useEffect(() => {
     fetchUsers();
   }, []);
@@ -47,8 +48,11 @@ const FriendList = () => {
   
   
 
-
-
+  const isEmpty = () => {
+    if (currentUser !== undefined ) {
+      return Object.keys(currentUser).length === 0;
+    }
+  };
 
 
   useEffect(() => {
@@ -74,7 +78,7 @@ const FriendList = () => {
     );
   };
 
-  return currentUser !== undefined ? (
+  return !isEmpty() && currentUser !== undefined ? (
     <>
       <div className="users-wrapper">
         <Link className="sidebar-link" to={`/${id}`}>

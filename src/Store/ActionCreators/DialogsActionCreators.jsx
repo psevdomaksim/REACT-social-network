@@ -56,15 +56,15 @@ export const fetchOneDialogThunkCreator = (id) => {
         dispatch(fetchMessagesActionCreator(data));
       });
 
-      // if (dialog.firstUserId !== 69) {
-      //   fetchOneUser(dialog.firstUserId).then((user) => {
-      //     dispatch(fetchOneUserActionCreator(user));
-      //   });
-      // } else {
-      //   fetchOneUser(dialog.secondUserId).then((user) => {
-      //     dispatch(fetchOneUserActionCreator(user));
-      //   });
-      // }
+       if (dialog.firstUserId !== 69) {
+         fetchOneUser(dialog.firstUserId).then((user) => {
+           dispatch(fetchOneUserActionCreator(user));
+         });
+       } else {
+         fetchOneUser(dialog.secondUserId).then((user) => {
+           dispatch(fetchOneUserActionCreator(user));
+         });
+       }
     });
   };
 };
