@@ -6,7 +6,7 @@ let initialState = {
   allUsers: [],
   currentUser: {},
   currentLogin: {},
-  limit: 8,
+  limit: 6,
   page: 1,
 };
 

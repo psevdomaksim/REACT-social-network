@@ -1,4 +1,4 @@
-import { ADD_MESSAGE, FETCH_DIALOGS, FETCH_ONE_DIALOG, CHANGE_DIALOG_LAST_MESSAGE } from "../../UTILS";
+import { ADD_MESSAGE, FETCH_DIALOGS, FETCH_ONE_DIALOG, CHANGE_DIALOG_LAST_MESSAGE, GO_TO_DIALOG, CREATE_NEW_DIALOG } from "../../UTILS";
 
 let initialState = {
   dialogs: [],
@@ -24,6 +24,17 @@ const dialogsReducer = (state = initialState, action) => {
     }
     case CHANGE_DIALOG_LAST_MESSAGE:{
       state = { ...state, lastMessage: action.data };
+      return state;
+    }
+    case GO_TO_DIALOG:{
+      state = { ...state, currentDialog: action.data };
+      return state;
+    }
+    case CREATE_NEW_DIALOG:{
+
+      const dialogs = state.dialogs;
+      dialogs.push(action.data)
+      state = { ...state, dialogs: dialogs };
       return state;
     }
     default:

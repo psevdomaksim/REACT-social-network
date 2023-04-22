@@ -7,9 +7,11 @@ import { fetchUsersThunkCreator } from "../../Store/ActionCreators/UsersActionCr
 import { useState } from "react";
 import { Spinner } from "react-bootstrap";
 import { fetchDialogsThunkCreator } from "../../Store/ActionCreators/DialogsActionCreators";
+import { useParams } from "react-router";
 
 const DialogsPreviewList = () => {
   const store = useContext(StoreContext);
+const {id} = useParams();
 
   const [users, setUsers] = useState();
   const [dialogs, setDialogs] = useState();
@@ -34,7 +36,7 @@ const DialogsPreviewList = () => {
   useEffect(() => {
     fetchUsers();
     fetchDialogs();
-  }, []);
+  }, [id]);
 
   return users !== undefined && dialogs !== undefined  ? (
     <>
@@ -42,7 +44,7 @@ const DialogsPreviewList = () => {
         <h3 className="dialog-preview__header">Dialogs</h3>
         {users.map((user) =>
           dialogs.map((dialog) =>
-            user.id != 69 && (dialog.firstUserId == user.id || dialog.secondUserId == user.id)  ? (
+            user.id !== 69 && (dialog.firstUserId == user.id || dialog.secondUserId == user.id) ? (
               <DialogPreview
                 key={dialog.id}
                 id={dialog.id}
@@ -50,9 +52,17 @@ const DialogsPreviewList = () => {
                 name={user.data.name}
                 text_preview={dialog.lastMessage}
               />
-            ) : (
-              <></>
+            ) : user.id === 69 && (dialog.firstUserId === 69 && dialog.secondUserId === 69 ) ? (
+               <DialogPreview
+                key={dialog.id}
+                id={dialog.id}
+                avatar={user.data.avatarImage}
+                name={user.data.name}
+                text_preview={dialog.lastMessage}
+            />
             )
+            :
+            <></>
           )
         )}
       </main>

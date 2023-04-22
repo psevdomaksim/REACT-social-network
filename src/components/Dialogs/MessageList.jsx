@@ -97,9 +97,13 @@ const isEmpty = () => {
   return (
     <>
       {!isEmpty() && currentUser !== undefined ? (
-        <Link className="dialog-info__button" to={`/profile/${currentUser.id}`}>
-          <h3 className="messageList__username">{currentUser.data.name}</h3>
-        </Link>
+     
+          <h3 className="messageList__username">  
+           <Link className="dialog-info__button" to={`/profile/${currentUser.id}`}>
+            {currentUser.data.name} 
+            </Link>
+          </h3>
+       
       ) : (
         <></>
       )}

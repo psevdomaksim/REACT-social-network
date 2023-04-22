@@ -30,6 +30,7 @@ export const addPostThunkCreator = (user, text) => {
     id: Math.floor(Math.random() * 10000) + 1,
     authorId: 69,
     authorName: user.data.name,
+    authorAvatarImage: user.data.avatarImage,
     userId: user.id,
     text: text,
     date: new Date(),

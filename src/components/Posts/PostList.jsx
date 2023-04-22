@@ -1,6 +1,6 @@
 import "../../App.css";
 import "../css/Content.css";
-import { Image, Form, Button, Spinner } from "react-bootstrap";
+import { Form, Button, Spinner } from "react-bootstrap";
 import Post from "./Post";
 import { useRef, useState } from "react";
 import {
@@ -129,6 +129,7 @@ const PostList = (props) => {
 
           postId={post.id}
           userId={post.authorId}
+          authorAvatar={post.authorAvatarImage}
           profileId={props.user.id}
           authorName={post.authorName}
           text={post.text}

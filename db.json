@@ -320,6 +320,12 @@
       "firstUserId": 3,
       "secondUserId": 69,
       "lastMessage": "dfg"
+    },
+    {
+      "id": 6737,
+      "firstUserId": 69,
+      "secondUserId": 69,
+      "lastMessage": "это чат с самим с собой для заметок "
     }
   ],
   "messages": [
@@ -382,6 +388,12 @@
       "dialogId": "45",
       "fromUserId": 69,
       "text": "привет"
+    },
+    {
+      "id": 7107,
+      "dialogId": "6737",
+      "fromUserId": 69,
+      "text": "это чат с самим с собой для заметок "
     }
   ],
   "posts": [
@@ -389,6 +401,7 @@
       "id": 4,
       "authorId": 2,
       "authorName": "INSPACE",
+      "authorAvatarImage": "inspace.jpg",
       "userId": 1,
       "text": "тестируем посты"
     },
@@ -396,6 +409,7 @@
       "id": 6459,
       "authorId": 69,
       "authorName": "maksos",
+      "authorAvatarImage": "ava.jpg",
       "userId": 3,
       "text": "Тестируем посты"
     },
@@ -403,6 +417,7 @@
       "id": 2,
       "authorId": 2,
       "authorName": "INSPACE",
+      "authorAvatarImage": "inspace.jpg",
       "userId": 69,
       "text": "салют"
     },
@@ -410,6 +425,7 @@
       "id": 519,
       "authorId": 69,
       "authorName": "maksos",
+      "authorAvatarImage": "ava.jpg",
       "userId": 69,
       "text": "1",
       "date": "2023-04-18T20:30:06.124Z"
@@ -418,6 +434,7 @@
       "id": 9220,
       "authorId": 69,
       "authorName": "maksos",
+      "authorAvatarImage": "ava.jpg",
       "userId": 69,
       "text": "2",
       "date": "2023-04-18T20:53:59.927Z"
@@ -426,9 +443,19 @@
       "id": 536,
       "authorId": 69,
       "authorName": "maksos",
+      "authorAvatarImage": "ava.jpg",
       "userId": 69,
       "text": "3",
       "date": "2023-04-18T20:54:02.987Z"
+    },
+    {
+      "id": 1610,
+      "authorId": 69,
+      "authorName": "maksos",
+      "authorAvatarImage": "ava.jpg",
+      "userId": 69,
+      "text": "4",
+      "date": "2023-04-22T15:48:57.792Z"
     }
   ]
 }

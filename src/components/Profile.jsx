@@ -14,7 +14,7 @@ import {
   fetchUsersThunkCreator,
 } from "../Store/ActionCreators/UsersActionCreators";
 import { useRef } from "react";
-import { fetchDialogsThunkCreator, fetchOneDialogThunkCreator } from "../Store/ActionCreators/DialogsActionCreators";
+import { fetchDialogsThunkCreator, goToDialogThunkCreator } from "../Store/ActionCreators/DialogsActionCreators";
 
 
 const Profile = () => {
@@ -43,19 +43,19 @@ const Profile = () => {
   };
 
  const fetchCurrentDialog = () => {
-    store.dispatch(fetchOneDialogThunkCreator(id));
+    store.dispatch(goToDialogThunkCreator(id));
   };
 
 
 
   useEffect(() => {
     fetchOneUser(id);
-  }, [id, users]);
+    fetchCurrentDialog();
+  }, [id]);
 
   useEffect(() => {
     fetchUsers();
     fetchCurrentLogin();
-    fetchCurrentDialog();
   }, []);
 
   store.subscribe(() => {
@@ -67,6 +67,7 @@ const Profile = () => {
 
 
   const goToDialog = () => {
+    fetchCurrentDialog();
     console.log(currentDialog)
   }
 
@@ -97,14 +98,15 @@ const Profile = () => {
               height={100}
               src={require("../assets/images/" + currentUser.data.avatarImage)}
               className="profile-avatar"
-              href="/"
             />
           }
 
           <div className="profile-data">
             <div className="profile-header">
             <h3>{currentUser.data.name}</h3>
-            <Button variant="outline-secondary" onClick={goToDialog}>Send message</Button>
+            <Link className="sidebar-link" to={`/dialogs/${currentDialog.id}`}>
+             <Button variant="outline-secondary" onClick={goToDialog}>Send message</Button> 
+            </Link>
             </div>
         
             <Link className="sidebar-link" to={`/friends/${id}`}>
