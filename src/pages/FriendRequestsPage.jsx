@@ -1,11 +1,9 @@
-import { Link } from "react-router-dom";
 import "../App.css";
 import FriendRequestList from "../components/FriendRequests/FriendRequestsList";
-import FriendList from "../components/Friends/FriendList";
 import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 
-const FriendsPage = () => {
+const FriendRequestsPage = () => {
   return (
     <>
       <Header />
@@ -13,7 +11,7 @@ const FriendsPage = () => {
         <div className="content-wrapper">
           <Sidebar />
           <div className="friendList">      
-            <FriendList />
+            <FriendRequestList/>
           </div>
         </div>
       </div>
@@ -21,4 +19,4 @@ const FriendsPage = () => {
   );
 };
 
-export default FriendsPage;
+export default FriendRequestsPage;

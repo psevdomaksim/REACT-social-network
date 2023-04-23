@@ -12,12 +12,7 @@
         "dateOfBirth": "25/09/1987",
         "City": "Minsk",
         "Education": ""
-      },
-      "friends": [
-        2,
-        3,
-        69
-      ]
+      }
     },
     {
       "id": 2,
@@ -31,12 +26,7 @@
         "dateOfBirth": "04/12/1992",
         "city": "Minsk",
         "education": ""
-      },
-      "friends": [
-        1,
-        69,
-        3
-      ]
+      }
     },
     {
       "id": 3,
@@ -50,12 +40,7 @@
         "dateOfBirth": "21/03/1993",
         "city": "Minsk",
         "education": ""
-      },
-      "friends": [
-        1,
-        2,
-        69
-      ]
+      }
     },
     {
       "id": 69,
@@ -69,12 +54,7 @@
         "dateOfBirth": "24/06/2004",
         "city": "Minsk",
         "education": "ИНСТИТУТ ПИВА"
-      },
-      "friends": [
-        1,
-        2,
-        3
-      ]
+      }
     },
     {
       "id": 4,
@@ -88,8 +68,7 @@
         "dateOfBirth": "",
         "city": "",
         "education": ""
-      },
-      "friends": []
+      }
     },
     {
       "id": 5,
@@ -103,8 +82,7 @@
         "dateOfBirth": "",
         "city": "",
         "education": ""
-      },
-      "friends": []
+      }
     },
     {
       "id": 6,
@@ -118,8 +96,7 @@
         "dateOfBirth": "",
         "city": "",
         "education": ""
-      },
-      "friends": []
+      }
     },
     {
       "id": 7,
@@ -133,8 +110,7 @@
         "dateOfBirth": "",
         "city": "",
         "education": ""
-      },
-      "friends": []
+      }
     },
     {
       "id": 9,
@@ -148,8 +124,7 @@
         "dateOfBirth": "",
         "city": "",
         "education": ""
-      },
-      "friends": []
+      }
     },
     {
       "id": 10,
@@ -163,8 +138,7 @@
         "dateOfBirth": "",
         "city": "",
         "education": ""
-      },
-      "friends": []
+      }
     },
     {
       "id": 11,
@@ -178,8 +152,7 @@
         "dateOfBirth": "",
         "city": "",
         "education": ""
-      },
-      "friends": []
+      }
     },
     {
       "id": 12,
@@ -193,8 +166,7 @@
         "dateOfBirth": "",
         "city": "",
         "education": ""
-      },
-      "friends": []
+      }
     },
     {
       "id": 13,
@@ -208,8 +180,7 @@
         "dateOfBirth": "",
         "city": "",
         "education": ""
-      },
-      "friends": []
+      }
     },
     {
       "id": 14,
@@ -223,8 +194,7 @@
         "dateOfBirth": "",
         "city": "",
         "education": ""
-      },
-      "friends": []
+      }
     },
     {
       "id": 15,
@@ -238,8 +208,7 @@
         "dateOfBirth": "",
         "city": "",
         "education": ""
-      },
-      "friends": []
+      }
     },
     {
       "id": 16,
@@ -253,8 +222,7 @@
         "dateOfBirth": "",
         "city": "",
         "education": ""
-      },
-      "friends": []
+      }
     },
     {
       "id": 17,
@@ -268,8 +236,7 @@
         "dateOfBirth": "",
         "city": "",
         "education": ""
-      },
-      "friends": []
+      }
     },
     {
       "id": 18,
@@ -283,8 +250,7 @@
         "dateOfBirth": "",
         "city": "",
         "education": ""
-      },
-      "friends": []
+      }
     },
     {
       "id": 19,
@@ -298,8 +264,55 @@
         "dateOfBirth": "",
         "city": "",
         "education": ""
-      },
-      "friends": []
+      }
+    }
+  ],
+  "friends": [
+    {
+      "id": 1,
+      "userId": 2,
+      "secondUserId": 3
+    },
+    {
+      "id": 2,
+      "userId": 3,
+      "secondUserId": 2
+    },
+    {
+      "id": 3,
+      "userId": 69,
+      "secondUserId": 2
+    },
+    {
+      "id": 4,
+      "userId": 2,
+      "secondUserId": 69
+    },
+    {
+      "id": 5,
+      "userId": 69,
+      "secondUserId": 1
+    },
+    {
+      "userId": 1,
+      "secondUserId": 69
+    }
+  ],
+  "friendRequests": [
+    {
+      "id": 1,
+      "userId": 1,
+      "requestSenderId": 2
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "requestSenderId": 3
+    },
+    {
+      "id": 3,
+      "userId": 69,
+      "requestSenderId": 2
     }
   ],
   "dialogs": [
@@ -447,15 +460,6 @@
       "userId": 69,
       "text": "3",
       "date": "2023-04-18T20:54:02.987Z"
-    },
-    {
-      "id": 1610,
-      "authorId": 69,
-      "authorName": "maksos",
-      "authorAvatarImage": "ava.jpg",
-      "userId": 69,
-      "text": "4",
-      "date": "2023-04-22T15:48:57.792Z"
     }
   ]
 }

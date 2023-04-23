@@ -68,7 +68,6 @@ const Profile = () => {
 
   const goToDialog = () => {
     fetchCurrentDialog();
-    console.log(currentDialog)
   }
 
 

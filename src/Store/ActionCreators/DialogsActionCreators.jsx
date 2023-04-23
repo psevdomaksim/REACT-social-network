@@ -105,7 +105,6 @@ export const goToDialogThunkCreator = (id) => {
   
        if(Object.keys(curDialog).length === 0)
         {
-          console.log("create dialog")
 
          let newDialog = {
            id: Math.floor(Math.random() * 10000) + 1,
@@ -114,9 +113,6 @@ export const goToDialogThunkCreator = (id) => {
            lastMessage: ""
          }
 
-          // createNewDialog(newDialog).then((data) => {
-          //   dispatch(createDialogActionCreator(data));
-          // })
         dispatch(createDialogActionCreator(newDialog));
         dispatch(goToDialogActionCreator(newDialog));
       

@@ -2,7 +2,7 @@ import "../css/Users.css";
 import { Button, Image } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
-const Friend = (props) => {
+const FriendRequest = (props) => {
   return (
     <>
       <div className="user-item">
@@ -26,13 +26,23 @@ const Friend = (props) => {
 
             {
               props.userId===69?
-              <Button
-                variant="secondary"
+              <>
+                   <Button
+                variant="success"
                 size="sm"
-                onClick={() => props.deleteFriend(props.userId, props.friendId)}
+                onClick={() => props.acceptFriendRequest(props.userId, props.requestSenderId)}
               >
-                Remove friend
+                Accept
               </Button>
+              <Button
+                variant="danger"
+                size="sm"
+                onClick={() => props.rejectFriendRequest(props.userId, props.requestSenderId)}
+              >
+                Reject
+              </Button>
+              </>
+            
               :<></>
             }
           </div>
@@ -42,4 +52,4 @@ const Friend = (props) => {
   );
 };
 
-export default Friend;
+export default FriendRequest;

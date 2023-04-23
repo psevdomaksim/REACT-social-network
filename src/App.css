@@ -21,6 +21,18 @@ html {
 }
 
 
+
+.link{
+  text-decoration: none;
+}
+
+
+.friendList{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
 .postList{
   margin-left: auto;
   margin-right: auto;

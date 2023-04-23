@@ -3,7 +3,7 @@ import { Form, Image, Spinner } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 import { useContext } from "react";
 import { StoreContext } from "../..";
-import Friend from "./Friend";
+import Friend from "./FriendRequest";
 import { useState } from "react";
 import { useEffect } from "react";
 import { BiSearch } from "react-icons/bi";
@@ -12,21 +12,24 @@ import {
   fetchUsersThunkCreator,
 } from "../../Store/ActionCreators/UsersActionCreators";
 import {
+  acceptFriendRequestThunkCreator,
   deleteFriendThunkCreator,
+  fetchFriendRequestsThunkCreator,
   fetchFriendsThunkCreator,
 } from "../../Store/ActionCreators/FriendsActionCreators";
+import FriendRequest from "./FriendRequest";
 
-const FriendList = () => {
+const FriendRequestList = () => {
   const { id } = useParams();
 
-  const [friends, setFriends] = useState();
+  const [friendRequests, setFriendRequests] = useState();
   const [users, setUsers] = useState();
   const [currentUser, setCurrentUser] = useState();
-  const [filter, setFilter] = useState(friends);
+  const [filter, setFilter] = useState(friendRequests);
   const store = useContext(StoreContext);
 
-  const fetchFriends = () => {
-    store.dispatch(fetchFriendsThunkCreator(id));
+  const fetchFriendRequests = () => {
+    store.dispatch(fetchFriendRequestsThunkCreator(id));
   };
 
   const fetchUsers = () => {
@@ -37,23 +40,30 @@ const FriendList = () => {
     store.dispatch(fetchOneUserThunkCreator(id));
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    fetchFriendRequests();
+    fetchUsers();
+  }, []);
 
   useEffect(() => {
     fetchOneUser();
-    fetchFriends();
-    fetchUsers();
   }, [id]);
 
   store.subscribe(() => {
-    setFriends(store.getState().friendsPage.friends);
+    setFriendRequests(store.getState().friendsPage.friendRequests);
     setUsers(store.getState().usersPage.users);
     setCurrentUser(store.getState().usersPage.currentUser);
   });
 
-  const deleteFriend = (id, friendId) => {
-    store.dispatch(deleteFriendThunkCreator(id, friendId));
+  const acceptFriendRequest = (userId, requestSenderId) => {
+    store.dispatch(acceptFriendRequestThunkCreator(userId, requestSenderId));
   };
+
+  const rejectFriendRequest = (userId, requestSenderId) => {
+    console.log("reject")
+    //  store.dispatch(deleteFriendThunkCreator(id, friendId));
+    };
+
 
   const isEmpty = () => {
     if (currentUser !== undefined) {
@@ -65,29 +75,14 @@ const FriendList = () => {
     setFilter(users);
   }, [users]);
 
-  const getSearch = () => {
-    if (filter) {
-      return filter;
-    }
-    return users;
-  };
+ 
 
-  const userSearch = getSearch();
 
-  const onChange = (event) => {
-    setFilter(
-      users.filter((user) => {
-        return user.data.name
-          .toLowerCase()
-          .includes(event.target.value.toLowerCase());
-      })
-    );
-  };
 
   return !isEmpty() && currentUser !== undefined ? (
     <>
       <div className="users-wrapper">
-        <Link className="link" to={`/${id}`}>
+      <Link className="link" to={`/${id}`}>
           <div className="user-info">
             <Image
               width={50}
@@ -100,52 +95,36 @@ const FriendList = () => {
             <h3>{currentUser.data.name}</h3>
           </div>
         </Link>
-
         <div className="friendlist-header">
           <div className="user-info">
-            <h3 className="friends-header"> Friends</h3>
-            {id == 69 ? (
-              <Link className="link" to={`/friendRequests/${id}`}>
-                <h4> Friend Requests</h4>
-              </Link>
-            ) : (
-              <></>
-            )}
-          </div>
-
-          <Link className="link" to="/users">
-            <h3> All users</h3>
+         <h3 className="friends-header"> Friend Request</h3>
+         
+         <Link className="link" to={`/friends/${id}`}>
+            <h4> Friends</h4>
           </Link>
         </div>
+        </div>
+        
 
-        <Form className="userlist-form">
-          <BiSearch size={30}></BiSearch>
-          <Form.Control
-            type="text"
-            placeholder="Find friend"
-            onChange={onChange}
-          />
-        </Form>
-
-        {friends.length !== 0 ? (
-          users &&
-          userSearch.map((user) =>
-            friends.map((friend) =>
-              friend.secondUserId == user.id ? (
-                <Friend
+        {friendRequests.length !== 0 ? (
+          users.map((user) =>
+          friendRequests.map((friendRequest) =>
+          friendRequest.requestSenderId == user.id ? (
+                <FriendRequest
                   key={user.id}
                   userId={+id}
-                  deleteFriend={deleteFriend}
-                  friendId={user.id}
+                  acceptFriendRequest={acceptFriendRequest}
+                  rejectFriendRequest={rejectFriendRequest}
+                  requestSenderId={user.id}
                   user={user.data}
-                ></Friend>
+                ></FriendRequest>
               ) : (
                 <></>
               )
             )
           )
         ) : (
-          <h2 className="no-friends">No friend found</h2>
+          <h2 className="no-friends">No friend requsts found</h2>
         )}
       </div>
     </>
@@ -154,4 +133,4 @@ const FriendList = () => {
   );
 };
 
-export default FriendList;
+export default FriendRequestList;

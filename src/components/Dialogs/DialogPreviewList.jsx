@@ -1,5 +1,5 @@
 import "../css/Dialogs.css";
-import DialogPreview from "../Friends/DialogPreview";
+import DialogPreview from "./DialogPreview";
 import { useContext } from "react";
 import { StoreContext } from "../..";
 import { useEffect } from "react";
