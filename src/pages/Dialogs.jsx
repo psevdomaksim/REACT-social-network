@@ -5,6 +5,7 @@ import Header from "../components/Header";
 import Sidebar from "../components/Sidebar";
 import { BiMessageRounded } from "react-icons/bi";
 
+
 function Dialogs() {
   return (
     <>
@@ -15,7 +16,7 @@ function Dialogs() {
           <DialogPreviewList />
           <div className="dialog-page">
             <div className="chooseChatBlock">
-              <BiMessageRounded size={40} /> Выберите чат
+              <BiMessageRounded size={40} /> Select a chat
             </div>
           </div>
         </div>

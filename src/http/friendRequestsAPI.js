@@ -5,8 +5,13 @@ export const fetchFriendRequests = async (userId) => {
   return data;
 };
 
-export const fetchOneFriendRequest = async (id) => {
-  const { data } = await $host.get(`/friendRequests/${id}`);
+export const fetchOneFriendRequest = async (userId, requestSenderId) => {
+  const { data } = await $host.get(`/friendRequests/`,{
+    params:{
+      userId: userId,
+      requestSenderId: requestSenderId
+    }
+  });
   return data;
 };
 
@@ -19,15 +24,6 @@ export const sendFriendRequest = async (newFriendRequest) => {
   return data;
 };
 
-
-export const acceptFriendRequest = async (newFriend) => {
-  const { data } = await $host({
-    method: "POST",
-    url: `/friendRequests`,
-    data: newFriend,
-  });
-  return data;
-};
 
 export const deleteFriendRequest = async (id) => {
  

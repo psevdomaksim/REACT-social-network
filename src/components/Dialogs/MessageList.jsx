@@ -111,7 +111,7 @@ const isEmpty = () => {
       {currentDialog !== undefined && dialogMessages!==undefined ? (
         <div className="messages" ref={messageScroll}>
           {users.map((user) =>
-              currentDialog.firstUserId == user.id ? (
+              currentDialog.firstUserId == user.id  ? (
                 dialogMessages.map((message) => (
                   <Message
                     key={message.id}

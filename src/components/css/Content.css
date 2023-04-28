@@ -10,6 +10,7 @@
 .main-profile {
   display: flex;
   justify-content: flex-start;
+  
   width: 100%;
   height: 200px;
 }

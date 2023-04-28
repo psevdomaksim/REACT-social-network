@@ -10,6 +10,7 @@ const DialogPreview = (props) => {
       <Link className="dialog-info__button" to={`/dialogs/${props.id}`}>
         <div className="dialog-item">
           <Image
+            roundedCircle="true"
             width={50}
             height={50}
             src={require("../../assets/images/" + props.avatar)}

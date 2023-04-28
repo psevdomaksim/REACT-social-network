@@ -37,8 +37,6 @@ const FriendList = () => {
     store.dispatch(fetchOneUserThunkCreator(id));
   };
 
-  useEffect(() => {}, []);
-
   useEffect(() => {
     fetchOneUser();
     fetchFriends();

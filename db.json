@@ -10,8 +10,8 @@
         "avatarImage": "aikko.jpg",
         "ownerPageCover": "dialog_ava.jpg",
         "dateOfBirth": "25/09/1987",
-        "City": "Minsk",
-        "Education": ""
+        "city": "Minsk",
+        "education": ""
       }
     },
     {
@@ -50,7 +50,7 @@
         "name": "maksos",
         "status": "РЕАКТ РЕДАКС ТЫ ЗНАТЬ БУДЕШЬ КРУТО",
         "avatarImage": "ava.jpg",
-        "ownerPageCover": "main-image.png",
+        "ownerPageCover": "",
         "dateOfBirth": "24/06/2004",
         "city": "Minsk",
         "education": "ИНСТИТУТ ПИВА"
@@ -294,6 +294,7 @@
       "secondUserId": 1
     },
     {
+      "id": 6,
       "userId": 1,
       "secondUserId": 69
     }
@@ -310,10 +311,16 @@
       "requestSenderId": 3
     },
     {
-      "id": 3,
+      "id": 5376,
+      "userId": 11,
+      "requestSenderId": 69
+    },
+    {
+      "id": 4508,
       "userId": 69,
-      "requestSenderId": 2
+      "requestSenderId": 7
     }
+
   ],
   "dialogs": [
     {
@@ -398,13 +405,13 @@
     },
     {
       "id": 9729,
-      "dialogId": "45",
+      "dialogId": 45,
       "fromUserId": 69,
       "text": "привет"
     },
     {
       "id": 7107,
-      "dialogId": "6737",
+      "dialogId": 6737,
       "fromUserId": 69,
       "text": "это чат с самим с собой для заметок "
     }
@@ -433,33 +440,6 @@
       "authorAvatarImage": "inspace.jpg",
       "userId": 69,
       "text": "салют"
-    },
-    {
-      "id": 519,
-      "authorId": 69,
-      "authorName": "maksos",
-      "authorAvatarImage": "ava.jpg",
-      "userId": 69,
-      "text": "1",
-      "date": "2023-04-18T20:30:06.124Z"
-    },
-    {
-      "id": 9220,
-      "authorId": 69,
-      "authorName": "maksos",
-      "authorAvatarImage": "ava.jpg",
-      "userId": 69,
-      "text": "2",
-      "date": "2023-04-18T20:53:59.927Z"
-    },
-    {
-      "id": 536,
-      "authorId": 69,
-      "authorName": "maksos",
-      "authorAvatarImage": "ava.jpg",
-      "userId": 69,
-      "text": "3",
-      "date": "2023-04-18T20:54:02.987Z"
     }
   ]
 }

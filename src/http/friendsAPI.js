@@ -10,10 +10,10 @@ export const fetchOneFriend = async (userId, friendId) => {
   return data;
 };
 
-export const addFriend = async (userId, newFriend) => {
+export const addFriend = async (newFriend) => {
   const { data } = await $host({
     method: "POST",
-    url: `/users/${userId}/friends`,
+    url: `/friends`,
     data: newFriend,
   });
   return data;

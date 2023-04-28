@@ -8,13 +8,13 @@ const Sidebar = () => {
       <aside className="sidebar">
         <div className="sidebar-item">
           <Link className="sidebar-link" to={`/profile/${69}`}>
-            Profile
+            My profile
           </Link>
         </div>
 
         <div className="sidebar-item">
           <Link className="sidebar-link" to="/dialogs">
-            Messages
+            Messenger
           </Link>
         </div>
 

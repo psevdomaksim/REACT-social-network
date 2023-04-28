@@ -12,12 +12,11 @@ import {
   fetchUsersThunkCreator,
 } from "../../Store/ActionCreators/UsersActionCreators";
 import {
-  acceptFriendRequestThunkCreator,
-  deleteFriendThunkCreator,
   fetchFriendRequestsThunkCreator,
-  fetchFriendsThunkCreator,
-} from "../../Store/ActionCreators/FriendsActionCreators";
+  rejectFriendRequestThunkCreator,
+} from "../../Store/ActionCreators/FriendReqsActionCreators";
 import FriendRequest from "./FriendRequest";
+import { addFriendThunkCreator } from "../../Store/ActionCreators/FriendsActionCreators";
 
 const FriendRequestList = () => {
   const { id } = useParams();
@@ -25,7 +24,6 @@ const FriendRequestList = () => {
   const [friendRequests, setFriendRequests] = useState();
   const [users, setUsers] = useState();
   const [currentUser, setCurrentUser] = useState();
-  const [filter, setFilter] = useState(friendRequests);
   const store = useContext(StoreContext);
 
   const fetchFriendRequests = () => {
@@ -50,20 +48,18 @@ const FriendRequestList = () => {
   }, [id]);
 
   store.subscribe(() => {
-    setFriendRequests(store.getState().friendsPage.friendRequests);
+    setFriendRequests(store.getState().friendReqsPage.friendRequests);
     setUsers(store.getState().usersPage.users);
     setCurrentUser(store.getState().usersPage.currentUser);
   });
 
-  const acceptFriendRequest = (userId, requestSenderId) => {
-    store.dispatch(acceptFriendRequestThunkCreator(userId, requestSenderId));
+  const acceptFriendRequest = (friendRequest) => {
+    store.dispatch(addFriendThunkCreator(friendRequest));
   };
 
-  const rejectFriendRequest = (userId, requestSenderId) => {
-    console.log("reject")
-    //  store.dispatch(deleteFriendThunkCreator(id, friendId));
-    };
-
+  const rejectFriendRequest = (friendRequest) => {
+    store.dispatch(rejectFriendRequestThunkCreator(friendRequest));
+  };
 
   const isEmpty = () => {
     if (currentUser !== undefined) {
@@ -71,18 +67,11 @@ const FriendRequestList = () => {
     }
   };
 
-  useEffect(() => {
-    setFilter(users);
-  }, [users]);
-
- 
-
-
 
   return !isEmpty() && currentUser !== undefined ? (
     <>
       <div className="users-wrapper">
-      <Link className="link" to={`/${id}`}>
+        <Link className="link" to={`/${id}`}>
           <div className="user-info">
             <Image
               width={50}
@@ -97,25 +86,23 @@ const FriendRequestList = () => {
         </Link>
         <div className="friendlist-header">
           <div className="user-info">
-         <h3 className="friends-header"> Friend Request</h3>
-         
-         <Link className="link" to={`/friends/${id}`}>
-            <h4> Friends</h4>
-          </Link>
+            <h3 className="friends-header"> Friend Request</h3>
+
+            <Link className="link" to={`/friends/${id}`}>
+              <h4> Friends</h4>
+            </Link>
+          </div>
         </div>
-        </div>
-        
 
         {friendRequests.length !== 0 ? (
           users.map((user) =>
-          friendRequests.map((friendRequest) =>
-          friendRequest.requestSenderId == user.id ? (
+            friendRequests.map((friendRequest) =>
+              friendRequest.requestSenderId == user.id ? (
                 <FriendRequest
                   key={user.id}
-                  userId={+id}
                   acceptFriendRequest={acceptFriendRequest}
                   rejectFriendRequest={rejectFriendRequest}
-                  requestSenderId={user.id}
+                  friendRequest={friendRequest}
                   user={user.data}
                 ></FriendRequest>
               ) : (
@@ -124,7 +111,7 @@ const FriendRequestList = () => {
             )
           )
         ) : (
-          <h2 className="no-friends">No friend requsts found</h2>
+          <h2 className="no-friends">No friend requests found</h2>
         )}
       </div>
     </>

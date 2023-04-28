@@ -1,10 +1,9 @@
-import { ACCEPT_FRIEND_REQUEST, DELETE_FRIEND, DELETE_FRIEND_REQUEST, FETCH_FRIENDS, FETCH_FRIEND_REQUESTS, FETCH_ONE_FRIEND } from "../../UTILS";
+import { ACCEPT_FRIEND_REQUEST, ADD_FRIEND, DELETE_FRIEND, DELETE_FRIEND_REQUEST, FETCH_FRIENDS, FETCH_FRIEND_REQUESTS, FETCH_ONE_FRIEND, FETCH_ONE_REQUEST, REJECT_FRIEND_REQUEST, SEND_FRIEND_REQUEST } from "../../UTILS";
 
 
 let initialState = {
   friends: [],
-  friendRequests: [],
-  oneFriend: {}
+  oneFriend: {},
 };
 
 const friendsReducer = (state = initialState, action) => {
@@ -27,24 +26,17 @@ const friendsReducer = (state = initialState, action) => {
       return state;
     }
 
-    case FETCH_FRIEND_REQUESTS:{
-      state = { ...state, friendRequests: action.data };
-      return state;
-    }
-    case ACCEPT_FRIEND_REQUEST:{
-      const friends = state.friends;
-      friends.push(action.data)
-      state = { ...state, friends: friends };
-      return state;
-    }
-    case DELETE_FRIEND_REQUEST:{
-      const friendRequests = state.friendRequests.filter((friendRequest) => friendRequest.id !== action.id);
-      state = { ...state, friendRequests: friendRequests };
-      return state;
+    case ADD_FRIEND:{
+        const friends = state.friends;
+        friends.push(action.data)
+        state = { ...state, friends: friends };
+        return state;    
     }
 
+
     default:
-      return state;
+       return state;
+    
   }
 };
 

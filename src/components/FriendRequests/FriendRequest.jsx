@@ -6,7 +6,7 @@ const FriendRequest = (props) => {
   return (
     <>
       <div className="user-item">
-        <Link to={`/profile/${props.friendId}`}>
+        <Link to={`/profile/${props.friendRequest.requestSenderId}`}>
           <Image
             width={70}
             height={70}
@@ -17,7 +17,7 @@ const FriendRequest = (props) => {
         </Link>
         <div className="user-item__card">
           <h5>
-            <Link className="user-item__name" to={`/profile/${props.friendId}`}>
+            <Link className="user-item__name" to={`/profile/${props.friendRequest.requestSenderId}`}>
               {props.user.name}
             </Link>
           </h5>
@@ -25,19 +25,19 @@ const FriendRequest = (props) => {
             <p className="user-item__status">{props.user.status}</p>
 
             {
-              props.userId===69?
+              props.friendRequest.userId==69?
               <>
                    <Button
                 variant="success"
                 size="sm"
-                onClick={() => props.acceptFriendRequest(props.userId, props.requestSenderId)}
+                onClick={() => props.acceptFriendRequest(props.friendRequest)}
               >
                 Accept
               </Button>
               <Button
                 variant="danger"
                 size="sm"
-                onClick={() => props.rejectFriendRequest(props.userId, props.requestSenderId)}
+                onClick={() => props.rejectFriendRequest(props.friendRequest)}
               >
                 Reject
               </Button>
