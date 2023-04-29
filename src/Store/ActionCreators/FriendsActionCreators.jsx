@@ -10,7 +10,7 @@ import {
   DELETE_FRIEND,
   FETCH_FRIENDS,
   FETCH_ONE_FRIEND,
-} from "../../UTILS";
+} from "../../utils/AC_consts";
 import { deleteFriendRequestActionCreator } from "./FriendReqsActionCreators";
 
 // fetch friends

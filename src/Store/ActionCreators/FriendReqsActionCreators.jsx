@@ -12,7 +12,7 @@ import {
   FETCH_ONE_REQUEST,
   REJECT_FRIEND_REQUEST,
   SEND_FRIEND_REQUEST,
-} from "../../UTILS";
+} from "../../utils/AC_consts";
 
 
 // fetch friends requests

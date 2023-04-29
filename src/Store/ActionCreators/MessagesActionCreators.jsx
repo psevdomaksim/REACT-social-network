@@ -4,7 +4,7 @@ import {
 } from "../../http/dialogsAPI";
 import { addMessage, fetchMessages } from "../../http/messagesAPI";
 
-import { ADD_MESSAGE, FETCH_MESSAGES } from "../../UTILS";
+import { ADD_MESSAGE, FETCH_MESSAGES } from "../../utils/AC_consts";
 import {
   changeDialogLastMessageActionCreator,
   createDialogActionCreator,

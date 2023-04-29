@@ -12,7 +12,7 @@ import {
   CHANGE_DIALOG_LAST_MESSAGE,
   GO_TO_DIALOG,
   CREATE_NEW_DIALOG,
-} from "../../UTILS";
+} from "../../utils/AC_consts";
 import { fetchMessagesActionCreator } from "./MessagesActionCreators";
 import { fetchOneUserActionCreator } from "./UsersActionCreators";
 

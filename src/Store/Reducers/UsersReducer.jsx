@@ -1,5 +1,5 @@
-import { CLEAN_ALL_USERS, FETCH_ONE_USER } from "../../UTILS";
-import { FETCH_USERS, FETCH_CURRENT_LOGIN } from "../../UTILS";
+import { CLEAN_ALL_USERS, FETCH_ONE_USER } from "../../utils/AC_consts";
+import { FETCH_USERS, FETCH_CURRENT_LOGIN } from "../../utils/AC_consts";
 
 let initialState = {
   users: [],
@@ -20,16 +20,6 @@ const usersReducer = (state = initialState, action) => {
       }
       if (state.currentUser.data.ownerPageCover === "") {
         state.currentUser.data.ownerPageCover = "default-image.jpg";
-      }
-      return state;
-    }
-    case FETCH_CURRENT_LOGIN: {
-      state = { ...state, currentLogin: action.data };
-      if (state.currentLogin.data.avatarImage === "") {
-        state.currentLogin.data.avatarImage = "default-image.jpg";
-      }
-      if (state.currentLogin.data.ownerPageCover === "") {
-        state.currentLogin.data.ownerPageCover = "default-image.jpg";
       }
       return state;
     }

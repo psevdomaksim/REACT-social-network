@@ -1,5 +1,5 @@
-import { CLEAN_ALL_USERS, FETCH_ONE_USER } from "../../UTILS";
-import { FETCH_USERS, FETCH_CURRENT_LOGIN } from "../../UTILS";
+import { CLEAN_ALL_USERS, FETCH_ONE_USER } from "../../utils/AC_consts";
+import { FETCH_USERS } from "../../utils/AC_consts";
 import { fetchOneUser, fetchUsers } from "../../http/usersAPI";
 
 // fetch users
@@ -43,22 +43,7 @@ export const fetchOneUserThunkCreator = (id) => {
   }
 }
 
-//fetch current login
-export const fetchCurrentLoginActionCreator = (data) => {
 
-  return {
-    type: FETCH_CURRENT_LOGIN,
-    data: data
-  };
-};
-
-export const fetchCurrentLoginThunkCreator = () => {
-  return (dispatch) => {
-    fetchOneUser(69).then((data)=>{
-      dispatch(fetchCurrentLoginActionCreator(data));
-    })
-  }
-}
 
 
 

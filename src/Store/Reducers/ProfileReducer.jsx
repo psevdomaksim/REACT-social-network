@@ -1,4 +1,4 @@
-import { ADD_POST, FETCH_POSTS, DELETE_POST, CHANGE_PAGE, CHANGE_PROFILE } from "../../UTILS";
+import { ADD_POST, FETCH_POSTS, DELETE_POST, CHANGE_PAGE, CHANGE_PROFILE } from "../../utils/AC_consts";
 
 let initialState = {
   posts: [],
@@ -17,7 +17,6 @@ const postsReducer = (state = initialState, action) => {
     }
 
     case ADD_POST: {
-      
       const posts = state.posts;
       posts.push(action.data)
       state = { ...state, posts: posts };

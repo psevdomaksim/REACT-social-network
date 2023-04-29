@@ -1,5 +1,5 @@
 import { addPost, deletePost, fetchPosts } from "../../http/postsAPI";
-import { ADD_POST, CHANGE_PAGE, CHANGE_PROFILE, DELETE_POST, FETCH_POSTS } from "../../UTILS";
+import { ADD_POST, CHANGE_PAGE, CHANGE_PROFILE, DELETE_POST, FETCH_POSTS } from "../../utils/AC_consts";
 
 //fetchPosts
 export const fetchPostsActionCreator = (data) => {

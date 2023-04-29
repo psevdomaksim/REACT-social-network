@@ -4,14 +4,9 @@ import {
   Image,
   Spinner,
   Button,
-  Tooltip,
   DropdownButton,
   Dropdown,
-  ButtonGroup,
 } from "react-bootstrap";
-import OverlayTrigger from "react-bootstrap/OverlayTrigger";
-import Popover from "react-bootstrap/Popover";
-import Overlay from "react-bootstrap/Overlay";
 import PostList from "./Posts/PostList";
 import { useContext } from "react";
 import { StoreContext } from "..";
@@ -20,7 +15,6 @@ import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { useState } from "react";
 import {
-  fetchCurrentLoginThunkCreator,
   fetchOneUserThunkCreator,
   fetchUsersThunkCreator,
 } from "../Store/ActionCreators/UsersActionCreators";
@@ -41,6 +35,7 @@ import {
   rejectFriendRequestThunkCreator,
   sendFriendRequestsThunkCreator,
 } from "../Store/ActionCreators/FriendReqsActionCreators";
+import { fetchCurrentLoginThunkCreator } from "../Store/ActionCreators/AuthActionCreators";
 
 const Profile = () => {
   const { id } = useParams();
@@ -112,7 +107,7 @@ const Profile = () => {
     setFriends(store.getState().friendsPage.friends);
     setOneFriendRequest(store.getState().friendReqsPage.oneFriendReq);
     setCurrentUser(store.getState().usersPage.currentUser);
-    setCurrentLogin(store.getState().usersPage.currentLogin);
+    setCurrentLogin(store.getState().auth.currentLogin);
     setCurrentDialog(store.getState().dialogsPage.currentDialog);
   });
 
