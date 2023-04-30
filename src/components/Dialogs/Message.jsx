@@ -13,14 +13,14 @@ const Message = (props) => {
 
   return (
     <>
-      {props.fromUserId == 69 ? (
+      {props.fromUserId == props.loginId ? (
         <div className="messageMe">
           <h5>Me</h5>
           <p>{props.text}</p>
         </div>
       ) : (
         <div className="message">
-          <h5>{props.name}</h5>
+          {/* <h5>{props.name}</h5> */}
           <p>{props.text}</p>
         </div>
       )}

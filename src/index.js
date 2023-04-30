@@ -8,6 +8,9 @@ export const StoreContext = createContext();
 
 const root = createRoot(document.getElementById("root"));
 
+
+
+
 root.render(
   <StoreContext.Provider value={store}>
     <App />,

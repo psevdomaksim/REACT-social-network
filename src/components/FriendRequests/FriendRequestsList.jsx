@@ -23,6 +23,8 @@ const FriendRequestList = () => {
 
   const [friendRequests, setFriendRequests] = useState();
   const [users, setUsers] = useState();
+  const [login, setLogin] = useState();
+  
   const [currentUser, setCurrentUser] = useState();
   const store = useContext(StoreContext);
 
@@ -51,6 +53,7 @@ const FriendRequestList = () => {
     setFriendRequests(store.getState().friendReqsPage.friendRequests);
     setUsers(store.getState().usersPage.users);
     setCurrentUser(store.getState().usersPage.currentUser);
+    setLogin(store.getState().authPage.currentLogin);
   });
 
   const acceptFriendRequest = (friendRequest) => {
@@ -104,6 +107,7 @@ const FriendRequestList = () => {
                   rejectFriendRequest={rejectFriendRequest}
                   friendRequest={friendRequest}
                   user={user.data}
+                  loginId={login.id}
                 ></FriendRequest>
               ) : (
                 <></>

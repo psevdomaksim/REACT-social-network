@@ -1,4 +1,4 @@
-import { $host } from "./http";
+import { $host, $authHost } from "./http";
 
 
 export const fetchPosts = async (profileId, limit, page) => {
@@ -15,7 +15,7 @@ export const fetchPosts = async (profileId, limit, page) => {
 };
 
 export const addPost = async (newPost) => {
-  const { data } = await $host({
+  const { data } = await $authHost({
     method: "POST",
     url: "/posts",
     data: newPost,
@@ -24,7 +24,7 @@ export const addPost = async (newPost) => {
 };
 
 export const deletePost = async (postId) => {
-  const { data } = await $host.delete(`/posts/${postId}`);
+  const { data } = await $authHost.delete(`/posts/${postId}`);
   return data;
 };
 

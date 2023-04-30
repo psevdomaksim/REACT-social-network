@@ -24,7 +24,7 @@ const Post = (props) => {
           </Link>
           
           
-          {props.profileId === 69 || props.userId === 69 ? (
+          {props.profileId === props.loginId || props.userId === props.loginId ? (
             <AiFillDelete
               onClick={() => props.deletePost(props.postId, props.profileId)}
               size={25}

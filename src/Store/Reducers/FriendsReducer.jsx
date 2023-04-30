@@ -3,7 +3,7 @@ import { ACCEPT_FRIEND_REQUEST, ADD_FRIEND, DELETE_FRIEND, DELETE_FRIEND_REQUEST
 
 let initialState = {
   friends: [],
-  oneFriend: {},
+  oneFriend: undefined,
 };
 
 const friendsReducer = (state = initialState, action) => {

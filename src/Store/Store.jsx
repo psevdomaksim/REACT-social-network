@@ -15,7 +15,7 @@ const Reducers = combineReducers({
   messagesPage: messagesReducer,
   friendsPage: friendsReducer,
   friendReqsPage: friendRequestsReducer,
-  auth: authReducer
+  authPage: authReducer
 });
 
 const store = createStore(Reducers, applyMiddleware(thunk));

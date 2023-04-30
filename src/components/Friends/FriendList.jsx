@@ -23,6 +23,7 @@ const FriendList = () => {
   const [users, setUsers] = useState();
   const [currentUser, setCurrentUser] = useState();
   const [filter, setFilter] = useState(friends);
+  const [login, setLogin] = useState();
   const store = useContext(StoreContext);
 
   const fetchFriends = () => {
@@ -47,6 +48,7 @@ const FriendList = () => {
     setFriends(store.getState().friendsPage.friends);
     setUsers(store.getState().usersPage.users);
     setCurrentUser(store.getState().usersPage.currentUser);
+    setLogin(store.getState().authPage.currentLogin);
   });
 
   const deleteFriend = (id, friendId) => {
@@ -102,7 +104,7 @@ const FriendList = () => {
         <div className="friendlist-header">
           <div className="user-info">
             <h3 className="friends-header"> Friends</h3>
-            {id == 69 ? (
+            {id == login.id ? (
               <Link className="link" to={`/friendRequests/${id}`}>
                 <h4> Friend Requests</h4>
               </Link>
@@ -136,6 +138,7 @@ const FriendList = () => {
                   deleteFriend={deleteFriend}
                   friendId={user.id}
                   user={user.data}
+                  loginId={login.id}
                 ></Friend>
               ) : (
                 <></>

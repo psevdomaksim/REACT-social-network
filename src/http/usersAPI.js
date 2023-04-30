@@ -1,5 +1,6 @@
 import { $host } from "./http";
 
+
 export const fetchUsers = async (limit, page) => {
   const { data } = await $host.get("/users", {
     params:{
@@ -13,6 +14,11 @@ export const fetchUsers = async (limit, page) => {
 
 export const fetchOneUser = async (id) => {
   const { data } = await $host.get("/users/" + id);
+  return data;
+};
+
+export const fetchOneUserByLogin = async (login) => {
+  const { data } = await $host.get(`/users?login=${login}`);
   return data;
 };
 

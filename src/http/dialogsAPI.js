@@ -1,7 +1,12 @@
 import { $host } from "./http";
 
-export const fetchDialogs = async () => {
-  const { data } = await $host.get("/dialogs");
+export const fetchDialogs = async (id) => {
+  const { data } = await $host.get(`/dialogs`,{
+  params:{
+    userId: id
+  }}
+  
+  );
   return data;
 };
 

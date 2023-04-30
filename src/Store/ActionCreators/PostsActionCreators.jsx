@@ -3,6 +3,7 @@ import { ADD_POST, CHANGE_PAGE, CHANGE_PROFILE, DELETE_POST, FETCH_POSTS } from 
 
 //fetchPosts
 export const fetchPostsActionCreator = (data) => {
+
   return {
     type: FETCH_POSTS,
     data: data
@@ -28,7 +29,7 @@ export const addPostActionCreator = (data) => {
 export const addPostThunkCreator = (user, text) => {
   let newPost = {
     id: Math.floor(Math.random() * 10000) + 1,
-    authorId: 69,
+    authorId: user.id,
     authorName: user.data.name,
     authorAvatarImage: user.data.avatarImage,
     userId: user.id,

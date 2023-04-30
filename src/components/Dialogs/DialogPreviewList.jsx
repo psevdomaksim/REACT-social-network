@@ -11,23 +11,23 @@ import { useParams } from "react-router";
 
 const DialogsPreviewList = () => {
   const store = useContext(StoreContext);
-const {id} = useParams();
+  const {id} = useParams();
 
   const [users, setUsers] = useState();
   const [dialogs, setDialogs] = useState();
+  const [login, setLogin] = useState();
 
   const fetchUsers = () => {
     store.dispatch(fetchUsersThunkCreator());
   };
 
-
   const fetchDialogs = () => {
-    store.dispatch(fetchDialogsThunkCreator());
-   
+    if(login!==undefined)store.dispatch(fetchDialogsThunkCreator(login.id));
   };
 
   store.subscribe(() => 
   { 
+    setLogin(store.getState().authPage.currentLogin);
     setUsers(store.getState().usersPage.users)
     setDialogs(store.getState().dialogsPage.dialogs)   
   }
@@ -36,35 +36,35 @@ const {id} = useParams();
   useEffect(() => {
     fetchUsers();
     fetchDialogs();
-  }, [id]);
+  }, [id, login]);
+
+
 
   return users !== undefined && dialogs !== undefined  ? (
     <>
       <main className="dialogs">
         <h3 className="dialog-preview__header">Dialogs</h3>
-        {users.map((user) =>
+        {
           dialogs.map((dialog) =>
-            user.id !== 69 && (dialog.firstUserId == user.id || dialog.secondUserId == user.id) ? (
+         dialog.userId!==login.id ? (
               <DialogPreview
                 key={dialog.id}
                 id={dialog.id}
-                avatar={user.data.avatarImage}
-                name={user.data.name}
+               // avatar={user.data.avatarImage}
+               // name={user.data.name}
                 text_preview={dialog.lastMessage}
               />
-            ) : user.id === 69 && (dialog.firstUserId === 69 && dialog.secondUserId === 69 ) ? (
+            ) : (
                <DialogPreview
                 key={dialog.id}
                 id={dialog.id}
-                avatar={user.data.avatarImage}
-                name={user.data.name}
+               // avatar={user.data.avatarImage}
+               // name={user.data.name}
                 text_preview={dialog.lastMessage}
             />
             )
-            :
-            <></>
           )
-        )}
+      }
       </main>
     </>
   ) : (

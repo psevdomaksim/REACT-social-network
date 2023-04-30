@@ -25,7 +25,7 @@ const Friend = (props) => {
             <p className="user-item__status">{props.user.status}</p>
 
             {
-              props.userId===69?
+              props.userId===props.loginId?
               <Button
                 variant="secondary"
                 size="sm"

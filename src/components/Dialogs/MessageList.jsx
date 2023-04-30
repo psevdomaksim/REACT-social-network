@@ -23,6 +23,7 @@ const MessageList = () => {
 
   const [users, setUsers] = useState();
 
+  const [login, setLogin] = useState();
   const [currentUser, setCurrentUser] = useState();
   const [currentDialog, setCurrentDialog] = useState();
   const [dialogMessages, setDialogMessages] = useState();
@@ -32,7 +33,10 @@ const MessageList = () => {
   };
 
   const fetchOneDialog = () => {
-    store.dispatch(fetchOneDialogThunkCreator(id));
+    if(login!==undefined)
+    {
+      store.dispatch(fetchOneDialogThunkCreator(id, login.id));
+    }
   };
 
 
@@ -51,14 +55,9 @@ const MessageList = () => {
     setCurrentDialog(store.getState().dialogsPage.currentDialog);
     setCurrentUser(store.getState().usersPage.currentUser);
     setDialogMessages(store.getState().messagesPage.messages);
+    setLogin(store.getState().authPage.currentLogin)
   });
 
-
-const isEmpty = () => {
-  if (currentUser!== undefined) {
-    return Object.keys(currentUser).length === 0;
-  }
-}
 
   const addMessage = () => {
     if (message.text !== "") {
@@ -96,7 +95,7 @@ const isEmpty = () => {
 
   return (
     <>
-      {!isEmpty() && currentUser !== undefined ? (
+      {currentUser !== undefined ? (
      
           <h3 className="messageList__username">  
            <Link className="dialog-info__button" to={`/profile/${currentUser.id}`}>
@@ -110,23 +109,21 @@ const isEmpty = () => {
 
       {currentDialog !== undefined && dialogMessages!==undefined ? (
         <div className="messages" ref={messageScroll}>
-          {users.map((user) =>
-              currentDialog.firstUserId == user.id  ? (
+          { 
                 dialogMessages.map((message) => (
                   <Message
                     key={message.id}
                     id={message.id}
-                    name={user.data.name}
+                    //name={user.data.name}
                     text={message.text}
                     fromUserId={message.fromUserId}
+                    loginId={login.id}
                     messageScroll={messageScroll}
                   />
                 ))
-              ) : (
-                <></>
-              )
+              
           
-          )}
+        }
         </div>
       ) : (
         <Spinner className="spinner" animation="border" variant="secondary" />

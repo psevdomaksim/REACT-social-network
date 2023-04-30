@@ -6,11 +6,23 @@ import { useContext } from "react";
 import { StoreContext } from "..";
 import { LOGIN_ROUTE } from "../utils/routes_consts";
 import { FiLogIn, FiLogOut } from "react-icons/fi";
+import { useState } from "react";
+import { logoutActionCreator } from "../Store/ActionCreators/AuthActionCreators";
 
 const logo = require("../assets/images/logo.png");
 
 const Header = () => {
   const store = useContext(StoreContext);
+
+    const [isAuth, setIsAuth] = useState();
+
+    store.subscribe(() => {
+      setIsAuth(store.getState().authPage.isAuth);
+    });
+
+    const logout = (()=>{
+      store.dispatch(logoutActionCreator())
+    })
 
   return (
     <>
@@ -20,13 +32,13 @@ const Header = () => {
             <Image src={logo} className="logo" href="/" />
           </Link>
 
-          {store.getState().auth.isAuth ? (
-            <Link to={LOGIN_ROUTE}>
-              <Button variant={"outline-light"} size="sm">
+          {isAuth ? (
+             <Link to={LOGIN_ROUTE}>
+              <Button variant={"outline-light"} size="sm" onClick={logout}>
                 <FiLogOut size={18} style={{ marginRight: "5px" }} />
                 Log out
-              </Button>
-            </Link>
+              </Button>   
+              </Link>  
           ) : (
             <Link to={LOGIN_ROUTE}>
               <Button variant={"outline-light"} size="sm">

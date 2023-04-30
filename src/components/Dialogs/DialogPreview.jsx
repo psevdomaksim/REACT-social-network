@@ -13,12 +13,12 @@ const DialogPreview = (props) => {
             roundedCircle="true"
             width={50}
             height={50}
-            src={require("../../assets/images/" + props.avatar)}
+            //src={require("../../assets/images/" + props.avatar)}
             className="preview-image"
             href="/"
           />
           <div className="dialog-info">
-            <h6>{props.name}</h6>
+            {/* <h6>{props.name}</h6> */}
             <p className="dialog-info__text">{props.text_preview}</p>
           </div>
         </div>

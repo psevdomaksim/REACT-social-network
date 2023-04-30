@@ -33,17 +33,17 @@ export const addMessageActionCreator = (data) => {
   };
 };
 
-export const addMessageThunkCreator = (dialog, text) => {
+export const addMessageThunkCreator = (dialog, text, loginId) => {
   let newMessage = {
     id: Math.floor(Math.random() * 10000) + 1,
     dialogId: dialog.id,
-    fromUserId: 69,
+    fromUserId: loginId,
     text: text,
   };
 
   let newDialog = {
     id: dialog.id,
-    firstUserId: dialog.firstUserId,
+    userId: dialog.userId,
     secondUserId: dialog.secondUserId,
     lastMessage: text,
   };

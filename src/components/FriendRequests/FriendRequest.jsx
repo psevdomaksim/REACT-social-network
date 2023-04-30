@@ -25,7 +25,7 @@ const FriendRequest = (props) => {
             <p className="user-item__status">{props.user.status}</p>
 
             {
-              props.friendRequest.userId==69?
+              props.friendRequest.userId==props.loginId?
               <>
                    <Button
                 variant="success"

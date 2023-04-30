@@ -6,7 +6,6 @@ import { useRef, useState } from "react";
 import {
   addPostThunkCreator,
   changePageActionCreator,
-  changeProfileActionCreator,
   changeProfileThunkCreator,
   deletePostThunkCreator,
   fetchPostsThunkCreator,
@@ -20,7 +19,7 @@ const PostList = (props) => {
   const { id } = useParams();
   const store = useContext(StoreContext);
 
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState();
 
   const [limit, setLimit] = useState(store.getState().usersPage.limit);
   const[page, setPage] = useState(1);
@@ -93,12 +92,13 @@ const PostList = (props) => {
 
   const addPost = () => {
     if (post.text !== "") {
-      store.dispatch(addPostThunkCreator(props.login, post.text));
+      store.dispatch(addPostThunkCreator(props.login, post.text,));
       clear();
     } else {
       return;
     }
   };
+
 
 
   return posts !== undefined ? (
@@ -124,16 +124,19 @@ const PostList = (props) => {
       </div>
 
       {posts.map((post) => (
+        post.authorAvatarImage !== "" ?
         <Post
           deletePost={deletePost}
-
+          key={post.id}
           postId={post.id}
           userId={post.authorId}
           authorAvatar={post.authorAvatarImage}
           profileId={props.user.id}
           authorName={post.authorName}
+          loginId={props.login.id}
           text={post.text}
-        />
+        />:
+        <></>
       ))}
     </>
   ) : (

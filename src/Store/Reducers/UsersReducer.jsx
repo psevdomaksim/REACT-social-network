@@ -4,8 +4,7 @@ import { FETCH_USERS, FETCH_CURRENT_LOGIN } from "../../utils/AC_consts";
 let initialState = {
   users: [],
   allUsers: [],
-  currentUser: {},
-  currentLogin: {},
+  currentUser: undefined,
   limit: 6,
   page: 1,
 };

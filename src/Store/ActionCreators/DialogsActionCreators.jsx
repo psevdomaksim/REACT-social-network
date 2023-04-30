@@ -23,9 +23,9 @@ export const fetchDialogsActionCreator = (data) => {
     data: data,
   };
 };
-export const fetchDialogsThunkCreator = () => {
+export const fetchDialogsThunkCreator = (loginId) => {
   return (dispatch) => {
-    fetchDialogs().then((data) => {
+    fetchDialogs(loginId).then((data) => {
       dispatch(fetchDialogsActionCreator(data));
     });
   };
@@ -54,7 +54,7 @@ export const fetchOneDialogActionCreator = (data) => {
   };
 };
 
-export const fetchOneDialogThunkCreator = (id) => {
+export const fetchOneDialogThunkCreator = (id, loginId) => {
   return (dispatch) => {
     fetchOneDialog(id).then((dialog) => {
       dispatch(fetchOneDialogActionCreator(dialog));
@@ -63,8 +63,8 @@ export const fetchOneDialogThunkCreator = (id) => {
           dispatch(fetchMessagesActionCreator(data));
         }); 
      
-      if (dialog.firstUserId !== 69) {
-        fetchOneUser(dialog.firstUserId).then((user) => {
+      if (dialog.userId !== loginId) {
+        fetchOneUser(dialog.userId).then((user) => {
           dispatch(fetchOneUserActionCreator(user));
         });
       } else {
@@ -78,7 +78,7 @@ export const fetchOneDialogThunkCreator = (id) => {
   };
 };
 
-//fetch dialog
+//go to dialog
 export const goToDialogActionCreator = (data) => {
   return {
     type: GO_TO_DIALOG,
@@ -86,16 +86,16 @@ export const goToDialogActionCreator = (data) => {
   };
 };
 
-export const goToDialogThunkCreator = (id) => {
+export const goToDialogThunkCreator = (id, loginId) => {
   return (dispatch) => {
 
-    fetchDialogs().then((dialogs) => {
+    fetchDialogs(loginId).then((dialogs) => {
       
       var curDialog = {};
 
       dialogs.filter((dialog) =>
-        (dialog.firstUserId === 69 && dialog.secondUserId === +id) ||
-        (dialog.secondUserId === 69 && dialog.firstUserId === +id) ? (
+        (dialog.userId === loginId && dialog.secondUserId === +id) ||
+        (dialog.secondUserId === loginId && dialog.userId === +id) ? (
           curDialog = dialog
         ) : (
           <></>
@@ -106,15 +106,23 @@ export const goToDialogThunkCreator = (id) => {
        if(Object.keys(curDialog).length === 0)
         {
 
-         let newDialog = {
+         let newDialog1 = {
            id: Math.floor(Math.random() * 10000) + 1,
-           firstUserId: 69,
+           userId: loginId,
            secondUserId: +id,
            lastMessage: ""
          }
 
-        dispatch(createDialogActionCreator(newDialog));
-        dispatch(goToDialogActionCreator(newDialog));
+         let newDialog2 = {
+          id: Math.floor(Math.random() * 10000) + 1,
+          userId: +id,
+          secondUserId: loginId,
+          lastMessage: ""
+        }
+
+        dispatch(createDialogActionCreator(newDialog1));
+        dispatch(createDialogActionCreator(newDialog2));
+        dispatch(goToDialogActionCreator(newDialog1));
       
       }else{
         dispatch(goToDialogActionCreator(curDialog));
@@ -137,16 +145,26 @@ export const createDialogActionCreator = (data) => {
   };
 };
 
-export const createDialogThunkCreator = (id) => {
-  let newDialog = {
+export const createDialogThunkCreator = (id, loginId) => {
+  let newDialog1 = {
     id: Math.floor(Math.random() * 10000) + 1,
-    firstUserId: 69,
+    userId: loginId,
     secondUserId: id,
     lastMessage: ""
   };
 
+  let newDialog2 = {
+    id: Math.floor(Math.random() * 10000) + 1,
+    userId: id,
+    secondUserId: loginId,
+    lastMessage: ""
+  };
+
   return (dispatch) => {
-    createNewDialog(newDialog).then((data) => {
+    createNewDialog(newDialog1).then((data) => {
+      dispatch(createDialogActionCreator(data));
+    });
+    createNewDialog(newDialog2).then((data) => {
       dispatch(createDialogActionCreator(data));
     });
   };

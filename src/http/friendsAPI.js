@@ -1,4 +1,4 @@
-import { $host } from "./http";
+import { $host, $authHost } from "./http";
 
 export const fetchFriends = async (userId) => {
   const { data } = await $host.get(`/users/${userId}/friends`);
@@ -11,7 +11,7 @@ export const fetchOneFriend = async (userId, friendId) => {
 };
 
 export const addFriend = async (newFriend) => {
-  const { data } = await $host({
+  const { data } = await $authHost({
     method: "POST",
     url: `/friends`,
     data: newFriend,
@@ -21,7 +21,7 @@ export const addFriend = async (newFriend) => {
 
 export const deleteFriend = async (id) => {
  
-  const { data } = await $host.delete(`/friends/${id}`);
+  const { data } = await $authHost.delete(`/friends/${id}`);
 
   return data;
 };

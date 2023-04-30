@@ -69,19 +69,18 @@ const Profile = () => {
     store.dispatch(fetchOneUserThunkCreator(id));
   };
 
-  const fetchCurrentLogin = () => {
-    store.dispatch(fetchCurrentLoginThunkCreator());
-  };
-
   const fetchCurrentDialog = () => {
-    store.dispatch(goToDialogThunkCreator(id));
+    if(currentLogin!==undefined)
+  {
+      store.dispatch(goToDialogThunkCreator(id, currentLogin.id));
+  }
   };
 
   const isUserFriend = () => {
     if (users != undefined && friends != undefined) {
       let isFriend = false;
       friends.find((friend) => {
-        if (friend.secondUserId == 69) {
+        if (friend.secondUserId == currentLogin.id) {
           isFriend = true;
         }
       });
@@ -99,7 +98,6 @@ const Profile = () => {
   useEffect(() => {
     fetchFriends();
     fetchUsers();
-    fetchCurrentLogin();
   }, []);
 
   store.subscribe(() => {
@@ -107,16 +105,17 @@ const Profile = () => {
     setFriends(store.getState().friendsPage.friends);
     setOneFriendRequest(store.getState().friendReqsPage.oneFriendReq);
     setCurrentUser(store.getState().usersPage.currentUser);
-    setCurrentLogin(store.getState().auth.currentLogin);
+    setCurrentLogin(store.getState().authPage.currentLogin);
     setCurrentDialog(store.getState().dialogsPage.currentDialog);
   });
 
   const fetchReq = () => {
-    if (oneFriendRequest == undefined) {
-      fetchOneFriendReq(69, id);
-      fetchOneFriendReq(id, 69);
+    if (oneFriendRequest == undefined && currentLogin!==undefined) {
+      fetchOneFriendReq(currentLogin.id, id);
+      fetchOneFriendReq(id, currentLogin.id);
     }
   };
+
 
   fetchReq();
 
@@ -124,7 +123,7 @@ const Profile = () => {
     fetchCurrentDialog();
   };
   const sendFriendRequest = () => {
-    store.dispatch(sendFriendRequestsThunkCreator(+id, 69));
+    store.dispatch(sendFriendRequestsThunkCreator(+id, currentLogin.id));
   };
 
   const acceptFriendRequest = () => {
@@ -140,21 +139,13 @@ const Profile = () => {
   };
 
   const deleteFriend = () => {
-    store.dispatch(deleteFriendThunkCreator(id, 69));
+    store.dispatch(deleteFriendThunkCreator(id, currentLogin.id));
   };
 
-  const isEmpty = () => {
-    if (currentUser !== undefined && currentLogin !== undefined) {
-      return (
-        Object.keys(currentLogin).length === 0 &&
-        Object.keys(currentUser).length === 0
-      );
-    }
-  };
-
-  return !isEmpty() &&
-    currentUser !== undefined &&
-    currentLogin !== undefined ? (
+  
+  return currentUser !== undefined &&
+    currentLogin !== undefined &&
+    currentDialog !== undefined? (
     <>
       <main className="main">
         <Image
@@ -192,7 +183,7 @@ const Profile = () => {
                   Send message
                 </Button>
               </Link>
-              {id != 69 ? (
+              {id != currentLogin.id ? (
                 isUserFriend() ? (
                   <DropdownButton
                     id="dropdown-basic-button"
@@ -239,7 +230,7 @@ const Profile = () => {
                       <span>Decline request</span>
                     </Dropdown.Item>
                   </DropdownButton>
-                ) : oneFriendRequest.requestSenderId == 69 ? (
+                ) : oneFriendRequest.requestSenderId == currentLogin.id ? (
                   <DropdownButton
                     id="dropdown-basic-button"
                     title={<FaUserFriends size={20} />}

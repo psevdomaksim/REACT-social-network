@@ -3,7 +3,7 @@
     {
       "id": 1,
       "login": "aikosina",
-      "password": "12345",
+      "password": "$2a$05$8X.cbFHmWKdvIXpHOxs6qe.hW0c4R5BSJ68qdRe6rbeLkL.BUQnk6",
       "data": {
         "name": "aikko",
         "status": "Опухоль чебурека",
@@ -17,7 +17,7 @@
     {
       "id": 2,
       "login": "inspacina",
-      "password": "12345",
+      "password": "$2a$05$8X.cbFHmWKdvIXpHOxs6qe.hW0c4R5BSJ68qdRe6rbeLkL.BUQnk6",
       "data": {
         "name": "INSPACE",
         "status": "Нечего терять",
@@ -31,7 +31,7 @@
     {
       "id": 3,
       "login": "katanacss",
-      "password": "12345",
+      "password": "$2a$05$8X.cbFHmWKdvIXpHOxs6qe.hW0c4R5BSJ68qdRe6rbeLkL.BUQnk6",
       "data": {
         "name": "katanacss",
         "status": "пуф",
@@ -45,7 +45,7 @@
     {
       "id": 69,
       "login": "maksosina",
-      "password": "12345",
+      "password": "$2a$05$8X.cbFHmWKdvIXpHOxs6qe.hW0c4R5BSJ68qdRe6rbeLkL.BUQnk6",
       "data": {
         "name": "maksos",
         "status": "РЕАКТ РЕДАКС ТЫ ЗНАТЬ БУДЕШЬ КРУТО",
@@ -59,7 +59,7 @@
     {
       "id": 4,
       "login": "horusina",
-      "password": "12345",
+      "password": "$2a$05$8X.cbFHmWKdvIXpHOxs6qe.hW0c4R5BSJ68qdRe6rbeLkL.BUQnk6",
       "data": {
         "name": "HORUS",
         "status": "",
@@ -73,7 +73,7 @@
     {
       "id": 5,
       "login": "haskyyy",
-      "password": "12345",
+      "password": "$2a$05$8X.cbFHmWKdvIXpHOxs6qe.hW0c4R5BSJ68qdRe6rbeLkL.BUQnk6",
       "data": {
         "name": "Хаски",
         "status": "",
@@ -87,7 +87,7 @@
     {
       "id": 6,
       "login": "project_mutilation",
-      "password": "12345",
+      "password": "$2a$05$8X.cbFHmWKdvIXpHOxs6qe.hW0c4R5BSJ68qdRe6rbeLkL.BUQnk6",
       "data": {
         "name": "Проект Увечье",
         "status": "",
@@ -101,7 +101,7 @@
     {
       "id": 7,
       "login": "luper",
-      "password": "12345",
+      "password": "$2a$05$8X.cbFHmWKdvIXpHOxs6qe.hW0c4R5BSJ68qdRe6rbeLkL.BUQnk6",
       "data": {
         "name": "Луперкаль",
         "status": "",
@@ -115,7 +115,7 @@
     {
       "id": 9,
       "login": "user_9",
-      "password": "12345",
+      "password": "$2a$05$8X.cbFHmWKdvIXpHOxs6qe.hW0c4R5BSJ68qdRe6rbeLkL.BUQnk6",
       "data": {
         "name": "user_9",
         "status": "",
@@ -129,7 +129,7 @@
     {
       "id": 10,
       "login": "user_10",
-      "password": "12345",
+      "password": "$2a$05$8X.cbFHmWKdvIXpHOxs6qe.hW0c4R5BSJ68qdRe6rbeLkL.BUQnk6",
       "data": {
         "name": "user_10",
         "status": "",
@@ -143,7 +143,7 @@
     {
       "id": 11,
       "login": "user_11",
-      "password": "12345",
+      "password": "$2a$05$8X.cbFHmWKdvIXpHOxs6qe.hW0c4R5BSJ68qdRe6rbeLkL.BUQnk6",
       "data": {
         "name": "user_11",
         "status": "",
@@ -157,7 +157,7 @@
     {
       "id": 12,
       "login": "user_12",
-      "password": "12345",
+      "password": "$2a$05$8X.cbFHmWKdvIXpHOxs6qe.hW0c4R5BSJ68qdRe6rbeLkL.BUQnk6",
       "data": {
         "name": "user_12",
         "status": "",
@@ -171,7 +171,7 @@
     {
       "id": 13,
       "login": "user_13",
-      "password": "12345",
+      "password": "$2a$05$8X.cbFHmWKdvIXpHOxs6qe.hW0c4R5BSJ68qdRe6rbeLkL.BUQnk6",
       "data": {
         "name": "user_13",
         "status": "",
@@ -185,7 +185,7 @@
     {
       "id": 14,
       "login": "user_14",
-      "password": "12345",
+      "password": "$2a$05$8X.cbFHmWKdvIXpHOxs6qe.hW0c4R5BSJ68qdRe6rbeLkL.BUQnk6",
       "data": {
         "name": "user_14",
         "status": "",
@@ -199,7 +199,7 @@
     {
       "id": 15,
       "login": "user_15",
-      "password": "12345",
+      "password": "$2a$05$8X.cbFHmWKdvIXpHOxs6qe.hW0c4R5BSJ68qdRe6rbeLkL.BUQnk6",
       "data": {
         "name": "user_15",
         "status": "",
@@ -213,7 +213,7 @@
     {
       "id": 16,
       "login": "user_16",
-      "password": "12345",
+      "password": "$2a$05$8X.cbFHmWKdvIXpHOxs6qe.hW0c4R5BSJ68qdRe6rbeLkL.BUQnk6",
       "data": {
         "name": "user_16",
         "status": "",
@@ -227,7 +227,7 @@
     {
       "id": 17,
       "login": "user_17",
-      "password": "12345",
+      "password": "$2a$05$8X.cbFHmWKdvIXpHOxs6qe.hW0c4R5BSJ68qdRe6rbeLkL.BUQnk6",
       "data": {
         "name": "user_17",
         "status": "",
@@ -241,7 +241,7 @@
     {
       "id": 18,
       "login": "user_18",
-      "password": "12345",
+      "password": "$2a$05$8X.cbFHmWKdvIXpHOxs6qe.hW0c4R5BSJ68qdRe6rbeLkL.BUQnk6",
       "data": {
         "name": "user_18",
         "status": "",
@@ -255,7 +255,7 @@
     {
       "id": 19,
       "login": "user_19",
-      "password": "12345",
+      "password": "$2a$05$8X.cbFHmWKdvIXpHOxs6qe.hW0c4R5BSJ68qdRe6rbeLkL.BUQnk6",
       "data": {
         "name": "user_19",
         "status": "",
@@ -319,30 +319,40 @@
       "id": 4508,
       "userId": 69,
       "requestSenderId": 7
+    },
+    {
+      "id": 9151,
+      "userId": 1,
+      "requestSenderId": 7
+    },
+    {
+      "id": 4942,
+      "userId": 2,
+      "requestSenderId": 7
     }
   ],
   "dialogs": [
     {
-      "id": 45,
-      "firstUserId": 1,
+      "id": 46,
+      "userId": 1,
       "secondUserId": 69,
       "lastMessage": "привет"
     },
     {
       "id": 12,
-      "firstUserId": 69,
+      "userId": 69,
       "secondUserId": 2,
       "lastMessage": "nicho"
     },
     {
       "id": 87,
-      "firstUserId": 3,
+      "userId": 3,
       "secondUserId": 69,
       "lastMessage": "dfg"
     },
     {
       "id": 6737,
-      "firstUserId": 69,
+      "userId": 69,
       "secondUserId": 69,
       "lastMessage": "это чат с самим с собой для заметок "
     }
@@ -350,69 +360,15 @@
   "messages": [
     {
       "id": 1,
-      "dialogId": 45,
-      "fromUserId": 1,
+      "firstDialogId": 12,
+      "fromUserId": 2,
       "text": "ku"
     },
     {
       "id": 2,
-      "dialogId": 45,
-      "fromUserId": 1,
-      "text": "cho kak"
-    },
-    {
-      "id": 6,
-      "dialogId": 45,
-      "fromUserId": 69,
-      "text": "da norm "
-    },
-    {
-      "id": 7,
-      "dialogId": 45,
-      "fromUserId": 69,
-      "text": "a ti? "
-    },
-    {
-      "id": 3,
-      "dialogId": 87,
-      "fromUserId": 69,
-      "text": "kak dela"
-    },
-    {
-      "id": 4,
-      "dialogId": 87,
-      "fromUserId": 69,
-      "text": "haha"
-    },
-    {
-      "id": 8,
       "dialogId": 12,
       "fromUserId": 69,
-      "text": "privet inspace "
-    },
-    {
-      "id": 5,
-      "dialogId": 12,
-      "fromUserId": 69,
-      "text": "cho novogo"
-    },
-    {
-      "id": 9417,
-      "dialogId": 12,
-      "fromUserId": 3,
-      "text": "nicho"
-    },
-    {
-      "id": 9729,
-      "dialogId": 45,
-      "fromUserId": 69,
-      "text": "привет"
-    },
-    {
-      "id": 7107,
-      "dialogId": 6737,
-      "fromUserId": 69,
-      "text": "это чат с самим с собой для заметок "
+      "text": "priv"
     }
   ],
   "posts": [
