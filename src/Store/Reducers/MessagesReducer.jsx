@@ -1,7 +1,7 @@
 import { ADD_MESSAGE, FETCH_DIALOGS, FETCH_MESSAGES, FETCH_ONE_DIALOG } from "../../utils/AC_consts";
 
 let initialState = {
-  messages: [],
+  messages: undefined,
   addedMessage: undefined
 };
 

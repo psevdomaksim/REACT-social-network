@@ -38,7 +38,7 @@ const DialogsPreviewList = () => {
     fetchDialogs();
   }, [id, login]);
 
-
+  
 
   return users !== undefined && dialogs !== undefined  ? (
     <>
@@ -46,24 +46,16 @@ const DialogsPreviewList = () => {
         <h3 className="dialog-preview__header">Dialogs</h3>
         {
           dialogs.map((dialog) =>
-         dialog.userId!==login.id ? (
+     
               <DialogPreview
                 key={dialog.id}
                 id={dialog.id}
-               // avatar={user.data.avatarImage}
-               // name={user.data.name}
+                avatar={dialog.previewAvatar}
+                name={dialog.previewName}
                 text_preview={dialog.lastMessage}
               />
-            ) : (
-               <DialogPreview
-                key={dialog.id}
-                id={dialog.id}
-               // avatar={user.data.avatarImage}
-               // name={user.data.name}
-                text_preview={dialog.lastMessage}
-            />
-            )
-          )
+            ) 
+          
       }
       </main>
     </>

@@ -3,11 +3,13 @@ import {
   updateDialogLastMessage,
 } from "../../http/dialogsAPI";
 import { addMessage, fetchMessages } from "../../http/messagesAPI";
+import { fetchUsers } from "../../http/usersAPI";
 
 import { ADD_MESSAGE, FETCH_MESSAGES } from "../../utils/AC_consts";
 import {
   changeDialogLastMessageActionCreator,
   createDialogActionCreator,
+  fetchDialogsThunkCreator,
 } from "./DialogsActionCreators";
 
 //fetch messages
@@ -19,8 +21,20 @@ export const fetchMessagesActionCreator = (data) => {
 };
 export const fetchMessagesThunkCreator = (dialogId) => {
   return (dispatch) => {
-    fetchMessages(dialogId).then((data) => {
-      dispatch(fetchMessagesActionCreator(data));
+    fetchMessages(dialogId).then((messages) => {
+      fetchUsers().then((users) => {
+        messages.map((message) =>
+          users.map((user) =>
+            message.fromUserId === user.id ? (
+              message.fromUserName = user.data.name
+            ) : (
+              <></>
+            )
+          )
+        );
+        dispatch(fetchMessagesActionCreator(messages));
+      });
+    
     });
   };
 };
@@ -48,9 +62,8 @@ export const addMessageThunkCreator = (dialog, text, loginId) => {
     lastMessage: text,
   };
 
-
   return (dispatch) => {
-    addMessage(dialog.id, newMessage).then((data) => {
+    addMessage(newMessage).then((data) => {
       dispatch(addMessageActionCreator(data));
 
       updateDialogLastMessage(dialog.id, newDialog)
@@ -58,18 +71,21 @@ export const addMessageThunkCreator = (dialog, text, loginId) => {
           dispatch(changeDialogLastMessageActionCreator(data));
         })
         .catch((e) => {
-          if (dialog.lastMessage === "") {              //если диалога не существует в базе данных, то отправляется запрос на сервак о его добавлении, иначе же просто выводится на экран ошибка
+          if (dialog.lastMessage === "") {
+            //если диалога не существует в базе данных, то отправляется запрос на сервак о его добавлении, иначе же просто выводится на экран ошибка(404 по задумке должна быть)
             createNewDialog(newDialog).then((data) => {
               dispatch(createDialogActionCreator(data));
+              dispatch(fetchDialogsThunkCreator(loginId))
             });
           } else {
-            console.log(e);
+            alert(e);
           }
         });
 
       fetchMessages(dialog.id).then((data) => {
         dispatch(fetchMessagesActionCreator(data));
       });
+      
     });
   };
 };

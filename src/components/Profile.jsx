@@ -19,9 +19,7 @@ import {
   fetchUsersThunkCreator,
 } from "../Store/ActionCreators/UsersActionCreators";
 import { useRef } from "react";
-import {
-  goToDialogThunkCreator,
-} from "../Store/ActionCreators/DialogsActionCreators";
+import { goToDialogThunkCreator } from "../Store/ActionCreators/DialogsActionCreators";
 import { FaUserFriends, FaUserAltSlash, FaUserCheck } from "react-icons/fa";
 import {
   addFriendThunkCreator,
@@ -36,6 +34,7 @@ import {
   sendFriendRequestsThunkCreator,
 } from "../Store/ActionCreators/FriendReqsActionCreators";
 import { fetchCurrentLoginThunkCreator } from "../Store/ActionCreators/AuthActionCreators";
+import { EDIT_PROFILE_ROUTE } from "../utils/routes_consts";
 
 const Profile = () => {
   const { id } = useParams();
@@ -70,10 +69,11 @@ const Profile = () => {
   };
 
   const fetchCurrentDialog = () => {
-    if(currentLogin!==undefined)
-  {
-      store.dispatch(goToDialogThunkCreator(id, currentLogin.id));
-  }
+    if (currentLogin !== undefined) {
+      store.dispatch(
+        goToDialogThunkCreator(id, currentLogin.id, currentDialog)
+      );
+    }
   };
 
   const isUserFriend = () => {
@@ -93,7 +93,7 @@ const Profile = () => {
     fetchOneUser();
     setOneFriendRequest();
     fetchCurrentDialog();
-  }, [id]);
+  }, [id, currentLogin]);
 
   useEffect(() => {
     fetchFriends();
@@ -110,13 +110,13 @@ const Profile = () => {
   });
 
   const fetchReq = () => {
-    if (oneFriendRequest == undefined && currentLogin!==undefined) {
+    if (oneFriendRequest == undefined && currentLogin !== undefined) {
       fetchOneFriendReq(currentLogin.id, id);
       fetchOneFriendReq(id, currentLogin.id);
     }
   };
 
-
+  console.log(currentDialog);
   fetchReq();
 
   const goToDialog = () => {
@@ -142,10 +142,9 @@ const Profile = () => {
     store.dispatch(deleteFriendThunkCreator(id, currentLogin.id));
   };
 
-  
   return currentUser !== undefined &&
     currentLogin !== undefined &&
-    currentDialog !== undefined? (
+    currentDialog !== undefined ? (
     <>
       <main className="main">
         <Image
@@ -183,6 +182,16 @@ const Profile = () => {
                   Send message
                 </Button>
               </Link>
+
+              <Link
+                className="sidebar-link"
+                to={EDIT_PROFILE_ROUTE + `/${id}`}
+              >
+                <Button variant="outline-dark" size="sm">
+                  Edit profile
+                </Button>
+              </Link>
+
               {id != currentLogin.id ? (
                 isUserFriend() ? (
                   <DropdownButton
@@ -253,13 +262,12 @@ const Profile = () => {
               )}
             </div>
 
-           
-              <span>
+            <span>
               <Link className="sidebar-link" to={`/friends/${id}`}>
                 Friends
-                </Link>
-                </span>
-            
+              </Link>
+            </span>
+
             {currentUser.data.dateOfBirth !== "" ? (
               <p>Data of birth: {currentUser.data.dateOfBirth}</p>
             ) : (

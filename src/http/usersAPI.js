@@ -17,8 +17,12 @@ export const fetchOneUser = async (id) => {
   return data;
 };
 
+
 export const fetchOneUserByLogin = async (login) => {
   const { data } = await $host.get(`/users?login=${login}`);
   return data;
 };
+
+
+
 

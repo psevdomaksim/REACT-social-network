@@ -20,7 +20,7 @@ const Message = (props) => {
         </div>
       ) : (
         <div className="message">
-          {/* <h5>{props.name}</h5> */}
+           <h5>{props.name}</h5> 
           <p>{props.text}</p>
         </div>
       )}

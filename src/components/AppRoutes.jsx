@@ -17,9 +17,9 @@ const AppRoutes = () => {
       setLoading(store.getState().authPage.isLoading);
     });
 
-  //   if(loading) {
-  //     return <Spinner animation="grow"/>
-  // }
+     if(loading) {
+       return <Spinner animation="grow"/>
+   }
 
   return (
     

@@ -19,10 +19,6 @@ const postsReducer = (state = initialState, action) => {
     case FETCH_POSTS: {
       const resultPosts = [...state.posts, ...action.data];
 
-      resultPosts.map((post) => {
-        if (post.authorAvatarImage === "")
-          post.authorAvatarImage = "default-image.jpg";
-      });
       state = { ...state, posts: resultPosts };
 
       return state;
@@ -30,9 +26,6 @@ const postsReducer = (state = initialState, action) => {
 
     case ADD_POST: {
       const posts = state.posts;
-      if (action.data.authorAvatarImage === "") {
-        action.data.authorAvatarImage = "default-image.jpg";
-      }
 
       posts.push(action.data);
       state = { ...state, posts: posts };

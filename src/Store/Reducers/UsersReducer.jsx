@@ -13,13 +13,6 @@ const usersReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_ONE_USER: {
       state = { ...state, currentUser: action.data };
-
-      if (state.currentUser.data.avatarImage === "") {
-        state.currentUser.data.avatarImage = "default-image.jpg";
-      }
-      if (state.currentUser.data.ownerPageCover === "") {
-        state.currentUser.data.ownerPageCover = "default-image.jpg";
-      }
       return state;
     }
 
@@ -28,25 +21,6 @@ const usersReducer = (state = initialState, action) => {
       state = { ...state, allUsers: resultPosts, users: action.data };
 
       // state = { ...state, users: action.data };
-
-      state.users.map(
-        (user) => (
-        state.allUsers.map(
-          (user) => (
-            user.data.avatarImage === "" ? (
-              (user.data.avatarImage = "default-image.jpg")
-            ) : (
-              <></>
-            ),
-            user.data.ownerPageCover === "" ? (
-              (user.data.ownerPageCover = "default-image.jpg")
-            ) : (
-              <></>
-            )
-          )
-        )
-        )
-      );
       return state;
     }
     case CLEAN_ALL_USERS:{

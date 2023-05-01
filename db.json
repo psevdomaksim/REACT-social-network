@@ -50,7 +50,7 @@
         "name": "maksos",
         "status": "РЕАКТ РЕДАКС ТЫ ЗНАТЬ БУДЕШЬ КРУТО",
         "avatarImage": "ava.jpg",
-        "ownerPageCover": "",
+        "ownerPageCover": "default-image.jpg",
         "dateOfBirth": "24/06/2004",
         "city": "Minsk",
         "education": "ИНСТИТУТ ПИВА"
@@ -63,8 +63,8 @@
       "data": {
         "name": "HORUS",
         "status": "",
-        "avatarImage": "",
-        "ownerPageCover": "",
+        "avatarImage": "default-image.jpg",
+        "ownerPageCover": "default-image.jpg",
         "dateOfBirth": "",
         "city": "",
         "education": ""
@@ -77,8 +77,8 @@
       "data": {
         "name": "Хаски",
         "status": "",
-        "avatarImage": "",
-        "ownerPageCover": "",
+        "avatarImage": "default-image.jpg",
+        "ownerPageCover": "default-image.jpg",
         "dateOfBirth": "",
         "city": "",
         "education": ""
@@ -91,8 +91,8 @@
       "data": {
         "name": "Проект Увечье",
         "status": "",
-        "avatarImage": "",
-        "ownerPageCover": "",
+        "avatarImage": "default-image.jpg",
+        "ownerPageCover": "default-image.jpg",
         "dateOfBirth": "",
         "city": "",
         "education": ""
@@ -105,8 +105,8 @@
       "data": {
         "name": "Луперкаль",
         "status": "",
-        "avatarImage": "",
-        "ownerPageCover": "",
+        "avatarImage": "default-image.jpg",
+        "ownerPageCover": "default-image.jpg",
         "dateOfBirth": "",
         "city": "",
         "education": ""
@@ -119,8 +119,8 @@
       "data": {
         "name": "user_9",
         "status": "",
-        "avatarImage": "",
-        "ownerPageCover": "",
+        "avatarImage": "default-image.jpg",
+        "ownerPageCover": "default-image.jpg",
         "dateOfBirth": "",
         "city": "",
         "education": ""
@@ -133,8 +133,8 @@
       "data": {
         "name": "user_10",
         "status": "",
-        "avatarImage": "",
-        "ownerPageCover": "",
+        "avatarImage": "default-image.jpg",
+        "ownerPageCover": "default-image.jpg",
         "dateOfBirth": "",
         "city": "",
         "education": ""
@@ -147,8 +147,8 @@
       "data": {
         "name": "user_11",
         "status": "",
-        "avatarImage": "",
-        "ownerPageCover": "",
+        "avatarImage": "default-image.jpg",
+        "ownerPageCover": "default-image.jpg",
         "dateOfBirth": "",
         "city": "",
         "education": ""
@@ -161,8 +161,8 @@
       "data": {
         "name": "user_12",
         "status": "",
-        "avatarImage": "",
-        "ownerPageCover": "",
+        "avatarImage": "default-image.jpg",
+        "ownerPageCover": "default-image.jpg",
         "dateOfBirth": "",
         "city": "",
         "education": ""
@@ -175,8 +175,8 @@
       "data": {
         "name": "user_13",
         "status": "",
-        "avatarImage": "",
-        "ownerPageCover": "",
+        "avatarImage": "default-image.jpg",
+        "ownerPageCover": "default-image.jpg",
         "dateOfBirth": "",
         "city": "",
         "education": ""
@@ -189,8 +189,8 @@
       "data": {
         "name": "user_14",
         "status": "",
-        "avatarImage": "",
-        "ownerPageCover": "",
+        "avatarImage": "default-image.jpg",
+        "ownerPageCover": "default-image.jpg",
         "dateOfBirth": "",
         "city": "",
         "education": ""
@@ -203,8 +203,8 @@
       "data": {
         "name": "user_15",
         "status": "",
-        "avatarImage": "",
-        "ownerPageCover": "",
+        "avatarImage": "default-image.jpg",
+        "ownerPageCover": "default-image.jpg",
         "dateOfBirth": "",
         "city": "",
         "education": ""
@@ -217,8 +217,8 @@
       "data": {
         "name": "user_16",
         "status": "",
-        "avatarImage": "",
-        "ownerPageCover": "",
+        "avatarImage": "default-image.jpg",
+        "ownerPageCover": "default-image.jpg",
         "dateOfBirth": "",
         "city": "",
         "education": ""
@@ -231,8 +231,8 @@
       "data": {
         "name": "user_17",
         "status": "",
-        "avatarImage": "",
-        "ownerPageCover": "",
+        "avatarImage": "default-image.jpg",
+        "ownerPageCover": "default-image.jpg",
         "dateOfBirth": "",
         "city": "",
         "education": ""
@@ -245,8 +245,8 @@
       "data": {
         "name": "user_18",
         "status": "",
-        "avatarImage": "",
-        "ownerPageCover": "",
+        "avatarImage": "default-image.jpg",
+        "ownerPageCover": "default-image.jpg",
         "dateOfBirth": "",
         "city": "",
         "education": ""
@@ -259,8 +259,22 @@
       "data": {
         "name": "user_19",
         "status": "",
-        "avatarImage": "",
-        "ownerPageCover": "",
+        "avatarImage": "default-image.jpg",
+        "ownerPageCover": "default-image.jpg",
+        "dateOfBirth": "",
+        "city": "",
+        "education": ""
+      }
+    },
+    {
+      "id": 6348,
+      "login": "sutenersha",
+      "password": "$2a$06$OBjjg/dD4UJ3.Y4.lOKc8.c/PxOZelO0G7t3kEM8RrErRa0Dx6QK6",
+      "data": {
+        "name": "Сутенёрша",
+        "status": "",
+        "avatarImage": "default-image.jpg",
+        "ownerPageCover": "default-image.jpg",
         "dateOfBirth": "",
         "city": "",
         "education": ""
@@ -336,7 +350,7 @@
       "id": 46,
       "userId": 1,
       "secondUserId": 69,
-      "lastMessage": "привет"
+      "lastMessage": "выписка"
     },
     {
       "id": 12,
@@ -355,12 +369,24 @@
       "userId": 69,
       "secondUserId": 69,
       "lastMessage": "это чат с самим с собой для заметок "
+    },
+    {
+      "id": 1310,
+      "userId": 7,
+      "secondUserId": 2,
+      "lastMessage": "31123"
+    },
+    {
+      "id": 6624,
+      "userId": 2,
+      "secondUserId": 2,
+      "lastMessage": "инспейс общается с инспейсом;"
     }
   ],
   "messages": [
     {
       "id": 1,
-      "firstDialogId": 12,
+      "dialogId": 12,
       "fromUserId": 2,
       "text": "ku"
     },
@@ -369,6 +395,18 @@
       "dialogId": 12,
       "fromUserId": 69,
       "text": "priv"
+    },
+    {
+      "id": 609,
+      "dialogId": 6624,
+      "fromUserId": 2,
+      "text": "инспейс общается с инспейсом"
+    },
+    {
+      "id": 6590,
+      "dialogId": 46,
+      "fromUserId": 1,
+      "text": "выписка"
     }
   ],
   "posts": [

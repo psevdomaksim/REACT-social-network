@@ -21,8 +21,6 @@ const MessageList = () => {
 
   const store = useContext(StoreContext);
 
-  const [users, setUsers] = useState();
-
   const [login, setLogin] = useState();
   const [currentUser, setCurrentUser] = useState();
   const [currentDialog, setCurrentDialog] = useState();
@@ -47,21 +45,20 @@ const MessageList = () => {
 
   useEffect(() => {
     fetchOneDialog();
-    
-  }, [id]);
+  }, [id, login]);
 
   store.subscribe(() => {
-    setUsers(store.getState().usersPage.users);
     setCurrentDialog(store.getState().dialogsPage.currentDialog);
     setCurrentUser(store.getState().usersPage.currentUser);
     setDialogMessages(store.getState().messagesPage.messages);
     setLogin(store.getState().authPage.currentLogin)
   });
 
-
+console.log(currentDialog)
+  
   const addMessage = () => {
     if (message.text !== "") {
-      store.dispatch(addMessageThunkCreator(currentDialog, message.text));
+      store.dispatch(addMessageThunkCreator(currentDialog, message.text, login.id));
       clear();
     } else {
       return;
@@ -114,7 +111,7 @@ const MessageList = () => {
                   <Message
                     key={message.id}
                     id={message.id}
-                    //name={user.data.name}
+                    name={message.fromUserName}
                     text={message.text}
                     fromUserId={message.fromUserId}
                     loginId={login.id}

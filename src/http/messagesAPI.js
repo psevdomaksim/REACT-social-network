@@ -7,10 +7,10 @@ export const fetchMessages = async (dialogId) => {
 
 
 
-export const addMessage = async (dialogId, body) => {
+export const addMessage = async ( body) => {
   const { data } = await $authHost({
     method: "POST",
-    url: `/dialogs/${dialogId}/messages`,
+    url: `/messages`,
     data: body,
   });
   return data;

@@ -1,7 +1,7 @@
-import { FETCH_CURRENT_LOGIN, LOGIN, API_ERROR, SET_LOGIN, LOG_OUT } from "../../utils/AC_consts";
+import { FETCH_CURRENT_LOGIN, LOGIN, API_ERROR, SET_LOGIN, LOG_OUT, SET_LOADING } from "../../utils/AC_consts";
 import { fetchOneUser, fetchOneUserByLogin } from "../../http/usersAPI";
 import bcrypt from "bcryptjs-react";
-import { checkAuth, generateJWT, hashPassword } from "../../http/authAPI";
+import { checkAuth, createUser, generateJWT, hashPassword } from "../../http/authAPI";
 
 //fetch current login
 export const fetchCurrentLoginActionCreator = (data) => {
@@ -53,19 +53,70 @@ export const loginThunkCreator = (username, password, role) => {
         dispatch(loginActionCreator(user[0], token));
       });
 
-      // hashPassword(password).then((data)=>{
-      //  console.log(data)
-      // })
     });
   };
 };
 
+export const registrationThunkCreator = (login, name, password, role) => {
+  return (dispatch) => {
 
-// set login
+    fetchOneUserByLogin(login).then((user) => {
+      if (user.length !== 0) {
+        return dispatch(ApiError("This login is already taken."));
+      }
+
+      if (name.length<3){
+        return dispatch(ApiError("Name is too short"));
+      }
+
+      if (password.length<5){
+        return dispatch(ApiError("Password is too short"));
+      }
+
+          let newUser = {
+            id: Math.floor(Math.random() * 10000) + 1,
+            login: login,
+            password: bcrypt.hashSync(password, 6),
+            data: {
+              name: name,
+              status: "",
+              avatarImage: "default-image.jpg",
+              ownerPageCover: "default-image.jpg",
+              dateOfBirth: "",
+              city: "",
+              education: ""
+            }
+      }
+
+      createUser(newUser).then((user) => {
+        generateJWT(user.id, user.login, role).then((token) => {
+          dispatch(loginActionCreator(user, token));
+        }).catch(e=>alert(e));
+      });
+
+    });
+
+  
+ 
+  };
+};
+
+
+
+// log out
 
 export const logoutActionCreator = () => {
   return {
     type: LOG_OUT
+  };
+};
+
+//
+// set login
+
+export const setLoadingActionCreator = () => {
+  return {
+    type: SET_LOADING
   };
 };
 
@@ -90,6 +141,8 @@ export const setLoginThunkCreator = () => {
             dispatch(setLoginActionCreator(user))
           })
       })
+    }else{
+      dispatch(setLoadingActionCreator())
     }
   };
 };

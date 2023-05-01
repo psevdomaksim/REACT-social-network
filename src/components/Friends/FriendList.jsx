@@ -55,12 +55,6 @@ const FriendList = () => {
     store.dispatch(deleteFriendThunkCreator(id, friendId));
   };
 
-  const isEmpty = () => {
-    if (currentUser !== undefined) {
-      return Object.keys(currentUser).length === 0;
-    }
-  };
-
   useEffect(() => {
     setFilter(users);
   }, [users]);
@@ -84,7 +78,7 @@ const FriendList = () => {
     );
   };
 
-  return !isEmpty() && currentUser !== undefined ? (
+  return currentUser !== undefined ? (
     <>
       <div className="users-wrapper">
         <Link className="link" to={`/${id}`}>

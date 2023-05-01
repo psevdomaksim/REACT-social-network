@@ -3,29 +3,23 @@ import "./css/Sidebar.css";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { StoreContext } from "..";
-import { useState } from "react";
+
 
 const Sidebar = () => {
 
   const store = useContext(StoreContext);
-
-  const [login, setLogin] = useState();
-
-  store.subscribe(() => {
-    setLogin(store.getState().authPage.currentLogin);
-  });
 
   return (
     <>
       <aside className="sidebar">
         <div className="sidebar-item">
           
-         { login!==undefined ?
-         <Link className="sidebar-link" to={`/profile/${login.id}`}>
+       
+         <Link className="sidebar-link" to={`/profile/${store.getState().authPage.currentLogin.id}`}>
             My profile
           </Link>:
           <></>
-          }
+          
         </div>
 
         <div className="sidebar-item">
@@ -33,17 +27,14 @@ const Sidebar = () => {
             Messenger
           </Link>
         </div>
-
-        <div className="sidebar-item">News</div>
-        <div className="sidebar-item">Music</div>
         
         <div className="sidebar-item">
-        { login!==undefined ?
-          <Link className="sidebar-link" to={`/friends/${login.id}`}>
+        
+          <Link className="sidebar-link" to={`/friends/${store.getState().authPage.currentLogin.id}`}>
             Friends
           </Link>:
           <></>
-          }
+          
         </div>
 
         

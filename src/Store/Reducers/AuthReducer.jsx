@@ -1,4 +1,4 @@
-import { FETCH_CURRENT_LOGIN, API_ERROR, LOGIN, SET_LOGIN, LOG_OUT } from "../../utils/AC_consts";
+import { FETCH_CURRENT_LOGIN, API_ERROR, LOGIN, SET_LOGIN, LOG_OUT, SET_LOADING } from "../../utils/AC_consts";
 
 let initialState = {
   currentLogin: null,
@@ -12,32 +12,27 @@ const usersReducer = (state = initialState, action) => {
   switch (action.type) {
 
     case FETCH_CURRENT_LOGIN: {
+      
       state = { ...state, currentLogin: action.data };
-      if (state.currentLogin.data.avatarImage === "") {
-        state.currentLogin.data.avatarImage = "default-image.jpg";
-      }
-      if (state.currentLogin.data.ownerPageCover === "") {
-        state.currentLogin.data.ownerPageCover = "default-image.jpg";
-      }
+     
       return state;
     }
 
     case LOGIN:{
-      localStorage.setItem("token", action.token);
+      localStorage.setItem("token", action.token);  
       state = { ...state, currentLogin: action.user, token: action.token, isAuth: true};
       return state;
     }
 
     case LOG_OUT:{
       localStorage.removeItem('token')
-      state = { ...state, currentLogin: {}, token: null, isAuth: false};
+   
+      state = { ...state, currentLogin: null, token: null, isAuth: false};
       return state;
     }
 
-    case SET_LOGIN:{
-    
+    case SET_LOGIN:{    
       state = { ...state, currentLogin: action.user, isAuth: true, isLoading: false};
-     
       return state;
     }
   
@@ -47,6 +42,9 @@ const usersReducer = (state = initialState, action) => {
       return state;
     }
 
+    case SET_LOADING:{
+      state = { ...state, isLoading: false };
+    }
 
     default:
       return state;

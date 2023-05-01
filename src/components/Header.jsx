@@ -14,12 +14,6 @@ const logo = require("../assets/images/logo.png");
 const Header = () => {
   const store = useContext(StoreContext);
 
-    const [isAuth, setIsAuth] = useState();
-
-    store.subscribe(() => {
-      setIsAuth(store.getState().authPage.isAuth);
-    });
-
     const logout = (()=>{
       store.dispatch(logoutActionCreator())
     })
@@ -32,7 +26,7 @@ const Header = () => {
             <Image src={logo} className="logo" href="/" />
           </Link>
 
-          {isAuth ? (
+          {store.getState().authPage.isAuth ? (
              <Link to={LOGIN_ROUTE}>
               <Button variant={"outline-light"} size="sm" onClick={logout}>
                 <FiLogOut size={18} style={{ marginRight: "5px" }} />

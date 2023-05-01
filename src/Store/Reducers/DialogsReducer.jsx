@@ -3,13 +3,14 @@ import { ADD_MESSAGE, FETCH_DIALOGS, FETCH_ONE_DIALOG, CHANGE_DIALOG_LAST_MESSAG
 let initialState = {
   dialogs: [],
   currentDialog: {},
-  updatedDialog: {},
-  lastMessage:{},
+  updatedDialog: undefined,
+  lastMessage: undefined,
 };
 
 const dialogsReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_DIALOGS: {
+
       state = { ...state, dialogs: action.data };
       return state;
     }
@@ -35,6 +36,7 @@ const dialogsReducer = (state = initialState, action) => {
       const dialogs = state.dialogs;
       dialogs.push(action.data)
       state = { ...state, dialogs: dialogs };
+      console.log(dialogs)
       return state;
     }
     default:

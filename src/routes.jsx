@@ -1,5 +1,6 @@
 import {
     DIALOGS_ROUTE,
+    EDIT_PROFILE_ROUTE,
     FRIENDS_ROUTE,
     FRIEND_REQUESTS_ROUTE,
     LOGIN_ROUTE, 
@@ -15,11 +16,16 @@ import UserPage from "./pages/UsersPage"
 import FriendsPage from "./pages/FriendsPage"
 import FriendRequestsPage from "./pages/FriendRequestsPage"
 import Auth from './pages/Auth';
+import EditProfilePage from './pages/EditProfilePage';
 
 export const authRoutes = [
     {
         path: PROFILE_ROUTE + '/:id',
         Component: Profile
+    },
+    {
+        path: EDIT_PROFILE_ROUTE + '/:id',
+        Component: EditProfilePage
     },
     {
         path: DIALOGS_ROUTE,
