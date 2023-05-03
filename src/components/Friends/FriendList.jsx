@@ -86,8 +86,7 @@ const FriendList = () => {
             <Image
               width={50}
               height={50}
-              src={require("../../assets/images/" +
-                currentUser.data.avatarImage)}
+              src={"http://localhost:4200/" + currentUser.data.avatarImage}
               className="preview-image"
               href="/"
             />

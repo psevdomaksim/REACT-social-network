@@ -1,4 +1,4 @@
-import { FETCH_CURRENT_LOGIN, API_ERROR, LOGIN, SET_LOGIN, LOG_OUT, SET_LOADING } from "../../utils/AC_consts";
+import { FETCH_CURRENT_LOGIN, API_ERROR, LOGIN, SET_LOGIN, LOG_OUT, SET_LOADING, UPDATE_PROFILE_DATA } from "../../utils/AC_consts";
 
 let initialState = {
   currentLogin: null,
@@ -36,6 +36,12 @@ const usersReducer = (state = initialState, action) => {
       return state;
     }
   
+
+    case UPDATE_PROFILE_DATA:{
+      state = { ...state, currentLogin: action.data };
+      return state;
+    }
+
     case API_ERROR:{
       state = { ...state, error: action.data };
       alert(state.error)

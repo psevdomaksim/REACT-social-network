@@ -1,10 +1,11 @@
 .sidebar{
     display: flex;
     flex-direction: column;
-    width: 15%;
+    min-width: 15%;
     background-color: #6667ab;
     margin-right: 10px;
     padding:5px;
+    min-height: 42em;
   }
   
   .sidebar-item{

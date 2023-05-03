@@ -64,7 +64,7 @@ export const addMessageThunkCreator = (dialog, text, loginId) => {
 
   return (dispatch) => {
     addMessage(newMessage).then((data) => {
-      dispatch(addMessageActionCreator(data));
+      //dispatch(addMessageActionCreator(data));
 
       updateDialogLastMessage(dialog.id, newDialog)
         .then((data) => {
@@ -82,9 +82,7 @@ export const addMessageThunkCreator = (dialog, text, loginId) => {
           }
         });
 
-      fetchMessages(dialog.id).then((data) => {
-        dispatch(fetchMessagesActionCreator(data));
-      });
+      dispatch(fetchMessagesThunkCreator(dialog.id))
       
     });
   };

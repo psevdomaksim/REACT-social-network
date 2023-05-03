@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Image } from "react-bootstrap";
+import { Image, Card, Container, Row, Col } from "react-bootstrap";
 import { AiFillDelete } from "react-icons/ai";
 import "../../App.css";
 import "../css/Sidebar.css";
@@ -9,32 +9,49 @@ const Post = (props) => {
 
   return (
     <>
-      <div className="post">
-        <div className="post-header">
-       
-        
-       <Link className="post-header_user-data" to={`/profile/${props.userId}`}>
+    <Card className="mt-3" style={{ width: '25em' }}>
+      <Card.Body>
+        <Card.Title>
+        <Container>
+        <Row>
+        <Col xs={2}>
+        <Link className="" to={`/profile/${props.userId}`}>
        <Image
           width={50}
           height={50}
-          src={require("../../assets/images/" + props.authorAvatar)}
+          src={"http://localhost:4200/" +  props.authorAvatar}
           className="post-avatar"
         /> 
-              <h4>{props.authorName}</h4>  
+              
           </Link>
-          
-          
-          {props.profileId === props.loginId || props.userId === props.loginId ? (
-            <AiFillDelete
+        </Col>
+
+         <Col xs={9}>
+         <Link className="post-header_user-data" to={`/profile/${props.userId}`}>
+          <h4>{props.authorName}</h4> 
+         </Link>
+        </Col>
+
+        <Col xs={1}>
+        {props.profileId === props.loginId || props.userId === props.loginId ? (
+            <AiFillDelete 
               onClick={() => props.deletePost(props.postId, props.profileId)}
               size={25}
+              style={{cursor:"pointer"}}
             />
           ) : (
             <></>
           )}
-        </div>
-        <p>{props.text}</p>
-      </div>
+          </Col>
+        </Row>
+        </Container>
+
+        </Card.Title>
+        <Card.Text>
+        {props.text}
+        </Card.Text>
+      </Card.Body>
+    </Card>
     </>
   );
 };

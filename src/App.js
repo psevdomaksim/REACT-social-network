@@ -9,11 +9,14 @@ import { setLoginThunkCreator } from "./Store/ActionCreators/AuthActionCreators"
 
 
 function App() {
+
+  
   const store = useContext(StoreContext);
 
   useEffect(() => {
     store.dispatch(setLoginThunkCreator());
 }, []);
+
 
   return (
     <BrowserRouter>

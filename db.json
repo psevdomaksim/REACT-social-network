@@ -47,13 +47,13 @@
       "login": "maksosina",
       "password": "$2a$05$8X.cbFHmWKdvIXpHOxs6qe.hW0c4R5BSJ68qdRe6rbeLkL.BUQnk6",
       "data": {
-        "name": "maksos",
+        "name": "maksosina",
         "status": "РЕАКТ РЕДАКС ТЫ ЗНАТЬ БУДЕШЬ КРУТО",
         "avatarImage": "ava.jpg",
         "ownerPageCover": "default-image.jpg",
         "dateOfBirth": "24/06/2004",
-        "city": "Minsk",
-        "education": "ИНСТИТУТ ПИВА"
+        "city": "Минск",
+        "education": "белорусский государственный университет реакта"
       }
     },
     {
@@ -265,20 +265,6 @@
         "city": "",
         "education": ""
       }
-    },
-    {
-      "id": 6348,
-      "login": "sutenersha",
-      "password": "$2a$06$OBjjg/dD4UJ3.Y4.lOKc8.c/PxOZelO0G7t3kEM8RrErRa0Dx6QK6",
-      "data": {
-        "name": "Сутенёрша",
-        "status": "",
-        "avatarImage": "default-image.jpg",
-        "ownerPageCover": "default-image.jpg",
-        "dateOfBirth": "",
-        "city": "",
-        "education": ""
-      }
     }
   ],
   "friends": [
@@ -350,19 +336,19 @@
       "id": 46,
       "userId": 1,
       "secondUserId": 69,
-      "lastMessage": "выписка"
+      "lastMessage": "здарова максос"
     },
     {
       "id": 12,
       "userId": 69,
       "secondUserId": 2,
-      "lastMessage": "nicho"
+      "lastMessage": "норм "
     },
     {
       "id": 87,
       "userId": 3,
       "secondUserId": 69,
-      "lastMessage": "dfg"
+      "lastMessage": "я вас категорически приветствую."
     },
     {
       "id": 6737,
@@ -374,7 +360,7 @@
       "id": 1310,
       "userId": 7,
       "secondUserId": 2,
-      "lastMessage": "31123"
+      "lastMessage": "привет луперкаль"
     },
     {
       "id": 6624,
@@ -388,13 +374,13 @@
       "id": 1,
       "dialogId": 12,
       "fromUserId": 2,
-      "text": "ku"
+      "text": "ку"
     },
     {
       "id": 2,
       "dialogId": 12,
       "fromUserId": 69,
-      "text": "priv"
+      "text": "прива)"
     },
     {
       "id": 609,
@@ -406,7 +392,37 @@
       "id": 6590,
       "dialogId": 46,
       "fromUserId": 1,
-      "text": "выписка"
+      "text": "здарова максос"
+    },
+    {
+      "id": 7047,
+      "dialogId": 12,
+      "fromUserId": 2,
+      "text": "как дела"
+    },
+    {
+      "id": 1365,
+      "dialogId": 1310,
+      "fromUserId": 2,
+      "text": "привет луперкаль"
+    },
+    {
+      "id": 7361,
+      "dialogId": 12,
+      "fromUserId": 69,
+      "text": "норм "
+    },
+    {
+      "id": 2497,
+      "dialogId": 6737,
+      "fromUserId": 69,
+      "text": "это чат с самим собой для заметок"
+    },
+    {
+      "id": 3495,
+      "dialogId": 87,
+      "fromUserId": 3,
+      "text": "я вас категорически приветствую."
     }
   ],
   "posts": [
@@ -433,6 +449,15 @@
       "authorAvatarImage": "inspace.jpg",
       "userId": 69,
       "text": "салют"
+    },
+    {
+      "id": 1140,
+      "authorId": 69,
+      "authorName": "maksosina",
+      "authorAvatarImage": "ava.jpg",
+      "userId": 69,
+      "text": "Some quick example text to build on the card title and make up the bulk of the card's content.\n\nSome quick example text to build on the card title and make up the bulk of the card's content.\n\n",
+      "date": "2023-05-03T12:16:11.801Z"
     }
   ]
 }

@@ -1,6 +1,6 @@
 import "../css/Users.css";
 import { Form, Image, Spinner } from "react-bootstrap";
-import { Link, useParams } from "react-router-dom";
+import { Link, Navigate, useParams } from "react-router-dom";
 import { useContext } from "react";
 import { StoreContext } from "../..";
 import Friend from "./FriendRequest";
@@ -17,13 +17,14 @@ import {
 } from "../../Store/ActionCreators/FriendReqsActionCreators";
 import FriendRequest from "./FriendRequest";
 import { addFriendThunkCreator } from "../../Store/ActionCreators/FriendsActionCreators";
+import { PROFILE_ROUTE } from "../../utils/routes_consts";
 
 const FriendRequestList = () => {
   const { id } = useParams();
 
   const [friendRequests, setFriendRequests] = useState();
   const [users, setUsers] = useState();
-  const [login, setLogin] = useState();
+  const [login, setLogin] = useState(null);
   
   const [currentUser, setCurrentUser] = useState();
   const store = useContext(StoreContext);
@@ -64,14 +65,12 @@ const FriendRequestList = () => {
     store.dispatch(rejectFriendRequestThunkCreator(friendRequest));
   };
 
-  const isEmpty = () => {
-    if (currentUser !== undefined) {
-      return Object.keys(currentUser).length === 0;
-    }
-  };
+  if(id!=store.getState().authPage.currentLogin.id){
+    return <Navigate to={PROFILE_ROUTE + `/${store.getState().authPage.currentLogin.id}`} />
+  }
 
 
-  return !isEmpty() && currentUser !== undefined ? (
+  return currentUser !== undefined ? (
     <>
       <div className="users-wrapper">
         <Link className="link" to={`/${id}`}>
@@ -79,8 +78,7 @@ const FriendRequestList = () => {
             <Image
               width={50}
               height={50}
-              src={require("../../assets/images/" +
-                currentUser.data.avatarImage)}
+              src={"http://localhost:4200/" +  currentUser.data.avatarImage}
               className="preview-image"
               href="/"
             />

@@ -1,7 +1,7 @@
-import { FETCH_CURRENT_LOGIN, LOGIN, API_ERROR, SET_LOGIN, LOG_OUT, SET_LOADING } from "../../utils/AC_consts";
-import { fetchOneUser, fetchOneUserByLogin } from "../../http/usersAPI";
+import { FETCH_CURRENT_LOGIN, LOGIN, API_ERROR, SET_LOGIN, LOG_OUT, SET_LOADING, UPDATE_PROFILE_DATA } from "../../utils/AC_consts";
+import { fetchOneUser, fetchOneUserByLogin, updateUser } from "../../http/usersAPI";
 import bcrypt from "bcryptjs-react";
-import { checkAuth, createUser, generateJWT, hashPassword } from "../../http/authAPI";
+import { checkAuth, createUser, generateJWT } from "../../http/authAPI";
 
 //fetch current login
 export const fetchCurrentLoginActionCreator = (data) => {
@@ -146,3 +146,39 @@ export const setLoginThunkCreator = () => {
     }
   };
 };
+
+
+//UPDATE PROFILE
+export const updateProfileDataActionCreator = (data) => {
+
+  return {
+    type: UPDATE_PROFILE_DATA,
+    data: data
+  };
+};
+
+export const updateProfileDataThunkCreator = (user, updatedUserData) => {
+  return (dispatch) => {
+  
+    //const uuid = require("uuid");
+    //const type = updatedUserData.avatarImage.type.split('/')[1];
+    //let avatarImageFileName = uuid.v4() + `.${type}`;
+    //updatedUserData.avatarImage.mv(path.resolve(__dirname, '..', 'static', avatarImageFileName));
+    //updatedUserData = { ...updatedUserData, avatarImage: avatarImageFileName };
+
+    let updatedUser = {
+      id: user.id,
+      login: user.login,
+      password: user.password,
+      data: updatedUserData
+    }
+    
+
+    console.log(updatedUser)
+
+
+    updateUser(user.id, updatedUser).then((data)=>{
+       dispatch(updateProfileDataActionCreator(data));
+     })
+  }
+}

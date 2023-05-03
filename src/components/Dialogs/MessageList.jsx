@@ -54,7 +54,6 @@ const MessageList = () => {
     setLogin(store.getState().authPage.currentLogin)
   });
 
-console.log(currentDialog)
   
   const addMessage = () => {
     if (message.text !== "") {

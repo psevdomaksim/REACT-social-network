@@ -13,7 +13,7 @@ const DialogPreview = (props) => {
             roundedCircle="true"
             width={50}
             height={50}
-            src={require("../../assets/images/" + props.avatar)}
+            src={"http://localhost:4200/" + props.avatar}
             className="preview-image"
             href="/"
           />

@@ -10,7 +10,7 @@ const FriendRequest = (props) => {
           <Image
             width={70}
             height={70}
-            src={require("../../assets/images/" + props.user.avatarImage)}
+            src={"http://localhost:4200/" + props.user.avatarImage}
             className="preview-image"
             href="/"
           />

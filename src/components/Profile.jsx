@@ -6,6 +6,9 @@ import {
   Button,
   DropdownButton,
   Dropdown,
+  Row,
+  Container,
+  Col,
 } from "react-bootstrap";
 import PostList from "./Posts/PostList";
 import { useContext } from "react";
@@ -116,7 +119,6 @@ const Profile = () => {
     }
   };
 
-  console.log(currentDialog);
   fetchReq();
 
   const goToDialog = () => {
@@ -151,7 +153,7 @@ const Profile = () => {
           rounded="true"
           width={"100%"}
           height={200}
-          src={require("../assets/images/" + currentUser.data.ownerPageCover)}
+          src={"http://localhost:4200/" + currentUser.data.ownerPageCover}
           className="owner-page-cover"
           href="/"
         />
@@ -162,14 +164,16 @@ const Profile = () => {
               rounded="true"
               width={100}
               height={100}
-              src={require("../assets/images/" + currentUser.data.avatarImage)}
+              src={"http://localhost:4200/" + currentUser.data.avatarImage}
               className="profile-avatar"
             />
           }
-
-          <div className="profile-data">
-            <div className="profile-header">
+    <Container>
+          <Row className="mt-1">
+            <Col xs={4}>
               <h3>{currentUser.data.name}</h3>
+            </Col>
+            <Col xs={5}>
               <Link
                 className="sidebar-link"
                 to={`/dialogs/${currentDialog.id}`}
@@ -182,18 +186,26 @@ const Profile = () => {
                   Send message
                 </Button>
               </Link>
+            </Col>
 
-              <Link
-                className="sidebar-link"
-                to={EDIT_PROFILE_ROUTE + `/${id}`}
-              >
-                <Button variant="outline-dark" size="sm">
-                  Edit profile
-                </Button>
-              </Link>
+            {id == currentLogin.id ? (
+              <Col xs={3}>
+                <Link
+                  className="sidebar-link"
+                  to={EDIT_PROFILE_ROUTE + `/${id}`}
+                >
+                  <Button variant="outline-dark" size="sm">
+                    Edit profile
+                  </Button>
+                </Link>
+              </Col>
+            ) : (
+              <></>
+            )}
 
-              {id != currentLogin.id ? (
-                isUserFriend() ? (
+            {id != currentLogin.id ? (
+              <Col xs={3}>
+                {isUserFriend() ? (
                   <DropdownButton
                     id="dropdown-basic-button"
                     title={<FaUserFriends size={20} />}
@@ -256,36 +268,53 @@ const Profile = () => {
                   </DropdownButton>
                 ) : (
                   <></>
-                )
-              ) : (
-                <></>
-              )}
-            </div>
+                )}
+              </Col>
+            ) : (
+              <></>
+            )}
+          </Row>
 
-            <span>
+          <Row className="mt-1">
+            <Col xs={12}>
               <Link className="sidebar-link" to={`/friends/${id}`}>
                 Friends
               </Link>
-            </span>
+            </Col>
+          </Row>
+         
+          <Row className="mt-2">
+            <Col xs={12}>
+          {currentUser.data.dateOfBirth !== "" ? (
+            <p>Data of birth: {currentUser.data.dateOfBirth}</p>
+          ) : (
+            <></>
+          )}
+              </Col>
+          </Row>
+          
+          <Row className="mt-1">
+            <Col xs={12}>
+          {currentUser.data.city !== "" ? (
+            <p>City: {currentUser.data.city}</p>
+          ) : (
+            <></>
+          )}
+            </Col>
+          </Row>
+          <Row className="mt-1">
+            <Col xs={12}>
+          {currentUser.data.education !== "" ? (
+            <p>Education: {currentUser.data.education}</p>
+          ) : (
+            <></>
+          )}
+          </Col>
+          </Row>
 
-            {currentUser.data.dateOfBirth !== "" ? (
-              <p>Data of birth: {currentUser.data.dateOfBirth}</p>
-            ) : (
-              <></>
-            )}
-            {currentUser.data.city !== "" ? (
-              <p>City: {currentUser.data.city}</p>
-            ) : (
-              <></>
-            )}
-            {currentUser.data.education !== "" ? (
-              <p>Education: {currentUser.data.education}</p>
-            ) : (
-              <></>
-            )}
-          </div>
+
+</Container>
         </div>
-
         <div className="postList">
           <PostList trigger={trigger} login={currentLogin} user={currentUser} />
         </div>

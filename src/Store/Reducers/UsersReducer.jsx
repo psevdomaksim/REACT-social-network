@@ -12,6 +12,7 @@ let initialState = {
 const usersReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_ONE_USER: {
+
       state = { ...state, currentUser: action.data };
       return state;
     }
@@ -23,6 +24,9 @@ const usersReducer = (state = initialState, action) => {
       // state = { ...state, users: action.data };
       return state;
     }
+
+
+
     case CLEAN_ALL_USERS:{
 
       state = { ...state, allUsers:[]};

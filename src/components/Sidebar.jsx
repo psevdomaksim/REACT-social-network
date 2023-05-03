@@ -17,7 +17,7 @@ const Sidebar = () => {
        
          <Link className="sidebar-link" to={`/profile/${store.getState().authPage.currentLogin.id}`}>
             My profile
-          </Link>:
+          </Link>
           <></>
           
         </div>
@@ -32,7 +32,7 @@ const Sidebar = () => {
         
           <Link className="sidebar-link" to={`/friends/${store.getState().authPage.currentLogin.id}`}>
             Friends
-          </Link>:
+          </Link>
           <></>
           
         </div>

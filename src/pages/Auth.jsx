@@ -3,40 +3,17 @@ import { Container, Form, Card, Button, Row } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
 import { StoreContext } from "../";
 import Header from "../components/Header";
-import { fetchCurrentLoginThunkCreator, loginThunkCreator, registrationThunkCreator } from "../Store/ActionCreators/AuthActionCreators";
+import {  loginThunkCreator, registrationThunkCreator } from "../Store/ActionCreators/AuthActionCreators";
 import { LOGIN_ROUTE, PROFILE_ROUTE, REGISTRATION_ROUTE } from "../utils/routes_consts";
 
 const Auth = () => {
   const store = useContext(StoreContext);
   const location = useLocation();
   const isLogin = location.pathname === LOGIN_ROUTE;
-  const [login, setLogin] = useState(null);
   const [username, setUsername] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("USER");
-
-//   const auth = async () => {
-//     try {
-//       let data;
-//       if (isLogin) {
-//         data = await login(email, password);
-//       } else {
-//         data = await registration(email, password, role);
-//       }
-//       user.setIsAuth(true);
-//       user.setRole(localStorage.getItem("role"));
-//       history.push(SHOP_ROUTE);
-//       localStorage.setItem("auth", "true");
-//     } catch (e) {
-//       alert(e.response.data.message);
-//     }
-//   };
-
-   
-      store.subscribe(() => {
-        setLogin(store.getState().authPage.currentLogin);
-      });
 
 
     const auth = () =>{
@@ -104,7 +81,7 @@ const Auth = () => {
                 )}
                 
                {
-                login==null ?
+                store.getState().authPage.currentLogin==null ?
                 <Button
                 className="mt-4 align-self-end"
                 variant={"outline-success"}
@@ -114,7 +91,7 @@ const Auth = () => {
                 {isLogin ? "Sign in" : "Registration"}
               </Button>
               :
-              <Link to={PROFILE_ROUTE+'/'+login.id}>
+              <Link to={PROFILE_ROUTE+'/'+store.getState().authPage.currentLogin.id}>
               <Button
               className="mt-4 align-self-end"
               variant={"outline-success"}

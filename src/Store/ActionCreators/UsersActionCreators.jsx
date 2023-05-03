@@ -1,6 +1,6 @@
-import { CLEAN_ALL_USERS, FETCH_ONE_USER } from "../../utils/AC_consts";
-import { FETCH_USERS } from "../../utils/AC_consts";
-import { fetchOneUser, fetchUsers } from "../../http/usersAPI";
+import { CLEAN_ALL_USERS, FETCH_ONE_USER, FETCH_USERS} from "../../utils/AC_consts";
+import { createImageFile, fetchOneUser, fetchUsers } from "../../http/usersAPI";
+
 
 // fetch users
 export const fetchUsersActionCreator = (data) => {
@@ -42,6 +42,7 @@ export const fetchOneUserThunkCreator = (id) => {
     })
   }
 }
+
 
 
 

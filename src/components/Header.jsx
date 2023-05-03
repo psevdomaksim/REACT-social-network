@@ -9,8 +9,6 @@ import { FiLogIn, FiLogOut } from "react-icons/fi";
 import { useState } from "react";
 import { logoutActionCreator } from "../Store/ActionCreators/AuthActionCreators";
 
-const logo = require("../assets/images/logo.png");
-
 const Header = () => {
   const store = useContext(StoreContext);
 
@@ -23,7 +21,7 @@ const Header = () => {
       <Navbar className="header">
         <Container>
           <Link to="/">
-            <Image src={logo} className="logo" href="/" />
+            <Image src={"http://localhost:4200/logo.png"} className="logo" href="/" />
           </Link>
 
           {store.getState().authPage.isAuth ? (

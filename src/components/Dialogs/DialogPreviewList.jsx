@@ -22,7 +22,7 @@ const DialogsPreviewList = () => {
   };
 
   const fetchDialogs = () => {
-    if(login!==undefined)store.dispatch(fetchDialogsThunkCreator(login.id));
+    if(login!==undefined)store.dispatch(fetchDialogsThunkCreator(login));
   };
 
   store.subscribe(() => 

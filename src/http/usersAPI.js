@@ -1,4 +1,4 @@
-import { $host } from "./http";
+import { $host, $authHost} from "./http";
 
 
 export const fetchUsers = async (limit, page) => {
@@ -23,6 +23,13 @@ export const fetchOneUserByLogin = async (login) => {
   return data;
 };
 
-
+export const updateUser = async (userId, updatedUser) => {
+  const { data } = await $authHost({
+    method: "PUT",
+    url: `/users/${userId}`,
+    data: updatedUser,
+  });
+  return data;
+};
 
 

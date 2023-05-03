@@ -1,28 +1,30 @@
-import '../../App.css';
-import '../css/Dialogs.css'
-import {Image} from "react-bootstrap";
-import { Link, useParams } from "react-router-dom";
-import { useEffect } from 'react';
+import "../../App.css";
+import "../css/Dialogs.css";
+import { useEffect } from "react";
+import { Card } from "react-bootstrap";
 
 const Message = (props) => {
-
   useEffect(() => {
-    props.messageScroll.current.scrollTop = props.messageScroll.current.scrollHeight
+    props.messageScroll.current.scrollTop =
+      props.messageScroll.current.scrollHeight;
   }, []);
-
 
   return (
     <>
       {props.fromUserId == props.loginId ? (
-        <div className="messageMe">
-          <h5>Me</h5>
-          <p>{props.text}</p>
-        </div>
+        <Card className="messageMe mt-2 me-2" style={{ width: "18rem" }}>
+          <Card.Body>
+            <Card.Title>Me</Card.Title>
+            <Card.Text>{props.text}</Card.Text>
+          </Card.Body>
+        </Card>
       ) : (
-        <div className="message">
-           <h5>{props.name}</h5> 
-          <p>{props.text}</p>
-        </div>
+        <Card className="mt-2 ms-2" style={{ width: "18rem" }}>
+          <Card.Body>
+            <Card.Title>{props.name}</Card.Title>
+            <Card.Text>{props.text}</Card.Text>
+          </Card.Body>
+        </Card>
       )}
     </>
   );
